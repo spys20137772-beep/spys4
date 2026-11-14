@@ -98,6 +98,60 @@ canvas.full{position:absolute;inset:0;width:100%;height:100%;pointer-events:none
 .rimg{display:block;margin:6px auto;max-width:80%;max-height:30vh;border-radius:16px;box-shadow:0 6px 20px #0003}
 .fimg{max-width:70%;max-height:28vh;border-radius:16px;margin-top:14px}
 .bimg{display:block;max-width:80%;max-height:40vh;border-radius:12px;margin:0 auto 16px}
+.dk{position:absolute;inset:0;background:radial-gradient(circle at 50% 0,#2a2350,#0b0b18);color:#fff;display:flex;flex-direction:column;align-items:center;text-align:center;overflow:auto}
+.dk .bp{color:#b9b9d0}
+.ucam{position:relative;width:74vw;max-width:340px;aspect-ratio:3/4;border-radius:20px;overflow:hidden;background:#1d1d2c;margin-top:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.uph{font-size:120px;opacity:.5}
+.ufill{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ubox{position:absolute;left:18%;right:18%;top:16%;bottom:24%;border:3px dashed #c6ff3d;border-radius:46%;animation:blink 1s steps(1) infinite}
+.uscan{position:absolute;left:0;right:0;height:4px;background:#c6ff3d;box-shadow:0 0 18px #c6ff3d;animation:scan 1.2s ease-in-out infinite alternate}
+@keyframes scan{from{top:4%}to{top:94%}}
+.stamp{position:absolute;right:8px;top:12px;border:4px solid #ff2d55;color:#ff2d55;font-weight:900;font-size:22px;padding:4px 10px;transform:rotate(12deg);background:#fff9}
+.umet{width:84vw;max-width:380px;margin:12px 0 30px;font-size:13px}
+.mrow{display:flex;align-items:center;gap:8px;margin:5px 0;animation:pop .25s}.mrow span:first-child{width:110px;text-align:left;color:#b9b9d0}
+.mbar{flex:1;height:8px;background:#ffffff1a;border-radius:4px;overflow:hidden}.mbar i{display:block;height:100%;background:#ff3d7f}
+.mrow b{width:40px;text-align:right}
+.ures{animation:pop .4s ease-out}.upc{font-size:64px;font-weight:900;color:#ff3d7f;line-height:1}
+.mir{position:absolute;inset:0;background:#000;overflow:hidden}
+.mirbg{position:absolute;inset:0;background:radial-gradient(circle at 50% 45%,#3a3a44,#0a0a0f)}
+.mirv{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ghost{position:absolute;top:10%;width:46vw;max-width:260px;opacity:0;filter:blur(2px);z-index:2}
+.ghost.gr{right:4%}.ghost.gl{left:4%}
+.ghost.gjump{top:5%;left:50%;right:auto;width:110vw;max-width:none;transform:translateX(-50%) scale(1.15);filter:none;animation:shake .05s linear infinite}
+.mtop{position:absolute;top:0;left:0;right:0;padding:16px;text-align:center;color:#fff;font-weight:800;background:linear-gradient(#000a,#0000);z-index:3}
+.mst{position:absolute;bottom:90px;left:16px;right:16px;text-align:center;color:#fff;font-size:15px;z-index:3;text-shadow:0 1px 4px #000;white-space:pre-wrap}
+.mgo{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);width:auto;padding:15px 28px;z-index:4}
+.flashing{animation:flash .12s steps(1) infinite}
+.mbig{position:absolute;bottom:12%;left:0;right:0;text-align:center;font-size:13vmin;font-weight:900;color:#fff;text-shadow:0 0 24px red;z-index:5;animation:shake .05s infinite}
+.qpz{margin-top:14px;font-size:26px;font-weight:900;background:#ffffff14;padding:12px 20px;border-radius:16px}
+.qcd{font-size:110px;font-weight:900;margin-top:10px;line-height:1}
+.qmeter{width:70vw;max-width:320px;height:14px;background:#ffffff1a;border-radius:7px;overflow:hidden;margin-top:14px}.qmeter i{display:block;height:100%;width:0;background:#c6ff3d;transition:width .06s}
+.qst{margin-top:14px;font-size:17px;min-height:26px}
+.parrot{font-size:150px;margin-top:20px;line-height:1;transition:transform .1s}.parrot img{width:180px;height:180px;object-fit:cover;border-radius:50%;border:6px solid #c6ff3d}
+.parrot.talk{animation:talk .18s ease-in-out infinite alternate}
+@keyframes talk{from{transform:scale(1) rotate(-4deg)}to{transform:scale(1.12) rotate(4deg)}}
+.kbw{position:absolute;inset:0;background:#ffefe0;color:#111;overflow:auto}
+.kbimg{display:block;width:100%;max-height:30vh;object-fit:cover}
+.kbc{background:#fff;margin:16px;border-radius:18px;box-shadow:0 6px 24px #0001;display:flex;flex-direction:column}
+.kbbox{position:relative;margin:0 16px;border:2px solid #ff6b00;border-radius:12px;padding:14px;font-size:18px;min-height:54px;background:#fff}
+.kbbox input{position:absolute;inset:0;width:100%;height:100%;opacity:0;font-size:16px;border:0}
+.caret{display:inline-block;width:2px;height:20px;background:#111;vertical-align:middle;margin-left:1px;animation:blink 1s steps(1) infinite}
+.lock{position:absolute;inset:0;background:linear-gradient(170deg,#1e3c72,#0b1530);background-size:cover;background-position:center;color:#fff;display:flex;flex-direction:column;align-items:center}
+.lclock{font-size:76px;font-weight:300;margin-top:44px;line-height:1}.ldate{opacity:.8;margin-top:6px}
+.ltit{margin-top:26px;font-size:18px;font-weight:700}.lsub{margin-top:4px;font-size:14px;opacity:.8;min-height:20px}
+.ldots{display:flex;gap:16px;margin:18px 0}.ldots i{width:14px;height:14px;border-radius:50%;border:2px solid #fff}.ldots i.on{background:#fff}
+.shk{animation:shake .08s linear 5}
+.lpad2{display:grid;grid-template-columns:repeat(3,76px);gap:16px}
+.lpad2 button{width:76px;height:76px;border-radius:50%;border:0;background:#ffffff26;color:#fff;font-size:28px;font-family:inherit}
+.lpad2 button:active{background:#ffffff55}
+.lover{position:absolute;inset:0;background:#000d;display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;font-size:17px;padding:24px;z-index:5;gap:6px}
+.lbig{font-size:13vmin;font-weight:900;color:#fff}.lcnt{font-size:34px;font-variant-numeric:tabular-nums;margin-top:10px;color:#c6ff3d}
+.gacha{position:absolute;inset:0;background:linear-gradient(160deg,#ff9a9e,#fecfef);color:#222;display:flex;flex-direction:column;align-items:center;text-align:center}
+.gacha .bh{padding-top:40px;font-size:26px}
+.gm{margin-top:16px;background:#e8112d;padding:16px;border-radius:24px;box-shadow:0 10px 30px #0003}
+.gwin{width:70vw;max-width:300px;height:120px;background:#fff;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:34px;font-weight:900;border:6px solid #ffd700}
+.gwin.near{animation:shake .08s linear infinite;color:#e8112d}
+.glist{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:16px 20px;font-size:13px}.glist span{background:#fff8;padding:4px 10px;border-radius:12px}
 .exitz{position:absolute;left:0;bottom:0;width:70px;height:70px;z-index:98}
 </style>
 </head>
@@ -114,6 +168,13 @@ const PRANKS = {
   run:{name:'도망가는 버튼',e:'🏃',d:'절대 못 누르는 버튼',snd:'airhorn'},
   fart:{name:'방귀 지문인식',e:'💨',d:'손가락 대면 뿌웅',snd:'fart'},
   lie:{name:'거짓말 탐지기',e:'🕵️',d:'결과 몰래 조작',snd:'siren'},
+  ugly:{name:'못생김 측정기',e:'🤳',d:'AI가 외모 판정',snd:'airhorn',cam:1},
+  mirror:{name:'귀신 거울',e:'🪞',d:'셀카 뒤에 귀신이...',snd:'scream',cam:1},
+  quiet:{name:'조용히 챌린지',e:'🤫',d:'버티면 괴물 등장',snd:'scream',mic:1},
+  copy:{name:'따라쟁이',e:'🦜',d:'말하면 이상한 목소리로',snd:'none',mic:1},
+  kb:{name:'고장난 키보드',e:'⌨️',d:'뭘 쳐도 "나는 바보"',snd:'airhorn'},
+  lock:{name:'영원한 잠금',e:'🔒',d:'잠금 시간 무한 증가',snd:'alarm'},
+  gacha:{name:'절대 안 되는 뽑기',e:'🎰',d:'계속 꽝만 나옴',snd:'fart'},
 };
 const SOUNDS = [['scream','😱 비명'],['glass','💥 유리 깨짐'],['fart','💨 방귀'],['boom','💣 폭발'],['siren','🚨 사이렌'],['airhorn','📯 에어혼'],['alarm','⏰ 경보음'],['none','🔇 없음'],['custom','🎤 내 소리 (파일·녹음)']];
 const HACK_LINES = `> {이름}의 휴대폰에 연결 중...
@@ -166,8 +227,62 @@ const PF = {
     {k:'tt',l:'진실일 때 글자',t:'text',d:'✅ 진실입니다'},
     {k:'lt',l:'거짓일 때 글자',t:'text',d:'🚨 거짓말 감지!!'},
   ],
+  ugly:[
+    {k:'bt',l:'제목',t:'text',d:'AI 외모 분석기 📸'},
+    {k:'bb',l:'설명',t:'area',d:'얼굴을 화면에 맞추고 측정 버튼을 눌러주세요'},
+    {k:'cam',l:'카메라로 진짜 얼굴 찍기 (끄면 사진/이모지로 대신)',t:'chk',d:1},
+    {k:'du',l:'측정 시간 (초)',t:'num',min:3,max:15,d:6},
+    {k:'pc',l:'결과 퍼센트',t:'text',d:'99.8'},
+    {k:'rs',l:'결과 제목',t:'text',d:'못생김 지수'},
+    {k:'rd',l:'결과 설명',t:'text',d:'상위 0.1% · 국가 지정 문화재급 😱'},
+  ],
+  mirror:[
+    {k:'bt',l:'제목',t:'text',d:'✨ 뷰티 셀카 필터'},
+    {k:'bb',l:'설명',t:'area',d:'얼굴을 화면 가운데에 맞추고 가만히 있어주세요'},
+    {k:'cam',l:'카메라로 친구 얼굴 비추기',t:'chk',d:1},
+    {k:'sl',l:'귀신이 다 나타나고 덮칠 때까지 (초)',t:'num',min:5,max:40,d:12},
+    {k:'gp',l:'귀신 위치',t:'sel',o:[['right','오른쪽 어깨 뒤'],['left','왼쪽 어깨 뒤']],d:'right'},
+    {k:'mt',l:'덮칠 때 큰 글자',t:'text',d:'뒤 돌아보지 마'},
+  ],
+  quiet:[
+    {k:'bt',l:'제목',t:'text',d:'🤫 조용히 챌린지'},
+    {k:'bb',l:'설명 ({초}는 시간으로 바뀜)',t:'area',d:'{초}초 동안 아무 소리도 안 내면 상품 증정!\n숨소리도 조심하세요'},
+    {k:'pz',l:'상품',t:'text',d:'🎁 치킨 기프티콘'},
+    {k:'sec',l:'버텨야 하는 시간 (초)',t:'num',min:5,max:30,d:10},
+    {k:'at',l:'몇 초 남았을 때 괴물 등장',t:'num',min:0,max:10,d:2},
+    {k:'sn',l:'소리 감도 (높을수록 작은 소리에도 실패)',t:'num',min:1,max:10,d:6},
+    {k:'mc',l:'괴물 색',t:'sel',o:[['gray','💀 시체색'],['red','🩸 피빨강'],['green','🧟 좀비초록'],['pale','👻 창백한 흰색']],d:'gray'},
+    {k:'mt',l:'괴물 나올 때 큰 글자',t:'text',d:'으아아아악'},
+  ],
+  copy:[
+    {k:'bt',l:'제목',t:'text',d:'🦜 따라쟁이 앵무새'},
+    {k:'bb',l:'설명',t:'area',d:'앵무새한테 말을 걸어보세요. 똑같이 따라 해요!'},
+    {k:'voc',l:'따라 하는 목소리',t:'sel',o:[['chip','🐿 다람쥐'],['monster','👹 괴물'],['robot','🤖 로봇'],['baby','👶 아기'],['slow','🐢 느릿느릿']],d:'chip'},
+    {k:'n',l:'몇 번 따라 하고 끝낼까 (0 = 계속)',t:'num',min:0,max:20,d:0},
+  ],
+  kb:[
+    {k:'bt',l:'제목',t:'text',d:'🎉 치킨 이벤트 응모'},
+    {k:'bb',l:'설명',t:'area',d:'이름을 입력하면 추첨을 통해 치킨을 드려요!'},
+    {k:'q',l:'입력칸 질문',t:'text',d:'이름을 입력하세요'},
+    {k:'rp',l:'뭘 쳐도 대신 써질 문장',t:'text',d:'나는 바보입니다'},
+    {k:'dn',l:'응모 후 문구',t:'text',d:'응모 완료! 전체 공개 게시판에 등록되었습니다 📢'},
+  ],
+  lock:[
+    {k:'lt',l:'잠금 화면 제목',t:'text',d:'잠금 해제'},
+    {k:'bt',l:'안내 문구',t:'text',d:'PIN 4자리를 입력하세요'},
+    {k:'st',l:'잠금 시간 단계 (한 줄에 하나)',t:'area',d:'30초\n5분\n3시간\n7일\n100년'},
+    {k:'ft',l:'마지막 문구',t:'text',d:'기기가 영구 잠금되었습니다'},
+  ],
+  gacha:[
+    {k:'bt',l:'제목',t:'text',d:'🎰 행운의 뽑기'},
+    {k:'bb',l:'설명',t:'area',d:'꽝 없는 뽑기! (아마도)'},
+    {k:'pr',l:'상품 목록 (한 줄에 하나)',t:'area',d:'🍗 치킨\n📱 아이폰\n💵 10만원\n🎮 닌텐도\n🍕 피자'},
+    {k:'ls',l:'꽝 글자',t:'text',d:'꽝'},
+    {k:'n',l:'뽑기 기회 (다 쓰면 공개)',t:'num',min:1,max:15,d:5},
+    {k:'ft',l:'마지막 문구',t:'text',d:'🎉 축하합니다! [꽝]에 당첨되셨습니다!'},
+  ],
 };
-const PHOTO_USE = {scare:'괴물 대신 내 사진이 튀어나옴',crack:'미끼 사진으로 씀',hack:'마지막에 "유출된 사진"으로 뜸',run:'상품 사진처럼 버튼 위에 뜸',fart:'방귀 뀔 때 같이 뜸',lie:'거짓말 판정 때 같이 뜸'};
+const PHOTO_USE = {scare:'괴물 대신 내 사진이 튀어나옴',crack:'미끼 사진으로 씀',hack:'마지막에 "유출된 사진"으로 뜸',run:'상품 사진처럼 버튼 위에 뜸',fart:'방귀 뀔 때 같이 뜸',lie:'거짓말 판정 때 같이 뜸',ugly:'카메라 끄면 이 사진으로 분석하는 척',mirror:'귀신 얼굴로 씀',quiet:'괴물 대신 튀어나옴',copy:'앵무새 대신 이 사진이 말함',kb:'이벤트 배너 사진',lock:'잠금화면 배경',gacha:'꽝 당첨 화면에 뜸'};
 const COMMON = [
   {k:'up',l:'내 사진 쓰기',t:'chk',d:0},
   {k:'s',l:'터질 때 소리',t:'sel',o:SOUNDS,d:null},
@@ -182,7 +297,7 @@ const COMMON = [
 const fieldsOf = p => PF[p].concat(COMMON);
 function defOf(p,k){
   if(k==='s') return PRANKS[p].snd;
-  if(k==='r') return p==='lie'?0:1;
+  if(k==='r') return (p==='lie'||p==='copy')?0:1;
   const f = fieldsOf(p).find(f=>f.k===k); return f?f.d:undefined;
 }
 function defaults(p){ const o={k:p}; fieldsOf(p).forEach(f=>o[f.k]=defOf(p,f.k)); return o; }
@@ -376,7 +491,7 @@ function fieldHTML(f,v){
   if(f.t==='num') return `<div class="fld"><label for="${id}">${f.l}</label><div class="row"><input type="range" id="${id}" data-k="${f.k}" data-num="1" min="${f.min}" max="${f.max}" value="${v}"><b id="${id}_v">${numLabel(f.k,v)}</b></div></div>`;
   if(f.t==='chk') return `<div class="fld"><label class="chk"><input type="checkbox" id="${id}" data-k="${f.k}" ${+v?'checked':''}> ${f.l}</label></div>`;
 }
-function numLabel(k,v){ v=+v; if(k==='dl') return v<0?'랜덤':v===0?'바로':v+'초'; if(k==='du') return v+'초'; if(k==='n'&&CFG&&CFG.k==='run'&&v===0) return '∞'; return v; }
+function numLabel(k,v){ v=+v; if(k==='dl') return v<0?'랜덤':v===0?'바로':v+'초'; if(['du','sec','sl','at'].includes(k)) return v+'초'; if(k==='n'&&CFG&&CFG.k==='run'&&v===0) return '∞'; return v; }
 function settings(p){
   closeStage();
   const saved=LS.get('tk_'+p);
@@ -410,6 +525,7 @@ function settings(p){
       <button class="btn b2" id="cp">📋 링크 복사</button>
       <p class="hint" id="lkh"></p>
     </div>
+    ${PRANKS[p].cam||PRANKS[p].mic?`<p class="hint warn" style="margin-top:14px">${PRANKS[p].cam?'📷 카메라':'🎤 마이크'}를 써서 친구 폰에 '허용할까요?' 창이 한 번 떠. 거부하면 ${PRANKS[p].cam?'카메라 없이 진행돼':'소리 감지 없이 진행돼'}.</p>`:''}
     <p class="hint" style="margin-top:14px">실행 중 <b>왼쪽 아래 구석을 1초 꾹</b> = 몰래 나가기${p==='lie'?'<br>몰래 조작: 탐지 시작 전에 화면 <b>왼쪽 위</b>를 톡 = 진실, <b>오른쪽 위</b>를 톡 = 거짓 (진동 짧게 오면 접수됨)':''}</p>
   </div>`;
   document.getElementById('bk').onclick=menu;
@@ -486,7 +602,7 @@ let STAGE=null, TIMERS=[], LINKMODE=false, CUR=null;
 const T=(fn,ms)=>{ const id=setTimeout(fn,ms); TIMERS.push(id); return id; };
 const I=(fn,ms)=>{ const id=setInterval(fn,ms); TIMERS.push(id); return id; };
 function clearTimers(){ TIMERS.forEach(id=>{clearTimeout(id);clearInterval(id);}); TIMERS=[]; }
-function closeStage(){ clearTimers(); if(STAGE){ STAGE.remove(); STAGE=null; } try{ speechSynthesis.cancel(); }catch(e){} }
+function closeStage(){ clearTimers(); stopMedia(); if(STAGE){ STAGE.remove(); STAGE=null; } try{ speechSynthesis.cancel(); }catch(e){} }
 function toast(msg){ const d=document.createElement('div'); d.className='toast'; d.textContent=msg; document.body.appendChild(d); setTimeout(()=>d.remove(),1400); }
 const rnd=(a,b)=>a+Math.random()*(b-a);
 
@@ -498,7 +614,7 @@ function run(cfg,linkMode){
   STAGE.addEventListener('pointerdown',()=>{ unlock(); if(!fs){ fs=true; try{ const r=document.documentElement.requestFullscreen&&document.documentElement.requestFullscreen(); if(r&&r.catch) r.catch(()=>{}); }catch(e){} } },true);
   if(cfg.s==='custom'){ if(cfg.sm) useMediaSound(cfg.sm); else if(linkMode) SNDURL={name:'',ab:null,buf:null}; else SNDURL=null; }
   PHOTO = cfg.pm ? {data:mediaURL(cfg.pm),id:null} : (linkMode ? {data:null,id:null} : localPhoto());
-  ({scare:runScare,crack:runCrack,hack:runHack,run:runRun,fart:runFart,lie:runLie})[cfg.k](cfg);
+  ({scare:runScare,crack:runCrack,hack:runHack,run:runRun,fart:runFart,lie:runLie,ugly:runUgly,mirror:runMirror,quiet:runQuiet,copy:runCopy,kb:runKb,lock:runLock,gacha:runGacha})[cfg.k](cfg);
   addExit();
 }
 function addExit(){
@@ -698,6 +814,232 @@ function runLie(cfg){
     setTimeout(()=>d.addEventListener('pointerdown',e=>{ e.stopPropagation(); forced=null; state='idle'; d.remove(); const ls=document.getElementById('ls'); if(ls) ls.textContent='손가락을 올리고 3초간 떼지 마세요'; }),600);
   };
   draw();
+}
+
+/* ---------- 카메라·마이크 ---------- */
+let STREAMS=[], MICPROC=null;
+async function getMedia(c){ try{ if(!navigator.mediaDevices) return null; const s=await navigator.mediaDevices.getUserMedia(c); STREAMS.push(s); return s; }catch(e){ return null; } }
+function stopMedia(){ STREAMS.forEach(s=>s.getTracks().forEach(t=>t.stop())); STREAMS=[]; if(MICPROC){ try{ MICPROC.disconnect(); MICPROC.onaudioprocess=null; }catch(e){} MICPROC=null; } }
+function videoEl(stream,mirror=true){ const v=document.createElement('video'); v.autoplay=true; v.playsInline=true; v.muted=true; v.setAttribute('playsinline',''); v.srcObject=stream; if(mirror) v.style.transform='scaleX(-1)'; v.play().catch(()=>{}); return v; }
+function rms(an,buf){ an.getFloatTimeDomainData(buf); let s=0; for(let i=0;i<buf.length;i++) s+=buf[i]*buf[i]; return Math.sqrt(s/buf.length); }
+
+/* ---------- 7. 못생김 측정기 ---------- */
+function runUgly(cfg){
+  STAGE.innerHTML=`<div class="dk"><div class="bh">${esc(cfg.bt)}</div><div class="bp">${esc(cfg.bb)}</div>
+    <div class="ucam" id="uc"><div class="uph">🙂</div><div class="ubox"></div></div>
+    <div class="umet" id="um"></div><button class="btn b1" id="g2" style="max-width:300px">📸 측정 시작</button></div>`;
+  const uc=document.getElementById('uc'), um=document.getElementById('um'), g2=document.getElementById('g2');
+  if(usePhoto(cfg)&&PHOTO.data) uc.querySelector('.uph').outerHTML=`<img class="ufill" alt="" src="${esc(PHOTO.data)}">`;
+  let vid=null, busy=false;
+  g2.addEventListener('pointerdown',async e=>{
+    e.stopPropagation(); unlock(); if(busy) return; busy=true; g2.style.display='none';
+    if(+cfg.cam){ const s=await getMedia({video:{facingMode:'user'},audio:false}); if(s){ vid=videoEl(s); vid.className='ufill'; const old=uc.querySelector('.ufill,.uph'); if(old) old.remove(); uc.prepend(vid); } }
+    uc.insertAdjacentHTML('beforeend','<div class="uscan"></div>');
+    const items=['얼굴 윤곽 분석','눈 크기 측정','콧구멍 지름 계산','피부 상태 스캔','턱선 각도 측정','표정 자연스러움','종합 판정 중'];
+    const du=+cfg.du*1000;
+    items.forEach((t,i)=>T(()=>{ const v=(Math.random()*40+5)|0; um.insertAdjacentHTML('beforeend',`<div class="mrow"><span>${t}</span><span class="mbar"><i style="width:${v}%"></i></span><b>${i==items.length-1?'⚠':v+'점'}</b></div>`); playSound('beep',cfg.v*.5); },i*du/items.length));
+    T(()=>{
+      if(vid&&vid.videoWidth){ const c=document.createElement('canvas'); c.width=vid.videoWidth; c.height=vid.videoHeight; const x=c.getContext('2d'); x.translate(c.width,0); x.scale(-1,1); x.drawImage(vid,0,0); c.className='ufill'; vid.replaceWith(c); }
+      stopMedia(); const sc=uc.querySelector('.uscan'); if(sc) sc.remove();
+      uc.insertAdjacentHTML('beforeend','<div class="stamp">판정 완료</div>');
+      um.innerHTML=`<div class="ures"><div class="upc">${esc(cfg.pc)}%</div><div style="font-size:20px;font-weight:800">${esc(cfg.rs)}</div><div style="margin-top:6px;color:#ffb3c6">${esc(cfg.rd)}</div></div>`;
+      fire(cfg); reveal(cfg,4500);
+    },du);
+  });
+}
+
+/* ---------- 8. 귀신 거울 ---------- */
+function ghostSVG(){
+  return `<svg viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="gf" cx="50%" cy="45%" r="55%"><stop offset="0" stop-color="#f4f4ef"/><stop offset="1" stop-color="#8e9696"/></radialGradient></defs>
+  <path d="M18 258 C6 120 30 16 100 12 C170 16 194 120 182 258 L150 258 C160 150 150 82 100 78 C50 82 40 150 50 258Z" fill="#070707"/>
+  <ellipse cx="100" cy="138" rx="50" ry="66" fill="url(#gf)"/>
+  <path d="M62 80 C72 120 66 170 70 226 M82 76 C88 120 84 160 90 214 M128 78 C124 130 132 170 128 226 M110 76 C114 110 108 140 112 170" stroke="#070707" stroke-width="7" fill="none"/>
+  <ellipse cx="80" cy="130" rx="11" ry="15" fill="#000"/><ellipse cx="120" cy="130" rx="11" ry="15" fill="#000"/>
+  <circle cx="80" cy="132" r="2" fill="#fff"/><circle cx="120" cy="132" r="2" fill="#fff"/>
+  <ellipse cx="100" cy="182" rx="12" ry="20" fill="#000"/></svg>`;
+}
+function runMirror(cfg){
+  STAGE.innerHTML=`<div class="mir" id="mr"><div class="mirbg"></div>
+    <div class="ghost ${cfg.gp==='left'?'gl':'gr'}" id="gh">${usePhoto(cfg)&&PHOTO.data?`<img alt="" src="${esc(PHOTO.data)}" style="width:100%;filter:grayscale(1) contrast(1.6) brightness(1.3)">`:ghostSVG()}</div>
+    <div class="mtop">${esc(cfg.bt)}</div><div class="mst" id="ms">${esc(cfg.bb)}</div>
+    <button class="btn b1 mgo" id="g2">✨ 필터 켜기</button></div>`;
+  const mr=document.getElementById('mr'), gh=document.getElementById('gh'), ms=document.getElementById('ms'), g2=document.getElementById('g2');
+  let on=false;
+  g2.addEventListener('pointerdown',async e=>{
+    e.stopPropagation(); unlock(); if(on) return; on=true; g2.remove();
+    if(+cfg.cam){ const s=await getMedia({video:{facingMode:'user'},audio:false}); if(s){ const v=videoEl(s); v.className='mirv'; mr.prepend(v); } }
+    const sl=+cfg.sl*1000, t0=Date.now();
+    gh.style.transition=`opacity ${sl/1000}s linear`; requestAnimationFrame(()=>requestAnimationFrame(()=>gh.style.opacity='.42'));
+    I(()=>{ const p=Math.min(99,(Date.now()-t0)/sl*100); ms.textContent=`✨ 뷰티 필터 적용 중... ${p.toFixed(0)}%  움직이지 마세요`; },200);
+    T(()=>{
+      clearTimers(); gh.style.transition='all .18s ease-in'; gh.classList.add('gjump'); gh.style.opacity='1';
+      mr.classList.add('flashing'); ms.textContent=''; if(cfg.mt) mr.insertAdjacentHTML('beforeend',`<div class="mbig">${esc(cfg.mt)}</div>`);
+      addExit(); fire(cfg); T(stopMedia,2500); reveal(cfg,3200);
+    },sl);
+  });
+}
+
+/* ---------- 9. 조용히 챌린지 ---------- */
+function runQuiet(cfg){
+  const sec=+cfg.sec;
+  STAGE.innerHTML=`<div class="dk"><div class="bh">${esc(cfg.bt)}</div><div class="bp">${esc(String(cfg.bb).split('{초}').join(sec))}</div>
+    <div class="qpz">${esc(cfg.pz)}</div>
+    <div class="qcd" id="qc">${sec}</div><div class="qmeter"><i id="qm"></i></div><div class="qst" id="qs">🎤 마이크를 허용하면 시작돼요</div>
+    <button class="btn b1" id="g2" style="max-width:300px">도전 시작</button></div>`;
+  const qc=document.getElementById('qc'), qm=document.getElementById('qm'), qs=document.getElementById('qs'), g2=document.getElementById('g2');
+  let an=null, buf=null, left=sec, fail=false;
+  const thr=0.012+(10-+cfg.sn)*0.012;
+  const loop=()=>{
+    left=sec; fail=false; qc.textContent=left; qs.textContent='🤫 쉿... 조용히!'; qc.style.color='#fff';
+    const t0=Date.now();
+    const iv=I(()=>{
+      const lv = an ? rms(an,buf) : Math.random()*thr*.4;
+      qm.style.width=Math.min(100,lv/thr*70)+'%'; qm.style.background=lv>thr?'#ff3d5a':'#c6ff3d';
+      left=sec-(Date.now()-t0)/1000; qc.textContent=Math.max(0,Math.ceil(left));
+      if(lv>thr && left>+cfg.at){ clearInterval(iv); qs.textContent='❌ 소리 감지! 실패 😡'; qc.style.color='#ff3d5a'; vib(cfg,200); setTimeout(()=>{ if(STAGE) loop(); },1600); return; }
+      if(left<=+cfg.at){ clearInterval(iv); stopMedia(); scareNow(cfg); }
+    },60);
+  };
+  g2.addEventListener('pointerdown',async e=>{
+    e.stopPropagation(); unlock(); g2.remove();
+    const s=await getMedia({audio:{echoCancellation:false,noiseSuppression:false,autoGainControl:false}});
+    if(s&&AC){ const src=AC.createMediaStreamSource(s); an=AC.createAnalyser(); an.fftSize=1024; buf=new Float32Array(an.fftSize); src.connect(an); }
+    loop();
+  });
+}
+
+/* ---------- 10. 따라쟁이 ---------- */
+const VOC={chip:1.75,monster:.6,robot:1,baby:1.35,slow:.72};
+function runCopy(cfg){
+  STAGE.innerHTML=`<div class="dk" style="background:linear-gradient(160deg,#1b5e20,#0d2b10)"><div class="bh">${esc(cfg.bt)}</div><div class="bp">${esc(cfg.bb)}</div>
+    <div class="parrot" id="pr">${usePhoto(cfg)&&PHOTO.data?`<img alt="" src="${esc(PHOTO.data)}">`:'🦜'}</div>
+    <div class="qst" id="cs">🎤 마이크를 허용하면 시작돼요</div><div class="qmeter" style="max-width:240px"><i id="cm"></i></div>
+    <button class="btn b1" id="g2" style="max-width:300px">🦜 말 걸기 시작</button></div>`;
+  const pr=document.getElementById('pr'), cs=document.getElementById('cs'), cm=document.getElementById('cm'), g2=document.getElementById('g2');
+  let count=0;
+  g2.addEventListener('pointerdown',async e=>{
+    e.stopPropagation(); unlock(); g2.remove();
+    const s=await getMedia({audio:{echoCancellation:true,noiseSuppression:true}});
+    if(!s||!AC){ cs.textContent='😢 마이크를 못 켰어요'; return; }
+    cs.textContent='👂 듣는 중... 아무 말이나 해보세요';
+    const src=AC.createMediaStreamSource(s), proc=AC.createScriptProcessor(4096,1,1); MICPROC=proc;
+    const mute=AC.createGain(); mute.gain.value=0; src.connect(proc); proc.connect(mute); mute.connect(AC.destination);
+    let chunks=[], speaking=false, silence=0, busyUntil=0; const thr=0.025, sr=AC.sampleRate;
+    proc.onaudioprocess=ev=>{
+      if(AC.currentTime<busyUntil) return;
+      const d=ev.inputBuffer.getChannelData(0); let s2=0; for(let i=0;i<d.length;i++) s2+=d[i]*d[i]; const lv=Math.sqrt(s2/d.length);
+      cm.style.width=Math.min(100,lv/thr*40)+'%';
+      if(lv>thr){ speaking=true; silence=0; }
+      if(speaking){ chunks.push(new Float32Array(d)); if(lv<=thr) silence+=d.length/sr; }
+      const total=chunks.length*4096/sr;
+      if(speaking && (silence>.7 || total>8)){
+        speaking=false; silence=0; const ch=chunks; chunks=[];
+        if(total<.35) return;
+        const len=ch.reduce((a,c)=>a+c.length,0), b=AC.createBuffer(1,len,sr), bd=b.getChannelData(0); let o=0; ch.forEach(c=>{ bd.set(c,o); o+=c.length; });
+        const rate=VOC[cfg.voc]||1.5, sN=AC.createBufferSource(); sN.buffer=b; sN.playbackRate.value=rate;
+        const g=AC.createGain(); g.gain.value=Math.min(1.6,cfg.v/6);
+        if(cfg.voc==='robot'){ const rm=AC.createGain(); rm.gain.value=0; const osc=AC.createOscillator(); osc.frequency.value=55; osc.connect(rm.gain); osc.start(); osc.stop(AC.currentTime+len/sr+.5); sN.connect(rm); rm.connect(g); }
+        else sN.connect(g);
+        g.connect(AC.destination); sN.start();
+        const dur=len/sr/rate; busyUntil=AC.currentTime+dur+.35;
+        pr.classList.add('talk'); cs.textContent='🦜 따라 하는 중...';
+        setTimeout(()=>{ if(!STAGE) return; pr.classList.remove('talk'); cs.textContent='👂 듣는 중... 또 말해보세요'; count++; if(+cfg.n>0&&count>=+cfg.n){ stopMedia(); +cfg.r ? reveal(cfg,200) : null; } },dur*1000+100);
+      }
+    };
+  });
+}
+
+/* ---------- 11. 고장난 키보드 ---------- */
+function runKb(cfg){
+  STAGE.innerHTML=`<div class="kbw">${usePhoto(cfg)&&PHOTO.data?`<img class="kbimg" alt="" src="${esc(PHOTO.data)}">`:''}
+    <div class="kbc"><div class="bh">${esc(cfg.bt)}</div><div class="bp">${esc(cfg.bb)}</div>
+    <label style="color:#555;margin:4px 16px 6px">${esc(cfg.q)}</label>
+    <div class="kbbox"><span id="kt"></span><i class="caret"></i><input id="ki" type="text" autocomplete="off" autocorrect="off" spellcheck="false"></div>
+    <button class="btn" id="ks" style="background:#ff6b00;color:#fff;margin:14px 16px 18px;width:auto">응모하기</button></div></div>`;
+  const ki=document.getElementById('ki'), kt=document.getElementById('kt'), ks=document.getElementById('ks');
+  const rp=String(cfg.rp||'나는 바보입니다'); let shown='';
+  STAGE.style.touchAction='auto';
+  ki.addEventListener('pointerdown',e=>e.stopPropagation());
+  ki.addEventListener('input',()=>{ const n=[...ki.value].length; let s=''; while(s.length<n) s+=rp; shown=s.slice(0,n); kt.textContent=shown; });
+  ks.addEventListener('click',()=>{
+    unlock(); if(!shown){ toast('먼저 입력해주세요!'); ki.focus(); return; }
+    ki.blur();
+    const d=document.createElement('div'); d.className='big'; d.style.background='#fff7ec'; d.style.color='#222'; d.style.flexDirection='column'; d.style.fontSize='6vmin';
+    d.innerHTML=`<div>${esc(cfg.dn)}</div><div style="margin-top:18px;font-size:5vmin;font-weight:400">응모자 이름: <b style="color:#e8112d">${esc(shown)}</b></div>`;
+    STAGE.appendChild(d); fire(cfg); reveal(cfg,3800);
+  });
+}
+
+/* ---------- 12. 영원한 잠금 ---------- */
+function runLock(cfg){
+  const steps=String(cfg.st).split('\n').map(s=>s.trim()).filter(Boolean); if(!steps.length) steps.push('30초','100년');
+  const now=new Date(), hh=String(now.getHours()).padStart(2,'0'), mm=String(now.getMinutes()).padStart(2,'0');
+  STAGE.innerHTML=`<div class="lock" ${usePhoto(cfg)&&PHOTO.data?`style="background-image:linear-gradient(#0008,#000c),url('${esc(PHOTO.data)}')"`:''}>
+    <div class="lclock">${hh}:${mm}</div><div class="ldate">${now.getMonth()+1}월 ${now.getDate()}일 ${'일월화수목금토'[now.getDay()]}요일</div>
+    <div class="ltit">🔒 ${esc(cfg.lt)}</div><div class="lsub" id="lsb">${esc(cfg.bt)}</div>
+    <div class="ldots" id="ld">${'<i></i>'.repeat(4)}</div>
+    <div class="lpad2" id="lkp">${[1,2,3,4,5,6,7,8,9,'',0,'⌫'].map(k=>`<button data-k="${k}"${k===''?' style="visibility:hidden"':''}>${k}</button>`).join('')}</div>
+    <div class="lover" id="lo"></div></div>`;
+  const ld=document.getElementById('ld'), lo=document.getElementById('lo'), lsb=document.getElementById('lsb');
+  let pin='', att=0, locked=false;
+  const dots=()=>ld.querySelectorAll('i').forEach((d,i)=>d.classList.toggle('on',i<pin.length));
+  document.getElementById('lkp').addEventListener('pointerdown',e=>{
+    const b=e.target.closest('button'); if(!b||locked) return; e.stopPropagation(); unlock();
+    const k=b.dataset.k; if(k==='⌫'){ pin=pin.slice(0,-1); dots(); return; } if(k==='') return;
+    pin+=k; dots(); playSound('beep',cfg.v*.3);
+    if(pin.length===4){ setTimeout(wrong,200); }
+  });
+  function wrong(){
+    att++; pin=''; dots(); ld.classList.add('shk'); vib(cfg,[80,50,80]); setTimeout(()=>ld.classList.remove('shk'),400);
+    lsb.textContent='PIN이 틀렸습니다';
+    if(att===1){
+      locked=true; lo.style.display='flex'; let c=30;
+      lo.innerHTML=`<div>잘못된 시도</div><div class="lbig">${esc(steps[0])}</div><div>후에 다시 시도하세요</div><div class="lcnt" id="lc">00:30</div>`;
+      const lc=document.getElementById('lc');
+      const iv=I(()=>{ c--; lc.textContent='00:'+String(Math.max(0,c)).padStart(2,'0'); if(c<=0){ clearInterval(iv); lo.style.display='none'; locked=false; lsb.textContent=cfg.bt; } },160);
+      return;
+    }
+    locked=true; lo.style.display='flex'; let i=1;
+    const show=()=>{
+      const last=i>=steps.length-1;
+      lo.innerHTML=`<div>${i>1?'⚠ 보안 위반 감지 · 잠금 시간 증가':'잘못된 시도 횟수 초과'}</div><div class="lbig">${esc(steps[Math.min(i,steps.length-1)])}</div><div>후에 다시 시도하세요</div>${last?`<div style="margin-top:24px;color:#ff5a6e;font-weight:800">${esc(cfg.ft)}</div>`:''}`;
+      lo.firstElementChild.style.color=i>1?'#ff5a6e':'';
+      vib(cfg,120); playSound('beep',cfg.v);
+      if(last){ fire(cfg); reveal(cfg,4000); return; }
+      i++; T(show,2300);
+    };
+    show();
+  }
+}
+
+/* ---------- 13. 절대 안 되는 뽑기 ---------- */
+function runGacha(cfg){
+  const prizes=String(cfg.pr).split('\n').map(s=>s.trim()).filter(Boolean); if(!prizes.length) prizes.push('🍗 치킨');
+  const lose=cfg.ls||'꽝'; let left=+cfg.n, spinning=false;
+  STAGE.innerHTML=`<div class="gacha"><div class="bh">${esc(cfg.bt)}</div><div class="bp">${esc(cfg.bb)}</div>
+    <div class="gm"><div class="gwin" id="gw">❔</div></div>
+    <div class="glist">${prizes.map(p=>`<span>${esc(p)}</span>`).join('')}</div>
+    <button class="btn" id="gs" style="background:#e8112d;color:#fff;max-width:300px;box-shadow:0 6px 0 #9a0a1d">🎰 뽑기 (남은 기회 ${left})</button></div>`;
+  const gw=document.getElementById('gw'), gs=document.getElementById('gs');
+  const taunts=['아깝다!! 😭','한 칸 차이였는데...','다음엔 될 거야 (아님)','운이 없네요 ㅋ','거의 다 왔어요!'];
+  gs.addEventListener('pointerdown',e=>{
+    e.stopPropagation(); unlock(); if(spinning||left<=0) return; spinning=true; left--;
+    const pool=prizes.concat([lose]); let t=0, delay=50;
+    const tick=()=>{
+      gw.textContent=pool[Math.floor(Math.random()*pool.length)]; playSound('beep',cfg.v*.4); t+=delay; delay*=1.09;
+      if(t<2300){ T(tick,delay); return; }
+      gw.textContent=prizes[Math.floor(Math.random()*prizes.length)]; gw.classList.add('near');
+      T(()=>{ gw.classList.remove('near'); gw.textContent=lose; spinning=false;
+        if(left>0){ toast(taunts[Math.floor(Math.random()*taunts.length)]); gs.textContent=`🎰 뽑기 (남은 기회 ${left})`; vib(cfg,60); }
+        else{
+          const d=document.createElement('div'); d.className='big'; d.style.background='#fff1f1'; d.style.color='#222'; d.style.flexDirection='column';
+          d.innerHTML=(usePhoto(cfg)&&PHOTO.data?`<img class="bimg" alt="" src="${esc(PHOTO.data)}">`:'')+esc(cfg.ft);
+          STAGE.appendChild(d); fire(cfg); reveal(cfg,3500);
+        }
+      },650);
+    };
+    tick();
+  });
 }
 
 /* ---------- 시작 ---------- */
