@@ -263,6 +263,9 @@ button.card{text-align:left;font-family:inherit;color:var(--tx);position:relativ
 .disg{position:absolute;inset:0;background:#000;touch-action:none}.disg img{width:100%;height:100%;object-fit:cover;display:block;-webkit-user-drag:none;user-select:none;pointer-events:none}
 .disg.glitch{animation:glt .46s steps(1) forwards}
 @keyframes glt{0%{filter:none}12%{transform:translateX(-8px);filter:hue-rotate(90deg) contrast(2)}25%{transform:translateX(10px) skewX(6deg);clip-path:inset(20% 0 30% 0)}40%{transform:none;filter:invert(1)}55%{clip-path:inset(0 0 60% 0);transform:translateX(-14px)}70%{clip-path:inset(40% 0 0 0);transform:translateX(12px)}85%{opacity:.5;filter:brightness(3)}100%{opacity:0}}
+.scare2{position:absolute;inset:0;background:#000;overflow:hidden}.scare2 canvas{position:absolute;inset:0;width:100%;height:100%}
+.scare2 h1{position:absolute;left:0;right:0;bottom:10%;text-align:center;color:#fff;margin:0;font-weight:900;text-shadow:0 0 24px #f00;animation:shake .05s infinite}
+.subl{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55;filter:grayscale(1) contrast(1.6);z-index:140;pointer-events:none;mix-blend-mode:multiply}
 .exb{position:absolute;top:calc(10px + env(safe-area-inset-top));right:10px;z-index:120;width:34px;height:34px;border-radius:50%;border:0;background:rgba(0,0,0,.35);color:#fff;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);opacity:.75;padding:0}
 .exitz{position:absolute;left:0;bottom:0;width:70px;height:70px;z-index:98}
 </style>
@@ -306,8 +309,10 @@ const PF = {
     {k:'bt',l:'함정 제목 (비우면 기본 문구)',t:'text',d:''},
     {k:'bb',l:'함정 설명 (비우면 기본 문구)',t:'area',d:''},
     {k:'dl',l:'첫 터치 후 몇 초 뒤에 터질까',t:'num',min:-1,max:15,d:4},
-    {k:'mc',l:'괴물 색',t:'sel',o:[['gray','시체색'],['red','피빨강'],['green','좀비초록'],['pale','창백한 흰색']],d:'gray'},
-    {k:'mt',l:'괴물 나올 때 큰 글자',t:'text',d:'으아아아악'},
+    {k:'mc',l:'튀어나오는 얼굴',t:'sel',o:[['ghost','창백한 귀신 (제일 무서움)'],['gray','괴물 - 시체색'],['red','괴물 - 피빨강'],['green','괴물 - 좀비'],['pale','괴물 - 흰색']],d:'ghost'},
+    {k:'mt',l:'튀어나올 때 큰 글자 (비우는 게 더 무서움)',t:'text',d:''},
+    {k:'pre',l:'터지기 전에 얼굴이 한 프레임 스쳐 지나감 (소름)',t:'chk',d:1},
+    {k:'hb',l:'기다리는 동안 심장 소리 (점점 빨라짐)',t:'chk',d:0},
   ],
   crack:[
     {k:'bt',l:'미끼 제목',t:'text',d:'이 사진 진짜임?'},
@@ -370,7 +375,7 @@ const PF = {
     {k:'sec',l:'버텨야 하는 시간 (초)',t:'num',min:5,max:30,d:10},
     {k:'at',l:'몇 초 남았을 때 괴물 등장',t:'num',min:0,max:10,d:2},
     {k:'sn',l:'소리 감도 (높을수록 작은 소리에도 실패)',t:'num',min:1,max:10,d:6},
-    {k:'mc',l:'괴물 색',t:'sel',o:[['gray','시체색'],['red','피빨강'],['green','좀비초록'],['pale','창백한 흰색']],d:'gray'},
+    {k:'mc',l:'튀어나오는 얼굴',t:'sel',o:[['ghost','창백한 귀신 (제일 무서움)'],['gray','괴물 - 시체색'],['red','괴물 - 피빨강'],['green','괴물 - 좀비'],['pale','괴물 - 흰색']],d:'ghost'},
     {k:'mt',l:'괴물 나올 때 큰 글자',t:'text',d:'으아아아악'},
   ],
   copy:[
@@ -412,7 +417,7 @@ const PF = {
     {k:'bu',l:'버퍼링 시간',t:'num',min:2,max:30,d:7},
     {k:'hq',l:'"화질 자동 조정 중" 알림',t:'chk',d:1},
     {k:'gl',l:'지지직 노이즈 시간',t:'num',min:0,max:5,d:1.5,step:.5},
-    {k:'mc',l:'괴물 색',t:'sel',o:[['gray','시체색'],['red','피빨강'],['green','좀비초록'],['pale','창백한 흰색']],d:'gray'},
+    {k:'mc',l:'튀어나오는 얼굴',t:'sel',o:[['ghost','창백한 귀신 (제일 무서움)'],['gray','괴물 - 시체색'],['red','괴물 - 피빨강'],['green','괴물 - 좀비'],['pale','괴물 - 흰색']],d:'ghost'},
     {k:'mt',l:'괴물 나올 때 큰 글자',t:'text',d:'보지 말랬지'},
   ],
   rev:[
@@ -619,8 +624,14 @@ const LS = {
   set(k,v){ try{ localStorage.setItem(k,JSON.stringify(v)); }catch(e){} }
 };
 let CUSTOM = {data:null,id:null,name:'',buf:null};
-(function(){ const c=LS.get('tk_custom'); if(c&&c.data){ CUSTOM.data=c.data; CUSTOM.id=c.id||null; CUSTOM.name=c.name||''; } })();
-function saveCustom(){ LS.set('tk_custom',{data:CUSTOM.data,id:CUSTOM.id,name:CUSTOM.name}); }
+/* 큰 소리 파일은 IndexedDB에 저장 (용량 제한 없음) */
+function idb(){ return new Promise((res,rej)=>{ try{ const r=indexedDB.open('trollkit',1); r.onupgradeneeded=()=>r.result.createObjectStore('kv'); r.onsuccess=()=>res(r.result); r.onerror=()=>rej(r.error); }catch(e){ rej(e); } }); }
+async function idbSet(k,v){ try{ const db=await idb(); await new Promise((res,rej)=>{ const t=db.transaction('kv','readwrite'); t.objectStore('kv').put(v,k); t.oncomplete=res; t.onerror=()=>rej(t.error); }); return true; }catch(e){ return false; } }
+async function idbGet(k){ try{ const db=await idb(); return await new Promise((res,rej)=>{ const r=db.transaction('kv').objectStore('kv').get(k); r.onsuccess=()=>res(r.result); r.onerror=()=>rej(r.error); }); }catch(e){ return null; } }
+function saveCustom(){ LS.set('tk_custom',{name:CUSTOM.name}); idbSet('sound', CUSTOM.blob ? {name:CUSTOM.name,blob:CUSTOM.blob} : null); }
+(async function(){ const c=LS.get('tk_custom'); if(c&&c.data){ CUSTOM.data=c.data; CUSTOM.name=c.name||''; return; }
+  const v=await idbGet('sound'); if(v&&v.blob){ CUSTOM.blob=v.blob; CUSTOM.name=v.name||''; try{ CUSTOM.ab=await v.blob.arrayBuffer(); }catch(e){} if(document.getElementById('sbox')) syncCustom(); } })();
+const hasCustom=()=>!!(CUSTOM.ab||CUSTOM.data);
 let PHOTO = {data:null,id:null};
 (function(){ const c=LS.get('tk_photo'); if(c&&c.data){ PHOTO.data=c.data; PHOTO.id=c.id||null; } })();
 function savePhoto(){ LS.set('tk_photo',{data:PHOTO.data,id:PHOTO.id}); }
@@ -670,7 +681,7 @@ async function decodeCustom(){
   if(!AC||src.buf) return;
   try{
     if(SNDURL){ if(!SNDURL.ab) return; src.buf = await AC.decodeAudioData(SNDURL.ab.slice(0)); }
-    else { if(!CUSTOM.data) return; CUSTOM.buf = await AC.decodeAudioData(dataURLtoAB(CUSTOM.data)); }
+    else { if(CUSTOM.ab) CUSTOM.buf = await AC.decodeAudioData(CUSTOM.ab.slice(0)); else if(CUSTOM.data) CUSTOM.buf = await AC.decodeAudioData(dataURLtoAB(CUSTOM.data)); }
   }catch(e){ src.buf=null; }
 }
 let SNDURL=null; // {name, ab, buf}
@@ -696,13 +707,27 @@ function playSound(name, vol){
     name='scream';
   }
   if(name==='scream'){
-    const g=G(); env(g,t,.03,1.3,.5,.9); const d=dist(60); d.connect(g); g.connect(M);
-    [['sawtooth',620],['square',640],['sawtooth',1260]].forEach(([ty,f],i)=>{
-      const o=O(ty,f); o.frequency.exponentialRampToValueAtTime(f*2.1,t+.25); o.frequency.exponentialRampToValueAtTime(f*1.5,t+1.8);
-      const l=O('sine',28+i*3), lg=G(); lg.gain.value=f*.12; l.connect(lg); lg.connect(o.frequency); l.start(t); l.stop(t+2);
-      const og=G(); og.gain.value=i==2?.25:.4; o.connect(og); og.connect(d); o.start(t); o.stop(t+2);
-    });
-    const n=noise(2), bp=AC.createBiquadFilter(); bp.type='bandpass'; bp.frequency.value=2500; bp.Q.value=.8; const ng=G(); env(ng,t,.02,1.2,.5,.5); n.connect(bp); bp.connect(ng); ng.connect(M); n.start(t);
+    // 쾅 (충격음)
+    const bn=noise(.6), bl=AC.createBiquadFilter(); bl.type='lowpass'; bl.frequency.setValueAtTime(2500,t); bl.frequency.exponentialRampToValueAtTime(80,t+.4);
+    const bg=G(); env(bg,t,.002,.03,.45,1); bn.connect(bl); bl.connect(bg); bg.connect(M); bn.start(t);
+    const kb=O('sine',90); kb.frequency.exponentialRampToValueAtTime(32,t+.5); const kg=G(); env(kg,t,.002,.05,.5,1); kb.connect(kg); kg.connect(M); kb.start(t); kb.stop(t+.7);
+    // 비명 (성대 + 포먼트)
+    const dur=2.1, src=G(); src.gain.value=1;
+    const steps=60, curve=new Float32Array(steps); let f=950; for(let i=0;i<steps;i++){ f+= (Math.random()-.45)*90; f=Math.min(1400,Math.max(780,f)); curve[i]= i<4 ? 600+i*90 : f; }
+    [0,7,-9].forEach((dt,i)=>{ const o=AC.createOscillator(); o.type='sawtooth'; o.detune.value=dt*3; o.frequency.setValueCurveAtTime(curve,t+.02,dur);
+      const lf=O('sine',6.5+i), lg=G(); lg.gain.value=35; lf.connect(lg); lg.connect(o.frequency); lf.start(t); lf.stop(t+dur+.3);
+      const og=G(); og.gain.value=.35; o.connect(og); og.connect(src); o.start(t+.02); o.stop(t+dur+.3); });
+    const br=noise(dur+.3), bp0=AC.createBiquadFilter(); bp0.type='bandpass'; bp0.frequency.value=3200; bp0.Q.value=.7; const brg=G(); brg.gain.value=.35; br.connect(bp0); bp0.connect(brg); brg.connect(src); br.start(t);
+    const mix=G(); mix.gain.value=1;
+    [[1050,4,1],[2300,7,.55],[3400,9,.35],[700,3,.4]].forEach(([fq,q,gv])=>{ const bp=AC.createBiquadFilter(); bp.type='bandpass'; bp.frequency.value=fq; bp.Q.value=q; const g=G(); g.gain.value=gv*2.2; src.connect(bp); bp.connect(g); g.connect(mix); });
+    const ds=dist(120), hs=AC.createBiquadFilter(); hs.type='highshelf'; hs.frequency.value=2500; hs.gain.value=6;
+    const env2=G(); env2.gain.setValueAtTime(.0001,t); env2.gain.exponentialRampToValueAtTime(1,t+.04); env2.gain.setValueAtTime(1,t+dur-.5); env2.gain.exponentialRampToValueAtTime(.0001,t+dur+.25);
+    mix.connect(ds); ds.connect(hs); hs.connect(env2); env2.connect(M);
+    // 날카로운 쇳소리
+    const sc=O('sine',3200); sc.frequency.linearRampToValueAtTime(4600,t+1.5); const scg=G(); env(scg,t,.05,1.2,.4,.08); sc.connect(scg); scg.connect(M); sc.start(t); sc.stop(t+2);
+  }
+  else if(name==='heart'){
+    [0,.18].forEach((d,i)=>{ const o=AC.createOscillator(); o.type='sine'; o.frequency.setValueAtTime(70,t+d); o.frequency.exponentialRampToValueAtTime(38,t+d+.15); const g=G(); env(g,t+d,.005,.02,.18,i?.6:1); o.connect(g); g.connect(M); o.start(t+d); o.stop(t+d+.3); });
   }
   else if(name==='glass'){
     for(let i=0;i<14;i++){
@@ -815,7 +840,7 @@ function settings(p,step){
   const saved=LS.get('tk2_'+p);
   CFG=Object.assign(defaults(p), saved||{}, {k:p});
   if((CFG.pm||localPhoto().data) && (!saved || saved.up===undefined)) CFG.up=1;
-  if(CUSTOM.data && !saved) CFG.s='custom';
+  if(hasCustom() && !saved) CFG.s='custom';
   STEP=step||1;
   const pr=PRANKS[p];
   const soundBtns=SOUNDS.filter(([k])=>k!=='custom').map(([k,l])=>`<button class="sbtn${CFG.s===k?' on':''}" data-snd="${k}">${l}</button>`).join('');
@@ -958,14 +983,13 @@ function syncCustom(){
   }
   if(sb){
     sb.style.display = CFG.s==='custom' ? '' : 'none';
-    const hasS = CFG.sm || CUSTOM.data, sName = CFG.sm ? '저장소: '+CFG.sm : (CUSTOM.name||'내 소리');
+    const hasS = CFG.sm || hasCustom(), sName = CFG.sm ? '저장소: '+CFG.sm : (CUSTOM.name||'내 소리');
     sb.innerHTML = hasS
       ? `<div class="ic">${icon('music',28)}</div><span>${esc(sName.slice(0,24))}</span><div class="row" style="gap:6px"><button class="x" id="splay">듣기</button><button class="x" id="sdel">지우기</button></div><input type="file" id="sfile" accept="audio/*" style="height:45%">`
-      : `<div class="ic">${icon('mic',28)}</div><span>소리 파일 넣기 · 녹음<br><small>이 폰에서만 · 700KB까지</small></span><input type="file" id="sfile" accept="audio/*">`;
+      : `<div class="ic">${icon('mic',28)}</div><span>소리 파일 넣기 · 녹음<br><small>이 폰에서만 · 크기 제한 없음</small></span><input type="file" id="sfile" accept="audio/*">`;
     document.getElementById('sfile').onchange=e=>{ const f=e.target.files[0]; if(!f) return;
-      if(f.size>700*1024){ toast('파일이 너무 커! 700KB 이하로'); return; }
-      const r=new FileReader(); r.onload=()=>{ CUSTOM={data:r.result,id:null,name:f.name,buf:null}; saveCustom(); setField('sm',''); useMediaSound(''); decodeCustom(); setField('s','custom'); syncCustom(); summary(); }; r.readAsDataURL(f); };
-    const sd=document.getElementById('sdel'); if(sd) sd.onclick=e=>{ e.stopPropagation(); if(CFG.sm){ setField('sm',''); useMediaSound(''); } else { CUSTOM={data:null,id:null,name:'',buf:null}; saveCustom(); } syncCustom(); summary(); };
+      f.arrayBuffer().then(ab=>{ CUSTOM={data:null,ab,blob:f,id:null,name:f.name,buf:null}; saveCustom(); setField('sm',''); useMediaSound(''); decodeCustom(); setField('s','custom'); syncCustom(); summary(); }).catch(()=>toast('소리 파일을 못 읽었어')); };
+    const sd=document.getElementById('sdel'); if(sd) sd.onclick=e=>{ e.stopPropagation(); if(CFG.sm){ setField('sm',''); useMediaSound(''); } else { CUSTOM={data:null,ab:null,blob:null,id:null,name:'',buf:null}; saveCustom(); } syncCustom(); summary(); };
     const sp=document.getElementById('splay'); if(sp) sp.onclick=e=>{ e.stopPropagation(); unlock(); setTimeout(async()=>{ await decodeCustom(); playSound('custom',CFG.v); },80); };
   }
   if(ms){
@@ -1021,7 +1045,7 @@ function addDisguise(cfg,img,fn){
     if(done) return; done=true;
     if(cfg.k==='crack'){ o.style.zIndex=60; const cv=document.createElement('canvas'); cv.className='full'; o.appendChild(cv); drawCrack(cv,x,y);
       if(cfg.ct){ const w=document.createElement('div'); w.className='dmg'; w.textContent=cfg.ct; o.appendChild(w); } fire(cfg); reveal(cfg,3800); return; }
-    if(cfg.k==='scare'){ let d=+cfg.dl; if(d<0) d=rnd(2,8); T(()=>scareNow(cfg),d*1000); return; }
+    if(cfg.k==='scare'){ let d=+cfg.dl; if(d<0) d=rnd(2,8); preScare(cfg,d*1000); T(()=>scareNow(cfg),d*1000); return; }
     fn(cfg); addExit(); STAGE.appendChild(o); setTimeout(()=>{ if(STAGE) paintScenes(STAGE); },0);
     o.classList.add('glitch'); playSound('static',(cfg.v||10)*.3); setTimeout(()=>o.remove(),460);
   };
@@ -1088,14 +1112,84 @@ function runScare(cfg){
     if(started) return; started=true;
     let d=+cfg.dl; if(d<0) d=rnd(2,8);
     if(cfg.b==='dot'){ let c=Math.max(3,Math.ceil(d)+3); const cn=document.getElementById('cn'); cn.textContent=c; I(()=>{ c=Math.max(1,c-1); cn.textContent=c; },1000); }
-    T(()=>scareNow(cfg), d*1000);
+    preScare(cfg,d*1000); T(()=>scareNow(cfg), d*1000);
   });
+}
+/* ---------- 진짜 무서운 점프스케어 ---------- */
+function faceSVG(){
+  // 화면을 꽉 채우는 창백한 귀신 얼굴 (검은 눈구멍, 찢어진 입)
+  let cracks=''; for(let i=0;i<14;i++){ const x=40+Math.random()*120,y=40+Math.random()*190; cracks+=`<path d="M${x} ${y} l${(Math.random()-.5)*20} ${Math.random()*16} l${(Math.random()-.5)*16} ${Math.random()*14}" stroke="#2a2420" stroke-width=".7" fill="none" opacity=".6"/>`; }
+  let hair=''; for(let i=0;i<26;i++){ const side=i%2?1:-1, x0=100+side*(40+Math.random()*34), w=1.2+Math.random()*3.2; let d=`M${100+side*Math.random()*20} 24`; let x=x0,y=40; d+=` Q${x0} 30 ${x} ${y}`; while(y<258){ const nx=x+(Math.random()-.5)*10, ny=y+20+Math.random()*16; d+=` Q${x+(Math.random()-.5)*12} ${(y+ny)/2} ${nx} ${ny}`; x=nx; y=ny; }
+    hair+=`<path d="${d}" stroke="#040404" stroke-width="${w}" fill="none" opacity="${.75+Math.random()*.25}" stroke-linecap="round"/>`; }
+  for(let i=0;i<3;i++){ const x0=82+Math.random()*36; hair+=`<path d="M${x0} 28 Q${x0+(Math.random()-.5)*16} 90 ${x0+(Math.random()-.5)*20} ${130+Math.random()*90}" stroke="#040404" stroke-width="${1+Math.random()*1.6}" fill="none" opacity=".85"/>`; }
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 260" width="800" height="1040"><defs>
+  <radialGradient id="sk" cx="50%" cy="40%" r="62%"><stop offset="0" stop-color="#e9e6dc"/><stop offset=".55" stop-color="#a9a69c"/><stop offset=".85" stop-color="#4a4844"/><stop offset="1" stop-color="#0c0c0c"/></radialGradient>
+  <radialGradient id="ho" cx="50%" cy="45%" r="55%"><stop offset="0" stop-color="#000"/><stop offset=".65" stop-color="#000"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
+  <linearGradient id="bl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity=".95"/><stop offset="1" stop-color="#000" stop-opacity="0"/></linearGradient>
+  <filter id="tx" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="3" seed="7" result="n"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.6 1.2" result="m"/><feComposite in="m" in2="SourceGraphic" operator="in" result="t"/><feBlend in="SourceGraphic" in2="t" mode="multiply"/></filter>
+  <filter id="wp"><feTurbulence type="fractalNoise" baseFrequency=".025" numOctaves="2" seed="5"/><feDisplacementMap in="SourceGraphic" scale="10"/></filter>
+  <filter id="bb"><feGaussianBlur stdDeviation="2.2"/></filter></defs>
+  <rect width="200" height="260" fill="#000"/>
+  <g filter="url(#wp)">
+   <path d="M100 2 C30 2 6 80 14 260 L186 260 C194 80 170 2 100 2Z" fill="#050505"/>
+   <path d="M100 26 C52 26 36 70 38 120 C40 176 62 236 100 246 C138 236 160 176 162 120 C164 70 148 26 100 26Z" fill="url(#sk)" filter="url(#tx)"/>
+   ${cracks}
+   ${hair}
+   <ellipse cx="78" cy="112" rx="19" ry="23" fill="url(#ho)"/><ellipse cx="122" cy="112" rx="19" ry="23" fill="url(#ho)"/>
+   <path d="M66 120 C64 150 70 180 66 214 L74 214 C76 180 74 150 80 122Z" fill="url(#bl)" filter="url(#bb)"/>
+   <path d="M118 122 C124 152 118 190 126 226 L132 222 C128 186 134 150 130 120Z" fill="url(#bl)" filter="url(#bb)"/>
+   <circle cx="79" cy="114" r="1.6" fill="#ddd"/><circle cx="121" cy="114" r="1.6" fill="#ddd"/>
+   <path d="M97 128 Q100 146 103 128" stroke="#3a3530" stroke-width="1.2" fill="none" opacity=".6"/>
+   <path d="M76 168 C80 160 120 160 124 168 C130 196 118 236 100 238 C82 236 70 196 76 168Z" fill="#000"/>
+   <path d="M80 172 C90 168 110 168 120 172" stroke="#3a0505" stroke-width="2" fill="none"/>
+  </g></svg>`;
+}
+function scareImageSrc(cfg){
+  if(usePhoto(cfg)&&PHOTO.data) return PHOTO.data;
+  const svg = cfg.mc==='ghost' ? faceSVG() : monsterSVG(cfg.mc).replace('<svg ','<svg width="800" height="1000" ');
+  return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
+}
+let SCARE_IMG=null, SCARE_KEY='';
+function preloadScare(cfg){ const src=scareImageSrc(cfg); if(SCARE_KEY===src&&SCARE_IMG) return SCARE_IMG; SCARE_KEY=src; SCARE_IMG=new Image(); SCARE_IMG.src=src; return SCARE_IMG; }
+function preScare(cfg,ms){
+  preloadScare(cfg);
+  if(+cfg.hb){ let gap=900; const beat=()=>{ if(!STAGE||STAGE.dataset.done) return; playSound('heart',cfg.v*.7); gap=Math.max(380,gap*.9); T(beat,gap); }; T(beat,200); }
+  if(+cfg.pre && ms>1500){ const at=ms*(.45+Math.random()*.2);
+    T(()=>{ const f=document.createElement('img'); f.src=SCARE_IMG.src; f.className='subl'; STAGE.appendChild(f); setTimeout(()=>f.remove(),70); },at); }
 }
 function scareNow(cfg){
   STAGE.dataset.done=1; clearTimers();
-  const sz=(+cfg.msz||100)/100, fz=(+cfg.fxs||100)/100;
-  STAGE.innerHTML=`<div class="scare shk-${cfg.shk||'strong'} ${+cfg.fla===0?'nofl':''}"><div class="mwrap" style="transform:scale(${sz})">${usePhoto(cfg)&&PHOTO.data?`<img class="mimg" alt="" src="${PHOTO.data}">`:monsterSVG(cfg.mc)}</div>${cfg.mt?`<h1 style="font-size:${14*fz}vmin">${esc(cfg.mt)}</h1>`:''}</div>`;
-  addExit(); fire(cfg); reveal(cfg,3200);
+  const sz=(+cfg.msz||100)/100, fz=(+cfg.fxs||100)/100, shk={none:0,weak:.4,strong:1}[cfg.shk||'strong'];
+  STAGE.innerHTML=`<div class="scare2"><canvas id="scv"></canvas>${cfg.mt?`<h1 style="font-size:${14*fz}vmin">${esc(cfg.mt)}</h1>`:''}</div>`;
+  const cv=document.getElementById('scv'), dpr=Math.min(2,window.devicePixelRatio||1), W=cv.width=innerWidth*dpr, H=cv.height=innerHeight*dpr, x=cv.getContext('2d');
+  const img=preloadScare(cfg);
+  const nz=document.createElement('canvas'); nz.width=nz.height=256; const nx=nz.getContext('2d'), nd=nx.createImageData(256,256);
+  for(let i=0;i<nd.data.length;i+=4){ const v=Math.random()*255; nd.data[i]=nd.data[i+1]=nd.data[i+2]=v; nd.data[i+3]=255; } nx.putImageData(nd,0,0);
+  const vg=x.createRadialGradient(W/2,H/2,Math.min(W,H)*.25,W/2,H/2,Math.max(W,H)*.7); vg.addColorStop(0,'rgba(0,0,0,0)'); vg.addColorStop(1,'rgba(0,0,0,.85)');
+  const t0=performance.now(); let fr=0;
+  const draw=()=>{
+    if(!cv.isConnected) return; fr++;
+    const t=(performance.now()-t0)/1000;
+    x.globalCompositeOperation='source-over'; x.fillStyle='#000'; x.fillRect(0,0,W,H);
+    if(img.complete&&img.naturalWidth){
+      const kick = t<.12 ? .55+t*4 : 1.03+Math.sin(t*9)*.02;
+      const s=Math.max(W/img.naturalWidth,H/img.naturalHeight)*1.04*sz*kick;
+      const jx=(Math.random()-.5)*28*dpr*shk, jy=(Math.random()-.5)*28*dpr*shk;
+      const dw=img.naturalWidth*s, dh=img.naturalHeight*s, dx=(W-dw)/2+jx, dy=(H-dh)/2+jy-H*.03;
+      x.drawImage(img,dx,dy,dw,dh);
+      if(shk>0){ x.globalCompositeOperation='lighter'; x.globalAlpha=.22; x.drawImage(img,dx+10*dpr*shk,dy,dw,dh); x.globalAlpha=1; x.globalCompositeOperation='source-over'; }
+    }
+    x.globalCompositeOperation='saturation'; x.fillStyle='#808080'; x.fillRect(0,0,W,H);
+    x.globalCompositeOperation='source-over';
+    if(Math.random()<.35){ const n=3+Math.random()*5|0; for(let i=0;i<n;i++){ const y=Math.random()*H, h=(4+Math.random()*40)*dpr; x.drawImage(cv,0,y,W,h,(Math.random()-.5)*60*dpr,y,W,h); } }
+    x.globalAlpha=.22; x.drawImage(nz,-Math.random()*256,-Math.random()*256,W+512,H+512); x.globalAlpha=1;
+    x.fillStyle=vg; x.fillRect(0,0,W,H);
+    if(+cfg.fla!==0){ if(fr%7===0){ x.globalCompositeOperation='difference'; x.fillStyle='#fff'; x.fillRect(0,0,W,H); x.globalCompositeOperation='source-over'; }
+      else if(fr%11===0){ x.fillStyle='rgba(140,0,0,.45)'; x.fillRect(0,0,W,H); } }
+    requestAnimationFrame(draw);
+  };
+  draw();
+  addExit(); fire(cfg); reveal(cfg,3400);
 }
 
 /* ---------- 2. 금 간 화면 ---------- */
