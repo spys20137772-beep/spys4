@@ -221,6 +221,48 @@ details.adv summary::after{content:" ▾";color:var(--mut)}
 @keyframes lights{50%{opacity:.35}}
 .gwin{background:linear-gradient(180deg,#fff,#eee 50%,#fff)!important;color:#111;box-shadow:inset 0 6px 10px rgba(0,0,0,.25),inset 0 -6px 10px rgba(0,0,0,.25)}
 .glist span{background:rgba(255,255,255,.1)!important;color:#e9dcff}
+.mh{padding:10px 0 4px}.how{display:flex;gap:6px;margin:14px 0 18px}.how div{flex:1;background:#14141b;border:1px solid var(--line);border-radius:12px;padding:10px 8px;font-size:12px;color:var(--mut);text-align:center}.how b{display:block;color:var(--acc);font-size:15px;margin-bottom:2px}
+button.card{text-align:left;font-family:inherit;color:var(--tx);position:relative}
+.card .e{animation:flt 3s ease-in-out infinite}
+@keyframes flt{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+.card em{position:absolute;top:12px;right:12px;font-style:normal;font-size:10px;color:var(--mut);border:1px solid var(--line);border-radius:6px;padding:2px 5px}
+.wiz{max-width:560px;margin:0 auto;padding:0 16px 120px}
+.wtop{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:10px;padding:14px 0 10px;background:var(--bg)}
+.wtop .back{margin:0;width:38px;height:38px;border-radius:12px;background:#1a1a23;color:var(--tx);display:flex;align-items:center;justify-content:center}
+.wtt{flex:1;font-weight:800;font-size:17px;display:flex;align-items:center;gap:8px;min-width:0}.wic{color:var(--acc);display:flex}
+.wplay{background:#1f1f2a;border:1px solid var(--line);color:var(--tx);border-radius:12px;padding:9px 12px;font-family:inherit;font-weight:700;font-size:13px}
+.steps{display:flex;gap:6px;margin:2px 0 18px}
+.st{flex:1;display:flex;align-items:center;gap:6px;padding:10px;border-radius:12px;background:#15151d;color:var(--mut);font-size:13px;cursor:pointer;border:1px solid transparent}
+.st i{font-style:normal;width:20px;height:20px;border-radius:50%;background:#262633;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0}
+.st.on{background:#1b2010;color:var(--tx);border-color:#3a4a12}.st.on i{background:var(--acc);color:#111}.st.done i{background:#3a4a12;color:var(--acc)}
+.pane h2{font-size:22px;margin:4px 0 6px;letter-spacing:-.5px}.lead{color:var(--mut);font-size:14px;line-height:1.6;margin:0 0 16px}
+.dgwrap{display:flex;gap:16px;align-items:flex-start}
+.phone{width:128px;flex-shrink:0;border-radius:24px;padding:5px;background:linear-gradient(145deg,#3a3a46,#1c1c24);box-shadow:0 12px 30px #0009}
+.screen{aspect-ratio:9/19.5;border-radius:19px;overflow:hidden;background:#0f0f15;display:flex;align-items:center;justify-content:center;transition:opacity .2s}
+.screen img{width:100%;height:100%;object-fit:cover}.screen.off{opacity:.3}
+.noimg{color:var(--mut);font-size:12px;text-align:center;line-height:1.5}
+.dgside{flex:1;min-width:0}
+.tog{display:flex;align-items:center;gap:10px;font-weight:700;margin:2px 0 14px;color:var(--tx);font-size:15px;cursor:pointer}
+.tog input{display:none}.tog span{width:46px;height:28px;border-radius:14px;background:#33333f;position:relative;transition:.2s;flex-shrink:0}
+.tog span:after{content:"";position:absolute;left:3px;top:3px;width:22px;height:22px;border-radius:50%;background:#fff;transition:.2s}
+.tog input:checked+span{background:var(--acc)}.tog input:checked+span:after{left:21px}
+.upl{position:relative;display:flex;align-items:center;gap:8px;justify-content:center;background:#1a1a23;border:1px dashed #3a3a4a;border-radius:12px;padding:12px;font-size:14px;color:var(--tx);cursor:pointer;margin-top:4px}.upl input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.tip{font-size:12px;color:var(--mut);background:#14141b;border-radius:12px;padding:12px 14px;line-height:1.6;margin-top:16px}
+.sgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
+.sbtn{padding:14px 6px;border-radius:12px;border:1px solid var(--line);background:#15151d;color:var(--tx);font-family:inherit;font-size:14px;font-weight:700;cursor:pointer}
+.sbtn.on{border-color:var(--acc);background:#1b2010;color:var(--acc)}
+.files.one{grid-template-columns:1fr}
+.sum{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:4px 16px;margin-bottom:6px}
+.sum div{display:flex;justify-content:space-between;gap:12px;padding:13px 0;border-bottom:1px solid var(--line);font-size:14px}.sum div:last-child{border:0}
+.sum span{color:var(--mut);flex-shrink:0}.sum b{text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.btnlg{padding:18px!important;font-size:17px!important}
+.wiz details.adv{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:2px 16px 12px;margin-top:14px}
+.subh{font-weight:800;font-size:14px;margin:20px 0 4px;color:var(--acc)}
+.wnav{position:fixed;left:0;right:0;bottom:0;display:flex;gap:10px;padding:20px 16px calc(14px + env(safe-area-inset-bottom));background:linear-gradient(rgba(12,12,16,0),var(--bg) 35%);max-width:560px;margin:0 auto;z-index:6}
+.wnav .btn{margin:0}
+.disg{position:absolute;inset:0;background:#000;touch-action:none}.disg img{width:100%;height:100%;object-fit:cover;display:block;-webkit-user-drag:none;user-select:none;pointer-events:none}
+.disg.glitch{animation:glt .46s steps(1) forwards}
+@keyframes glt{0%{filter:none}12%{transform:translateX(-8px);filter:hue-rotate(90deg) contrast(2)}25%{transform:translateX(10px) skewX(6deg);clip-path:inset(20% 0 30% 0)}40%{transform:none;filter:invert(1)}55%{clip-path:inset(0 0 60% 0);transform:translateX(-14px)}70%{clip-path:inset(40% 0 0 0);transform:translateX(12px)}85%{opacity:.5;filter:brightness(3)}100%{opacity:0}}
 .exb{position:absolute;top:calc(10px + env(safe-area-inset-top));right:10px;z-index:120;width:34px;height:34px;border-radius:50%;border:0;background:rgba(0,0,0,.35);color:#fff;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);opacity:.75;padding:0}
 .exitz{position:absolute;left:0;bottom:0;width:70px;height:70px;z-index:98}
 </style>
@@ -391,6 +433,10 @@ const PF = {
 const PHOTO_USE = {scare:'괴물 대신 내 사진이 튀어나옴',crack:'미끼 사진으로 씀',hack:'마지막에 "유출된 사진"으로 뜸',run:'상품 사진처럼 버튼 위에 뜸',fart:'방귀 뀔 때 같이 뜸',lie:'거짓말 판정 때 같이 뜸',ugly:'카메라 끄면 이 사진으로 분석하는 척',mirror:'귀신 얼굴로 씀',quiet:'괴물 대신 튀어나옴',copy:'앵무새 대신 이 사진이 말함',kb:'이벤트 배너 사진',lock:'잠금화면 배경',gacha:'꽝 당첨 화면에 뜸',buf:'영상 썸네일 / 괴물 대신 튀어나옴',rev:'버튼 위에 배너로 뜸'};
 const COMMON = [
   {k:'up',l:'내 사진 쓰기',t:'chk',d:0},
+  {k:'dg',l:'스크린샷 위장',t:'chk',d:0},
+  {k:'dt',l:'장난 시작 조건',t:'sel',o:[['touch','친구가 화면을 터치하면'],['time','몇 초 지나면 자동으로']],d:'touch'},
+  {k:'dn',l:'몇 번째 터치에 시작할까',t:'num',min:1,max:5,d:1},
+  {k:'ds',l:'몇 초 뒤에 시작할까',t:'num',min:1,max:30,d:3},
   {k:'s',l:'터질 때 소리',t:'sel',o:SOUNDS,d:null},
   {k:'sp',l:'터질 때 폰이 말할 문장 (비우면 안 함)',t:'text',d:''},
   {k:'vo',l:'말하는 목소리',t:'sel',o:[['monster','괴물 (낮고 느리게)'],['normal','보통'],['chip','다람쥐 (높고 빠르게)'],['robot','로봇']],d:'monster'},
@@ -581,10 +627,10 @@ function savePhoto(){ LS.set('tk_photo',{data:PHOTO.data,id:PHOTO.id}); }
 function photoTag(cls){ return `<img class="${cls}" data-photo alt="" src="${PHOTO.data||''}" style="${PHOTO.data?'':'display:none'}">`; }
 function applyPhoto(){ document.querySelectorAll('[data-photo]').forEach(im=>{ im.src=PHOTO.data; im.style.display=''; }); }
 const usePhoto=cfg=>+cfg.up===1;
-function resizeImage(file){
+function resizeImage(file,M=720,Q=.82){
   return new Promise((res,rej)=>{
     const url=URL.createObjectURL(file), im=new Image();
-    im.onload=()=>{ const M=720, s=Math.min(1,M/Math.max(im.width,im.height)); const c=document.createElement('canvas'); c.width=Math.round(im.width*s); c.height=Math.round(im.height*s); c.getContext('2d').drawImage(im,0,0,c.width,c.height); URL.revokeObjectURL(url); res(c.toDataURL('image/jpeg',.82)); };
+    im.onload=()=>{ const s=Math.min(1,M/Math.max(im.width,im.height)); const c=document.createElement('canvas'); c.width=Math.round(im.width*s); c.height=Math.round(im.height*s); c.getContext('2d').drawImage(im,0,0,c.width,c.height); URL.revokeObjectURL(url); res(c.toDataURL('image/jpeg',Q)); };
     im.onerror=()=>{ URL.revokeObjectURL(url); rej(); };
     im.src=url;
   });
@@ -599,6 +645,7 @@ function encodeCfg(cfg){
   fieldsOf(cfg.k).forEach(f=>{ if(cfg[f.k]!==defOf(cfg.k,f.k)) o[f.k]=cfg[f.k]; });
   if(cfg.s==='custom' && cfg.sm) o.sm=cfg.sm;
   if(usePhoto(cfg) && cfg.pm) o.pm=cfg.pm;
+  if(+cfg.dg && cfg.dm) o.dm=cfg.dm;
   return 'p-'+b32enc(new TextEncoder().encode(JSON.stringify(o)));
 }
 function decodeCfg(h){
@@ -734,7 +781,7 @@ async function loadMedia(){
     const list=await r.json(); const names=list.filter(f=>f.type==='file').map(f=>f.name);
     MEDIA.img=names.filter(n=>IMG_RE.test(n)); MEDIA.aud=names.filter(n=>AUD_RE.test(n)); MEDIA.ok=true;
   }catch(e){ MEDIA.err='media 폴더를 못 읽었어.'; }
-  if(document.getElementById('pbox')) syncCustom();
+  if(CFG && document.querySelector('.wiz')){ syncCustom(); syncDisg(); }
 }
 
 /* ---------- 화면: 메뉴 ---------- */
@@ -743,10 +790,9 @@ const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;',
 function menu(){
   closeStage(); document.title='트롤킷';
   app.innerHTML=`<div class="wrap">
-    <div class="logo">TROLL<span>KIT</span></div>
-    <div class="sub">친구 놀리기 도구모음</div>
-    <div class="grid">${Object.entries(PRANKS).map(([k,p])=>`<div class="card" data-p="${k}"><div class="e">${icon(k,24)}</div><b>${p.name}</b><small>${p.d}</small></div>`).join('')}</div>
-    <p class="hint" style="margin-top:20px">장난 고르고 → 문구·소리 마음대로 설정 → 내 폰으로 바로 실행하거나 링크로 친구한테 보내기.<br>실행 중엔 화면 <b>왼쪽 아래 구석을 1초 꾹</b> 누르면 몰래 나올 수 있어.</p>
+    <header class="mh"><div class="logo">TROLL<span>KIT</span></div><div class="sub">진짜처럼 속이는 장난 도구</div></header>
+    <div class="how"><div><b>1</b>장난 고르기</div><div><b>2</b>스크린샷으로 위장</div><div><b>3</b>링크 보내기</div></div>
+    <div class="grid">${Object.entries(PRANKS).map(([k,p],i)=>`<button class="card" data-p="${k}"><div class="e" style="animation-delay:${-i*.37}s">${icon(k,24)}</div><b>${p.name}</b><small>${p.d}</small>${p.cam?'<em>카메라</em>':p.mic?'<em>마이크</em>':''}</button>`).join('')}</div>
   </div>`;
   app.querySelectorAll('.card').forEach(c=>c.onclick=()=>settings(c.dataset.p));
 }
@@ -761,44 +807,86 @@ function fieldHTML(f,v){
   if(f.t==='num') return `<div class="fld"><label for="${id}">${f.l}</label><div class="row"><input type="range" id="${id}" data-k="${f.k}" data-num="1" min="${f.min}" max="${f.max}" step="${f.step||1}" value="${v}"><b id="${id}_v">${numLabel(f.k,v)}</b></div></div>`;
   if(f.t==='chk') return `<div class="fld"><label class="chk"><input type="checkbox" id="${id}" data-k="${f.k}" ${+v?'checked':''}> ${f.l}</label></div>`;
 }
-function numLabel(k,v){ v=+v; if(k==='dl') return v<0?'랜덤':v===0?'바로':v+'초'; if(['du','sec','sl','at','ps','bu','gl','spd'].includes(k)) return v+'초'; if(k==='rvd') return v===0?'기본':v+'초'; if(['msz','fxs'].includes(k)) return v+'%'; if(k==='n'&&CFG&&['rev','copy'].includes(CFG.k)&&v===0) return '∞'; if(k==='n'&&CFG&&CFG.k==='run'&&v===0) return '∞'; return v; }
-function settings(p){
+function numLabel(k,v){ v=+v; if(k==='dl') return v<0?'랜덤':v===0?'바로':v+'초'; if(['du','sec','sl','at','ps','bu','gl','spd','ds'].includes(k)) return v+'초'; if(k==='rvd') return v===0?'기본':v+'초'; if(['msz','fxs'].includes(k)) return v+'%'; if(k==='n'&&CFG&&['rev','copy'].includes(CFG.k)&&v===0) return '∞'; if(k==='n'&&CFG&&CFG.k==='run'&&v===0) return '∞'; return v; }
+function F(keys){ const all=fieldsOf(CFG.k); return keys.map(k=>{ const f=all.find(x=>x.k===k); return f?fieldHTML(f,CFG[k]):''; }).join(''); }
+let STEP=1;
+function settings(p,step){
   closeStage();
   const saved=LS.get('tk2_'+p);
   CFG=Object.assign(defaults(p), saved||{}, {k:p});
   if((CFG.pm||localPhoto().data) && (!saved || saved.up===undefined)) CFG.up=1;
   if(CUSTOM.data && !saved) CFG.s='custom';
+  STEP=step||1;
   const pr=PRANKS[p];
-  app.innerHTML=`<div class="wrap">
-    <button class="back" id="bk">← 목록</button>
-    <div class="h1">${pr.e} ${pr.name}</div>
-    <div class="sec"><h3>장난 설정</h3>${PF[p].map(f=>fieldHTML(f,CFG[f.k])).join('')}</div>
-    <div class="sec"><h3>내 사진 · 내 소리</h3>
-      <div id="mbox" style="margin-top:8px"></div>
-      <div class="files">
-        <div class="fbox" id="pbox"></div>
-        <div class="fbox" id="sbox"></div>
+  const soundBtns=SOUNDS.filter(([k])=>k!=='custom').map(([k,l])=>`<button class="sbtn${CFG.s===k?' on':''}" data-snd="${k}">${l}</button>`).join('');
+  app.innerHTML=`<div class="wiz">
+    <div class="wtop"><button class="back" id="bk">${icon('back',20)}</button><div class="wtt"><span class="wic">${icon(p,18)}</span>${pr.name}</div><button class="wplay" id="go2">미리보기</button></div>
+    <div class="steps">${['위장 화면','소리','완성'].map((t,i)=>`<div class="st${i+1===STEP?' on':''}${i+1<STEP?' done':''}" data-st="${i+1}"><i>${i+1}</i><span>${t}</span></div>`).join('')}</div>
+
+    <section class="pane" data-pane="1">
+      <h2>친구 폰에 먼저 보일 화면</h2>
+      <p class="lead">진짜 앱 화면을 캡처해서 넣으면, 친구 폰에선 그 스크린샷이 전체화면으로 떠서 진짜랑 구분이 안 돼. 터치하는 순간 장난이 시작돼.</p>
+      <div class="dgwrap">
+        <div class="phone"><div class="screen" id="dgprev"></div></div>
+        <div class="dgside">
+          <label class="tog"><input type="checkbox" id="f_dg" data-k="dg" ${+CFG.dg?'checked':''}><span></span>스크린샷 위장 쓰기</label>
+          <div id="dgsrc"></div>
+        </div>
       </div>
-      ${fieldHTML(COMMON[0],CFG.up)}
-      <p class="hint" style="margin-top:-6px">사진은 이 장난에서 <b>${PHOTO_USE[p]}</b>. <b>링크로 친구한테 보내려면 저장소 파일</b>을 골라야 해. 아래 '이 폰' 칸은 내 폰에서 바로 실행할 때만 돼.</p>
-    </div>
-    <div class="sec"><h3>소리 · 말</h3>
-      ${COMMON.slice(1,6).map(f=>fieldHTML(f,CFG[f.k])).join('')}
+      <div id="dgopt">
+        ${F(['dt','dn','ds'])}
+      </div>
+      <p class="tip">팁: 친구가 자주 쓰는 앱(메신저, 홈 화면, 영상 앱)을 캡처하면 제일 잘 속아. 위아래 상태바까지 다 나오게 캡처해.</p>
+    </section>
+
+    <section class="pane" data-pane="2">
+      <h2>터질 때 소리</h2>
+      <div class="sgrid">${soundBtns}<button class="sbtn${CFG.s==='custom'?' on':''}" data-snd="custom">내 소리</button></div>
+      <div id="msbox"></div>
+      <div class="files one"><div class="fbox" id="sbox"></div></div>
+      ${F(['v','sp','vo'])}
       <button class="btn b2" id="prev">소리 + 말 미리듣기</button>
-    </div>
-    <div class="sec"><h3>마무리</h3>${COMMON.slice(6,9).map(f=>fieldHTML(f,CFG[f.k])).join('')}</div>
-    <div class="sec"><details class="adv"><summary>고급 설정</summary>${COMMON.slice(9).map(f=>fieldHTML(f,CFG[f.k])).join('')}
-      <button class="btn b2" id="rst">↺ 이 장난 설정 초기화</button></details></div>
-    <button class="btn b1" id="go">▶ 이 폰에서 바로 실행</button>
-    <button class="btn b3" id="mk">친구한테 보낼 링크 만들기</button>
-    <div id="linkbox">
-      <textarea id="lk" readonly></textarea>
-      <button class="btn b2" id="cp">링크 복사</button>
-      <p class="hint" id="lkh"></p>
-    </div>
-    ${PRANKS[p].cam||PRANKS[p].mic?`<p class="hint warn" style="margin-top:14px">${PRANKS[p].cam?'카메라':'마이크'}를 써서 친구 폰에 '허용할까요?' 창이 한 번 떠. 거부하면 ${PRANKS[p].cam?'카메라 없이 진행돼':'소리 감지 없이 진행돼'}.</p>`:''}
-    <p class="hint" style="margin-top:14px">실행 중 <b>왼쪽 아래 구석을 1초 꾹</b> = 몰래 나가기${p==='lie'?'<br>몰래 조작: 탐지 시작 전에 화면 <b>왼쪽 위</b>를 톡 = 진실, <b>오른쪽 위</b>를 톡 = 거짓 (진동 짧게 오면 접수됨)':''}</p>
+    </section>
+
+    <section class="pane" data-pane="3">
+      <h2>완성</h2>
+      <div class="sum">
+        <div><span>장난</span><b>${pr.name}</b></div>
+        <div><span>위장 화면</span><b id="sumdg"></b></div>
+        <div><span>소리</span><b id="sumsnd"></b></div>
+      </div>
+      <button class="btn b1 btnlg" id="mk">친구한테 보낼 링크 만들기</button>
+      <div id="linkbox"><textarea id="lk" readonly></textarea><button class="btn b2" id="cp">링크 복사</button><p class="hint" id="lkh"></p></div>
+      <button class="btn b2" id="go">이 폰에서 바로 실행</button>
+      <details class="adv"><summary>세부 설정 · 문구</summary>
+        ${PF[p].map(f=>fieldHTML(f,CFG[f.k])).join('')}
+        <div class="subh">내 사진</div>
+        <div id="mpbox"></div><div class="files one"><div class="fbox" id="pbox"></div></div>
+        ${fieldHTML(COMMON.find(f=>f.k==='up'),CFG.up)}
+        <p class="hint">사진은 이 장난에서 ${PHOTO_USE[p]}.</p>
+        <div class="subh">마무리</div>
+        ${F(['vb','r','rt','ti'])}
+      </details>
+      <details class="adv"><summary>고급 설정</summary>
+        ${F(['exb','rvs','rvd','rvb','srp','spd','vst','msz','shk','fla','fxs'])}
+        <button class="btn b2" id="rst">이 장난 설정 초기화</button>
+      </details>
+      ${pr.cam||pr.mic?`<p class="hint warn">${pr.cam?'카메라':'마이크'}를 써서 친구 폰에 '허용할까요?' 창이 한 번 떠.</p>`:''}
+      ${p==='lie'?'<p class="hint">몰래 조작: 탐지 시작 전에 화면 왼쪽 위를 톡 = 진실, 오른쪽 위를 톡 = 거짓</p>':''}
+    </section>
+
+    <div class="wnav"><button class="btn b2" id="pv">이전</button><button class="btn b1" id="nx">다음</button></div>
   </div>`;
+  const show=()=>{
+    app.querySelectorAll('.pane').forEach(el=>el.style.display=(+el.dataset.pane===STEP)?'block':'none');
+    app.querySelectorAll('.st').forEach(el=>{ const n=+el.dataset.st; el.classList.toggle('on',n===STEP); el.classList.toggle('done',n<STEP); });
+    document.getElementById('pv').style.visibility=STEP>1?'visible':'hidden';
+    document.getElementById('nx').style.display=STEP<3?'':'none';
+    summary(); window.scrollTo(0,0);
+  };
+  document.getElementById('pv').onclick=()=>{ if(STEP>1){ STEP--; show(); } };
+  document.getElementById('nx').onclick=()=>{ if(STEP<3){ STEP++; show(); } };
+  app.querySelectorAll('.st').forEach(el=>el.onclick=()=>{ STEP=+el.dataset.st; show(); });
   document.getElementById('bk').onclick=menu;
   app.querySelectorAll('[data-k]').forEach(el=>{
     const ev = el.type==='range'||el.type==='text'||el.tagName==='TEXTAREA' ? 'input' : 'change';
@@ -807,56 +895,88 @@ function settings(p){
       CFG[k] = el.type==='checkbox' ? (el.checked?1:0) : el.dataset.num ? +el.value : el.value;
       if(el.dataset.num){ const b=document.getElementById(el.id+'_v'); if(b) b.textContent=numLabel(k,el.value); }
       if(k==='s') syncCustom();
-      persist(); document.getElementById('linkbox').style.display='none';
+      if(['dg','dt'].includes(k)) syncDisg();
+      persist(); const lb=document.getElementById('linkbox'); if(lb) lb.style.display='none'; summary();
     });
   });
-  document.getElementById('prev').onclick=()=>{ unlock(); setTimeout(()=>{ if(CFG.s!=='none') playSound(CFG.s,CFG.v); setTimeout(()=>speak(CFG),CFG.s==='none'?0:250); },60); };
-  document.getElementById('go').onclick=()=>{ unlock(); run(CFG,false); };
+  app.querySelectorAll('[data-snd]').forEach(b=>b.onclick=()=>{
+    unlock(); setField('s',b.dataset.snd); app.querySelectorAll('[data-snd]').forEach(x=>x.classList.toggle('on',x===b));
+    syncCustom(); summary();
+    setTimeout(async()=>{ if(CFG.s==='custom') await decodeCustom(); if(CFG.s!=='none') playSound(CFG.s,CFG.v); },60);
+  });
+  document.getElementById('prev').onclick=()=>{ unlock(); setTimeout(async()=>{ if(CFG.s==='custom') await decodeCustom(); if(CFG.s!=='none') playSound(CFG.s,CFG.v); setTimeout(()=>speak(CFG),CFG.s==='none'?0:250); },60); };
+  const go=()=>{ unlock(); run(CFG,false); };
+  document.getElementById('go').onclick=go; document.getElementById('go2').onclick=go;
   document.getElementById('mk').onclick=makeLink;
-  document.getElementById('rst').onclick=()=>{ LS.set('tk2_'+p,null); try{localStorage.removeItem('tk2_'+p);}catch(e){} settings(p); toast('초기화 완료'); };
+  document.getElementById('rst').onclick=()=>{ try{localStorage.removeItem('tk2_'+p);}catch(e){} settings(p,STEP); toast('초기화 완료'); };
   useMediaSound(CFG.sm||'');
   document.getElementById('cp').onclick=async()=>{
     const ta=document.getElementById('lk'); let ok=false;
     try{ await navigator.clipboard.writeText(ta.value); ok=true; }catch(e){ try{ ta.select(); ok=document.execCommand('copy'); }catch(e2){} }
-    toast(ok?'복사됨! 카톡에 붙여넣기 ㄱㄱ':'길게 눌러서 직접 복사해줘');
+    toast(ok?'복사됨! 카톡에 붙여넣기':'길게 눌러서 직접 복사해줘');
   };
-  syncCustom();
+  syncCustom(); syncDisg(); show();
+}
+function summary(){
+  const a=document.getElementById('sumdg'), b=document.getElementById('sumsnd'); if(!a) return;
+  a.textContent = +CFG.dg ? (CFG.dm ? '저장소: '+CFG.dm : (localDisg()?'이 폰 스크린샷 (링크엔 안 감)':'스크린샷 없음')) : '안 씀';
+  const so=SOUNDS.find(x=>x[0]===CFG.s); b.textContent = CFG.s==='custom' ? (CFG.sm?'저장소: '+CFG.sm:'이 폰 소리') : (so?so[1]:'');
+}
+function localDisg(){ const c=LS.get('tk_disg'); return c&&c.data?c.data:null; }
+function syncDisg(){
+  const prev=document.getElementById('dgprev'), src=document.getElementById('dgsrc'), opt=document.getElementById('dgopt'); if(!prev) return;
+  const img = CFG.dm ? mediaURL(CFG.dm) : localDisg();
+  prev.innerHTML = img ? `<img src="${esc(img)}" alt="">` : `<div class="noimg">스크린샷을<br>골라줘</div>`;
+  prev.classList.toggle('off',!+CFG.dg);
+  opt.style.display = +CFG.dg ? '' : 'none';
+  const dn=document.getElementById('f_dn'), ds=document.getElementById('f_ds');
+  if(dn) dn.closest('.fld').style.display = CFG.dt==='time'?'none':'';
+  if(ds) ds.closest('.fld').style.display = CFG.dt==='time'?'':'none';
+  src.innerHTML = `${MEDIA.ok?`<div class="fld"><label for="mdg">저장소 스크린샷 (링크로 보낼 때)</label><select id="mdg"><option value="">선택 안 함</option>${MEDIA.img.map(n=>`<option${n===CFG.dm?' selected':''}>${esc(n)}</option>`).join('')}</select></div>`:`<p class="hint">${esc(MEDIA.err||'저장소 파일 불러오는 중...')}</p>`}
+    <label class="upl">${icon('photo',18)} 이 폰에서 고르기<input type="file" id="dgfile" accept="image/*"></label>
+    <p class="hint">링크로 보내려면 깃허브 media 폴더에 올리고 위에서 골라야 해.</p>`;
+  const m=document.getElementById('mdg'); if(m) m.onchange=()=>{ setField('dm',m.value); if(m.value) setField('dg',1); document.getElementById('f_dg').checked=!!+CFG.dg; syncDisg(); summary(); };
+  document.getElementById('dgfile').onchange=async e=>{ const f=e.target.files[0]; if(!f) return;
+    try{ const d=await resizeImage(f,1280,.88); LS.set('tk_disg',{data:d}); setField('dm',''); setField('dg',1); document.getElementById('f_dg').checked=true; }catch(_){ toast('사진을 못 읽었어'); }
+    syncDisg(); summary(); };
 }
 function persist(){ LS.set('tk2_'+CFG.k,CFG); }
-function setField(k,v){ CFG[k]=v; const el=document.getElementById('f_'+k); if(el){ if(el.type==='checkbox') el.checked=!!+v; else el.value=v; } persist(); document.getElementById('linkbox').style.display='none'; }
+function setField(k,v){ CFG[k]=v; const el=document.getElementById('f_'+k); if(el){ if(el.type==='checkbox') el.checked=!!+v; else el.value=v; } persist(); const lb=document.getElementById('linkbox'); if(lb) lb.style.display='none'; }
 function localPhoto(){ const c=LS.get('tk_photo'); return c&&c.data?{data:c.data,id:null}:{data:null,id:null}; }
 const mediaURL=n=>'media/'+encodeURIComponent(n);
 function syncCustom(){
-  const pb=document.getElementById('pbox'), sb=document.getElementById('sbox'), mb=document.getElementById('mbox'); if(!pb) return;
+  const pb=document.getElementById('pbox'), sb=document.getElementById('sbox'), mp=document.getElementById('mpbox'), ms=document.getElementById('msbox');
   PHOTO = CFG.pm ? {data:mediaURL(CFG.pm),id:null} : localPhoto();
-  const pName = CFG.pm ? ''+CFG.pm : '이 폰 사진';
-  pb.innerHTML = PHOTO.data
-    ? `<img src="${esc(PHOTO.data)}" alt=""><span>${esc(pName.slice(0,20))}</span><button class="x" id="pdel">지우기</button><input type="file" id="pfile" accept="image/*" style="height:70%">`
-    : `<div class="ic">${icon('photo',30)}</div><span>사진 넣기<br><small>이 폰에서만</small></span><input type="file" id="pfile" accept="image/*">`;
-  const hasS = CFG.sm || CUSTOM.data, sName = CFG.sm ? ''+CFG.sm : (CUSTOM.name||'내 소리');
-  sb.innerHTML = hasS
-    ? `<div class="ic">${icon('music',30)}</div><span>${esc(sName.slice(0,20))}</span><div class="row" style="gap:6px"><button class="x" id="splay">▶ 듣기</button><button class="x" id="sdel">지우기</button></div><input type="file" id="sfile" accept="audio/*" style="height:45%">`
-    : `<div class="ic">${icon('mic',30)}</div><span>소리 넣기<br><small>이 폰에서만 · 700KB까지</small></span><input type="file" id="sfile" accept="audio/*">`;
-  mb.innerHTML = MEDIA.ok
-    ? `<div class="fld"><label for="mpm">저장소 사진 (링크로 보내도 친구한테 보임)</label><select id="mpm"><option value="">— 안 씀 —</option>${MEDIA.img.map(n=>`<option${n===CFG.pm?' selected':''}>${esc(n)}</option>`).join('')}</select></div>
-       <div class="fld"><label for="msm">저장소 소리 (링크로 보내도 친구한테 들림)</label><select id="msm"><option value="">— 안 씀 —</option>${MEDIA.aud.map(n=>`<option${n===CFG.sm?' selected':''}>${esc(n)}</option>`).join('')}</select></div>
-       ${!MEDIA.img.length&&!MEDIA.aud.length?'<p class="hint">media 폴더가 비어있어. 깃허브 저장소 media 폴더에 사진·소리를 올리면 여기 떠.</p>':''}`
-    : `<p class="hint">${esc(MEDIA.err||'저장소 파일 불러오는 중...')}</p>`;
-  const mpm=document.getElementById('mpm'); if(mpm) mpm.onchange=()=>{ setField('pm',mpm.value); if(mpm.value) setField('up',1); syncCustom(); };
-  const msm=document.getElementById('msm'); if(msm) msm.onchange=()=>{ setField('sm',msm.value); if(msm.value) setField('s','custom'); useMediaSound(msm.value); syncCustom(); };
-  document.getElementById('pfile').onchange=async e=>{
-    const f=e.target.files[0]; if(!f) return;
-    try{ const d=await resizeImage(f); LS.set('tk_photo',{data:d}); setField('pm',''); setField('up',1); }catch(_){ toast('사진을 못 읽었어'); }
-    syncCustom();
-  };
-  document.getElementById('sfile').onchange=e=>{
-    const f=e.target.files[0]; if(!f) return;
-    if(f.size>700*1024){ toast('파일이 너무 커! 700KB 이하로'); return; }
-    const r=new FileReader(); r.onload=()=>{ CUSTOM={data:r.result,id:null,name:f.name,buf:null}; saveCustom(); setField('sm',''); useMediaSound(''); decodeCustom(); setField('s','custom'); syncCustom(); }; r.readAsDataURL(f);
-  };
-  const pd=document.getElementById('pdel'); if(pd) pd.onclick=e=>{ e.stopPropagation(); if(CFG.pm) setField('pm',''); else LS.set('tk_photo',{}); setField('up',0); syncCustom(); };
-  const sd=document.getElementById('sdel'); if(sd) sd.onclick=e=>{ e.stopPropagation(); if(CFG.sm){ setField('sm',''); useMediaSound(''); } else { CUSTOM={data:null,id:null,name:'',buf:null}; saveCustom(); } if(CFG.s==='custom') setField('s',PRANKS[CFG.k].snd); syncCustom(); };
-  const sp=document.getElementById('splay'); if(sp) sp.onclick=e=>{ e.stopPropagation(); unlock(); setTimeout(async()=>{ await decodeCustom(); playSound('custom',CFG.v); },80); };
+  if(pb){
+    const pName = CFG.pm ? '저장소: '+CFG.pm : '이 폰 사진';
+    pb.innerHTML = PHOTO.data
+      ? `<img src="${esc(PHOTO.data)}" alt=""><span>${esc(pName.slice(0,24))}</span><button class="x" id="pdel">지우기</button><input type="file" id="pfile" accept="image/*" style="height:70%">`
+      : `<div class="ic">${icon('photo',28)}</div><span>사진 넣기<br><small>이 폰에서만</small></span><input type="file" id="pfile" accept="image/*">`;
+    document.getElementById('pfile').onchange=async e=>{ const f=e.target.files[0]; if(!f) return;
+      try{ const d=await resizeImage(f); LS.set('tk_photo',{data:d}); setField('pm',''); setField('up',1); }catch(_){ toast('사진을 못 읽었어'); } syncCustom(); };
+    const pd=document.getElementById('pdel'); if(pd) pd.onclick=e=>{ e.stopPropagation(); if(CFG.pm) setField('pm',''); else LS.set('tk_photo',{}); setField('up',0); syncCustom(); };
+  }
+  if(sb){
+    sb.style.display = CFG.s==='custom' ? '' : 'none';
+    const hasS = CFG.sm || CUSTOM.data, sName = CFG.sm ? '저장소: '+CFG.sm : (CUSTOM.name||'내 소리');
+    sb.innerHTML = hasS
+      ? `<div class="ic">${icon('music',28)}</div><span>${esc(sName.slice(0,24))}</span><div class="row" style="gap:6px"><button class="x" id="splay">듣기</button><button class="x" id="sdel">지우기</button></div><input type="file" id="sfile" accept="audio/*" style="height:45%">`
+      : `<div class="ic">${icon('mic',28)}</div><span>소리 파일 넣기 · 녹음<br><small>이 폰에서만 · 700KB까지</small></span><input type="file" id="sfile" accept="audio/*">`;
+    document.getElementById('sfile').onchange=e=>{ const f=e.target.files[0]; if(!f) return;
+      if(f.size>700*1024){ toast('파일이 너무 커! 700KB 이하로'); return; }
+      const r=new FileReader(); r.onload=()=>{ CUSTOM={data:r.result,id:null,name:f.name,buf:null}; saveCustom(); setField('sm',''); useMediaSound(''); decodeCustom(); setField('s','custom'); syncCustom(); summary(); }; r.readAsDataURL(f); };
+    const sd=document.getElementById('sdel'); if(sd) sd.onclick=e=>{ e.stopPropagation(); if(CFG.sm){ setField('sm',''); useMediaSound(''); } else { CUSTOM={data:null,id:null,name:'',buf:null}; saveCustom(); } syncCustom(); summary(); };
+    const sp=document.getElementById('splay'); if(sp) sp.onclick=e=>{ e.stopPropagation(); unlock(); setTimeout(async()=>{ await decodeCustom(); playSound('custom',CFG.v); },80); };
+  }
+  if(ms){
+    ms.style.display = CFG.s==='custom' ? '' : 'none';
+    ms.innerHTML = MEDIA.ok ? `<div class="fld"><label for="msm">저장소 소리 (링크로 보낼 때)</label><select id="msm"><option value="">선택 안 함</option>${MEDIA.aud.map(n=>`<option${n===CFG.sm?' selected':''}>${esc(n)}</option>`).join('')}</select></div>` : `<p class="hint">${esc(MEDIA.err||'')}</p>`;
+    const msm=document.getElementById('msm'); if(msm) msm.onchange=()=>{ setField('sm',msm.value); if(msm.value) setField('s','custom'); useMediaSound(msm.value); syncCustom(); summary(); };
+  }
+  if(mp){
+    mp.innerHTML = MEDIA.ok ? `<div class="fld"><label for="mpm">저장소 사진 (링크로 보낼 때)</label><select id="mpm"><option value="">선택 안 함</option>${MEDIA.img.map(n=>`<option${n===CFG.pm?' selected':''}>${esc(n)}</option>`).join('')}</select></div>` : '';
+    const mpm=document.getElementById('mpm'); if(mpm) mpm.onchange=()=>{ setField('pm',mpm.value); if(mpm.value) setField('up',1); syncCustom(); };
+  }
 }
 function makeLink(){
   const box=document.getElementById('linkbox'), ta=document.getElementById('lk'), h=document.getElementById('lkh');
@@ -864,6 +984,7 @@ function makeLink(){
   const c=Object.assign({},CFG);
   if(c.s==='custom' && !c.sm) note+='이 폰에서 넣은 소리는 링크로 안 가서 친구한텐 비명 소리로 나와. 저장소 media 폴더에 올리고 저장소 소리에서 골라줘.<br>';
   if(usePhoto(c) && !c.pm) note+='이 폰에서 넣은 사진은 링크로 안 가. 저장소 media 폴더에 올리고 저장소 사진에서 골라줘.<br>';
+  if(+c.dg && !c.dm) note+='이 폰에서 고른 스크린샷은 링크로 안 가. 깃허브 media 폴더에 올리고 저장소 스크린샷에서 골라줘.<br>';
   ta.value = location.href.split('#')[0]+'#'+encodeCfg(c);
   h.innerHTML = note + '친구가 링크를 열면 메뉴 없이 바로 함정 화면이 떠. 로그인 필요 없어!';
   box.style.display='block';
@@ -887,8 +1008,25 @@ function run(cfg,linkMode){
   if(cfg.s==='custom'){ if(cfg.sm) useMediaSound(cfg.sm); else if(linkMode) SNDURL={name:'',ab:null,buf:null}; else SNDURL=null; }
   PHOTO = cfg.pm ? {data:mediaURL(cfg.pm),id:null} : (linkMode ? {data:null,id:null} : localPhoto());
   setTimeout(()=>{ if(STAGE) paintScenes(STAGE); },0);
-  ({scare:runScare,crack:runCrack,hack:runHack,run:runRun,fart:runFart,lie:runLie,buf:runBuf,rev:runRev,ugly:runUgly,mirror:runMirror,quiet:runQuiet,copy:runCopy,kb:runKb,lock:runLock,gacha:runGacha})[cfg.k](cfg);
+  const fn={scare:runScare,crack:runCrack,hack:runHack,run:runRun,fart:runFart,lie:runLie,buf:runBuf,rev:runRev,ugly:runUgly,mirror:runMirror,quiet:runQuiet,copy:runCopy,kb:runKb,lock:runLock,gacha:runGacha}[cfg.k];
+  const dimg = cfg.dm ? mediaURL(cfg.dm) : (linkMode ? null : localDisg());
+  if(+cfg.dg && dimg){ addDisguise(cfg,dimg,fn); } else fn(cfg);
   addExit();
+}
+function addDisguise(cfg,img,fn){
+  const o=document.createElement('div'); o.className='disg'; o.style.zIndex=LINKMODE?130:110;
+  o.innerHTML=`<img src="${esc(img)}" alt="" draggable="false">`; STAGE.appendChild(o);
+  let n=0, done=false;
+  const trigger=(x,y)=>{
+    if(done) return; done=true;
+    if(cfg.k==='crack'){ o.style.zIndex=60; const cv=document.createElement('canvas'); cv.className='full'; o.appendChild(cv); drawCrack(cv,x,y);
+      if(cfg.ct){ const w=document.createElement('div'); w.className='dmg'; w.textContent=cfg.ct; o.appendChild(w); } fire(cfg); reveal(cfg,3800); return; }
+    if(cfg.k==='scare'){ let d=+cfg.dl; if(d<0) d=rnd(2,8); T(()=>scareNow(cfg),d*1000); return; }
+    fn(cfg); addExit(); STAGE.appendChild(o); setTimeout(()=>{ if(STAGE) paintScenes(STAGE); },0);
+    o.classList.add('glitch'); playSound('static',(cfg.v||10)*.3); setTimeout(()=>o.remove(),460);
+  };
+  o.addEventListener('pointerdown',e=>{ e.stopPropagation(); e.preventDefault(); unlock(); if(cfg.dt==='time') return; n++; if(n>=+cfg.dn) trigger(e.clientX,e.clientY); });
+  if(cfg.dt==='time') T(()=>trigger(innerWidth/2,innerHeight*.45),+cfg.ds*1000);
 }
 function doExit(){ if(LINKMODE){ history.replaceState(null,'',location.pathname+location.search); menu(); } else settings(CUR.k); }
 function addExit(){
