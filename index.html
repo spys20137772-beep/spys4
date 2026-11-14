@@ -4,17 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <title>트롤킷</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <style>
 :root{--bg:#0c0c10;--card:#17171f;--line:#2a2a36;--acc:#c6ff3d;--pink:#ff3d7f;--tx:#f2f2f5;--mut:#8b8b99}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{margin:0;background:var(--bg);color:var(--tx);font-family:system-ui,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif}
+html,body{margin:0;background:var(--bg);color:var(--tx);font-family:Pretendard,system-ui,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;letter-spacing:-.2px}
 .wrap{max-width:520px;margin:0 auto;padding:22px 16px 70px}
 .logo{font-size:36px;font-weight:900;letter-spacing:-1px}.logo span{color:var(--acc)}
 .sub{color:var(--mut);margin:4px 0 20px}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;cursor:pointer;transition:transform .1s}
 .card:active{transform:scale(.96)}
-.card .e{font-size:34px}.card b{display:block;margin-top:8px;font-size:16px}.card small{color:var(--mut);font-size:12px}
+.card .e{width:44px;height:44px;border-radius:12px;background:rgba(198,255,61,.1);color:var(--acc);display:flex;align-items:center;justify-content:center}.card b{display:block;margin-top:8px;font-size:16px}.card small{color:var(--mut);font-size:12px}
 .fld{margin:14px 0}
 label{display:block;font-size:13px;color:var(--mut);margin-bottom:6px}
 input[type=text],textarea,select{width:100%;background:#101017;border:1px solid var(--line);color:var(--tx);border-radius:12px;padding:12px;font-size:15px;font-family:inherit}
@@ -40,8 +41,8 @@ input[type=file]{color:var(--mut);font-size:13px;width:100%}
 .bh{padding:20px 16px 6px;font-weight:800;font-size:21px}.bp{padding:0 16px 12px;color:#555;font-size:14px;line-height:1.5;white-space:pre-wrap}
 .emo{position:relative;flex:1;overflow:hidden;background:#e9f7df}
 .emo span{position:absolute;line-height:1}
-.blurimg{flex:1;background:linear-gradient(180deg,#5aa9ff 0%,#a8d8ff 40%,#ffd38a 55%,#3d8b3d 56%,#1f5a26 100%);position:relative;transition:filter .3s}
-.blurimg:after{content:"🏔️ 🌲🏠🌲   🐄";position:absolute;left:0;right:0;top:44%;text-align:center;font-size:52px}
+.blurimg{flex:1;position:relative;overflow:hidden;transition:filter .3s;background:#222}
+
 .dotbg{position:absolute;inset:0;background:#000;color:#fff;display:flex;flex-direction:column;align-items:center}
 .dot{position:absolute;left:50%;top:55%;width:14px;height:14px;margin:-7px;border-radius:50%;background:#fff;box-shadow:0 0 18px #fff}
 .cnt{position:absolute;bottom:14%;font-size:40px;font-weight:900;opacity:.7}
@@ -53,7 +54,7 @@ input[type=file]{color:var(--mut);font-size:13px;width:100%}
 @keyframes shake{0%{translate:0 0}25%{translate:-9px 6px}50%{translate:8px -7px}75%{translate:-6px -5px}}
 .scare h1{font-size:14vmin;color:#fff;margin:0;text-shadow:0 0 24px red;animation:shake .05s infinite;text-align:center;padding:0 10px}
 .news{position:absolute;inset:0;background:#f4f4f6;color:#111;display:flex;flex-direction:column}
-.news .ph{margin:0 16px;flex:1;max-height:55vh;border-radius:14px;background:radial-gradient(circle at 60% 35%,#fff7 0,#0000 30%),linear-gradient(160deg,#141e30,#243b55 50%,#0f2027);display:flex;align-items:center;justify-content:center;font-size:90px;filter:blur(2px)}
+.news .ph{margin:0 16px;flex:1;max-height:55vh;border-radius:14px;overflow:hidden;background:#000;position:relative}
 .news .meta{padding:12px 16px;color:#888;font-size:13px}
 canvas.full{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .dmg{position:absolute;top:0;left:0;right:0;background:#d00;color:#fff;font-weight:800;text-align:center;padding:8px;animation:blink .4s steps(1) infinite;z-index:3}
@@ -90,7 +91,7 @@ canvas.full{position:absolute;inset:0;width:100%;height:100%;pointer-events:none
 .files{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
 .fbox{background:#101017;border:1px dashed #3a3a4a;border-radius:14px;padding:12px;text-align:center;position:relative;min-height:120px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-size:13px;color:var(--mut)}
 .fbox input{position:absolute;inset:0;opacity:0;cursor:pointer}
-.fbox .ic{font-size:28px}.fbox img{width:72px;height:72px;object-fit:cover;border-radius:10px}
+.fbox .ic{color:var(--acc);line-height:0}.fbox img{width:72px;height:72px;object-fit:cover;border-radius:10px}
 .fbox .x{position:relative;z-index:2;background:#262633;border:0;color:var(--tx);border-radius:8px;padding:5px 9px;font-size:12px;font-family:inherit}
 .mimg{width:92vmin;max-height:68vh;object-fit:cover;border-radius:22px;filter:contrast(1.35) saturate(1.4);animation:zoom .22s ease-out forwards;display:block}
 .phimg{width:100%;height:100%;object-fit:cover;border-radius:14px}
@@ -101,7 +102,7 @@ canvas.full{position:absolute;inset:0;width:100%;height:100%;pointer-events:none
 .dk{position:absolute;inset:0;background:radial-gradient(circle at 50% 0,#2a2350,#0b0b18);color:#fff;display:flex;flex-direction:column;align-items:center;text-align:center;overflow:auto}
 .dk .bp{color:#b9b9d0}
 .ucam{position:relative;width:74vw;max-width:340px;aspect-ratio:3/4;border-radius:20px;overflow:hidden;background:#1d1d2c;margin-top:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
-.uph{font-size:120px;opacity:.5}
+.uph{width:100%;display:flex;justify-content:center}
 .ufill{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .ubox{position:absolute;left:18%;right:18%;top:16%;bottom:24%;border:3px dashed #c6ff3d;border-radius:46%;animation:blink 1s steps(1) infinite}
 .uscan{position:absolute;left:0;right:0;height:4px;background:#c6ff3d;box-shadow:0 0 18px #c6ff3d;animation:scan 1.2s ease-in-out infinite alternate}
@@ -127,7 +128,7 @@ canvas.full{position:absolute;inset:0;width:100%;height:100%;pointer-events:none
 .qcd{font-size:110px;font-weight:900;margin-top:10px;line-height:1}
 .qmeter{width:70vw;max-width:320px;height:14px;background:#ffffff1a;border-radius:7px;overflow:hidden;margin-top:14px}.qmeter i{display:block;height:100%;width:0;background:#c6ff3d;transition:width .06s}
 .qst{margin-top:14px;font-size:17px;min-height:26px}
-.parrot{font-size:150px;margin-top:20px;line-height:1;transition:transform .1s}.parrot img{width:180px;height:180px;object-fit:cover;border-radius:50%;border:6px solid #c6ff3d}
+.parrot{margin-top:16px;line-height:0;transition:transform .1s}.parrot svg{width:210px;height:auto}.parrot img{width:180px;height:180px;object-fit:cover;border-radius:50%;border:6px solid #c6ff3d}
 .parrot.talk{animation:talk .18s ease-in-out infinite alternate}
 @keyframes talk{from{transform:scale(1) rotate(-4deg)}to{transform:scale(1.12) rotate(4deg)}}
 .kbw{position:absolute;inset:0;background:#ffefe0;color:#111;overflow:auto}
@@ -152,6 +153,75 @@ canvas.full{position:absolute;inset:0;width:100%;height:100%;pointer-events:none
 .gwin{width:70vw;max-width:300px;height:120px;background:#fff;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:34px;font-weight:900;border:6px solid #ffd700}
 .gwin.near{animation:shake .08s linear infinite;color:#e8112d}
 .glist{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:16px 20px;font-size:13px}.glist span{background:#fff8;padding:4px 10px;border-radius:12px}
+.vp{position:absolute;inset:0;background:#fff;color:#111;overflow:auto}
+.vbox{position:relative;width:100%;aspect-ratio:16/9;background:#000;overflow:hidden}
+.vthumb{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:60px;background:linear-gradient(180deg,#1b2735,#090a0f);filter:brightness(.8)}
+.vbox.playing .vthumb,.vbox.playing .ufill{animation:vz 6s linear forwards}
+@keyframes vz{to{transform:scale(1.15)}}
+.vplay{position:absolute;left:50%;top:50%;width:68px;height:48px;margin:-24px 0 0 -34px;border-radius:14px;background:#e00;color:#fff;font-size:22px;display:flex;align-items:center;justify-content:center;z-index:2}
+.vbar{position:absolute;left:0;right:0;bottom:0;height:3px;background:#fff4;z-index:2}.vbar i{display:block;height:100%;width:0;background:#e00}
+.vtime{position:absolute;left:8px;bottom:8px;color:#fff;font-size:12px;z-index:2;text-shadow:0 1px 2px #000}
+.vspin{position:absolute;left:50%;top:50%;width:46px;height:46px;margin:-23px;border-radius:50%;border:4px solid #fff3;border-top-color:#fff;animation:spin .8s linear infinite;z-index:2}
+.vinfo{padding:12px 14px}.vtitle{font-size:18px;font-weight:800;line-height:1.35}.vmeta{color:#666;font-size:13px;margin-top:6px}
+.vch{display:flex;align-items:center;gap:10px;margin:14px 0}.vav{width:36px;height:36px;border-radius:50%;background:#7b5cff;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800}
+.vsub{margin-left:auto;background:#111;color:#fff;border-radius:18px;padding:8px 14px;font-size:14px}
+.vrel{display:flex;gap:10px;margin-top:14px;font-size:14px;align-items:center}.vrel small{color:#777}.vrt{position:relative;width:150px;aspect-ratio:16/9;border-radius:10px;overflow:hidden;background:#000;flex-shrink:0}
+.vcm{background:#f2f2f2;border-radius:12px;padding:12px;font-size:13px;color:#333}.vcm span{display:block;margin-top:6px;color:#555}
+.revw{position:absolute;inset:0;background:linear-gradient(160deg,#e0f2ff,#f6fbff);color:#111;text-align:center;display:flex;flex-direction:column;align-items:center}
+.revw .bh{padding-top:50px;font-size:24px}
+.rgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:86%;max-width:380px;margin-top:24px}
+.rb{padding:20px 8px;border-radius:16px;border:0;background:#fff;box-shadow:0 4px 0 #c9d8e8;font-size:16px;font-weight:800;color:#234;font-family:inherit;pointer-events:none}
+.rb.win{background:#2b7bff;color:#fff;box-shadow:0 4px 0 #1a4fb0}
+.rb.prs{transform:translateY(3px);box-shadow:none;filter:brightness(.85)}
+.rcnt{margin-top:20px;color:#678;font-size:14px}
+.finger{position:fixed;width:44px;height:44px;margin:-22px;border-radius:50%;background:#ff3d7f55;border:3px solid #ff3d7f;pointer-events:none;z-index:9;opacity:0}
+.finger.tap{animation:ftap .5s ease-out}
+@keyframes ftap{0%{opacity:1;transform:scale(.6)}100%{opacity:0;transform:scale(1.4)}}
+.shk-none .mwrap,.shk-none h1{animation:none!important}
+.shk-weak .mwrap,.shk-weak h1{animation:shake2 .08s linear infinite!important}
+@keyframes shake2{0%{translate:0 0}50%{translate:-3px 2px}}
+.nofl{animation:none!important;background:#000!important}
+details.adv summary{cursor:pointer;font-weight:800;font-size:15px;padding:14px 0 4px;list-style:none}
+details.adv summary::after{content:" ▾";color:var(--mut)}
+
+.evp{position:absolute;inset:0;background:#f4f5f7;color:#191f28;overflow:hidden}
+.evtop{display:flex;justify-content:space-between;align-items:center;padding:14px 56px 14px 16px;background:#fff;font-size:16px;border-bottom:1px solid #eee}.evtop span{color:#8b95a1;font-size:14px}
+.evhero{background:linear-gradient(160deg,#3182f6,#1b64da);color:#fff;padding:22px 20px 26px;text-align:center}
+.evtag{display:inline-block;background:rgba(255,255,255,.2);border-radius:20px;padding:5px 12px;font-size:12px;font-weight:700}
+.evh1{font-size:24px;font-weight:800;margin-top:12px}.evh2{font-size:14px;opacity:.85;margin-top:6px}
+.gcard{position:relative;margin:20px auto 0;width:78%;max-width:300px;aspect-ratio:1.6;border-radius:16px;background:linear-gradient(135deg,#ffe08a,#ffb84d 55%,#ff9a3c);color:#3a2300;text-align:left;padding:16px 18px;box-shadow:0 14px 30px rgba(0,0,0,.25);overflow:hidden}
+.gcard:after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.45) 45%,transparent 60%);animation:shine 2.6s infinite}
+@keyframes shine{from{transform:translateX(-100%)}to{transform:translateX(100%)}}
+.gcl{font-size:11px;font-weight:800;letter-spacing:2px;opacity:.7}.gca{font-size:34px;font-weight:900;margin-top:18px}.gca small{font-size:18px;margin-left:2px}.gcn{font-size:13px;font-weight:700;margin-top:2px}
+.gcc{position:absolute;right:16px;top:14px;width:34px;height:26px;border-radius:5px;background:linear-gradient(135deg,#d9b25c,#f7e3a3)}
+.evinfo{display:flex;background:#fff;margin:14px;border-radius:14px;padding:14px 4px}.evinfo div{flex:1;text-align:center;border-right:1px solid #f0f0f0}.evinfo div:last-child{border:0}
+.evinfo span{display:block;font-size:11px;color:#8b95a1}.evinfo b{display:block;font-size:15px;margin-top:4px;font-variant-numeric:tabular-nums}
+.evnote{margin:0 18px;font-size:11px;color:#8b95a1;line-height:1.7}
+.evp .rbtn{background:#3182f6;box-shadow:0 6px 18px rgba(49,130,246,.4);border-radius:14px;padding:16px 0;width:calc(100% - 32px);font-size:17px}
+.bankbg{position:absolute;inset:0;background:#f2f4f6;color:#191f28;padding:16px}
+.bkh{font-size:20px;padding:4px 2px 16px}
+.bkcard{background:#fff;border-radius:18px;padding:20px}.bkcard span{font-size:13px;color:#8b95a1}.bkcard b{display:block;font-size:26px;margin:6px 0;letter-spacing:2px}.bkcard small{color:#3182f6;font-size:12px}
+.bkrow{height:62px;background:#fff;border-radius:16px;margin-top:12px}.bkrow.short{width:60%}
+.sheetdim{position:absolute;inset:0;background:rgba(0,0,0,.45)}
+.sheet{position:absolute;left:0;right:0;bottom:0;background:#fff;color:#191f28;border-radius:24px 24px 0 0;padding:10px 20px 18px;display:flex;flex-direction:column;align-items:center;animation:up .35s cubic-bezier(.2,.8,.2,1)}
+@keyframes up{from{transform:translateY(100%)}to{transform:none}}
+.shg{width:40px;height:4px;border-radius:2px;background:#d1d6db;margin-bottom:16px}
+.sht{font-size:19px;font-weight:800}.shs{font-size:14px;color:#6b7684;margin-top:6px;text-align:center}
+.sheet .fpad{margin-top:22px;width:110px;height:110px;box-shadow:none;background:#f2f6ff}
+.sheet .fptx{font-size:15px;font-weight:600;color:#6b7684;margin-top:14px}
+.sheet .fimg{max-height:20vh}
+.shc{margin-top:16px;color:#3182f6;font-weight:700;font-size:15px;padding:8px 20px}
+.kbban{background:linear-gradient(135deg,#ff7a00,#ff3d3d);color:#fff;padding:30px 22px 26px;position:relative;overflow:hidden}
+.kbban:before{content:"";position:absolute;right:-40px;top:-40px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,.12)}
+.kbban small{font-size:12px;font-weight:800;letter-spacing:3px;opacity:.85}.kbban b{display:block;font-size:30px;font-weight:900;margin-top:8px;line-height:1.2}.kbban span{display:block;margin-top:10px;font-size:13px;opacity:.9}
+.gacha{background:radial-gradient(circle at 50% 0,#3b1d5e,#120a20)!important;color:#fff!important}
+.gacha .bp{color:#c9b8e8}
+.gm{background:linear-gradient(180deg,#d4202f,#8e0f19)!important;border:3px solid #ffcf4a;position:relative;padding:22px 18px!important}
+.gm:before{content:"";position:absolute;inset:6px;border-radius:18px;background:radial-gradient(circle,#ffe17a 2px,transparent 3px) 0 0/16px 16px;opacity:.9;animation:lights .5s steps(2) infinite;pointer-events:none;mask:linear-gradient(#000,#000) content-box exclude,linear-gradient(#000,#000);-webkit-mask:linear-gradient(#000,#000) content-box xor,linear-gradient(#000,#000);padding:4px}
+@keyframes lights{50%{opacity:.35}}
+.gwin{background:linear-gradient(180deg,#fff,#eee 50%,#fff)!important;color:#111;box-shadow:inset 0 6px 10px rgba(0,0,0,.25),inset 0 -6px 10px rgba(0,0,0,.25)}
+.glist span{background:rgba(255,255,255,.1)!important;color:#e9dcff}
+.exb{position:absolute;top:calc(10px + env(safe-area-inset-top));right:10px;z-index:120;width:34px;height:34px;border-radius:50%;border:0;background:rgba(0,0,0,.35);color:#fff;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);opacity:.75;padding:0}
 .exitz{position:absolute;left:0;bottom:0;width:70px;height:70px;z-index:98}
 </style>
 </head>
@@ -162,82 +232,89 @@ canvas.full{position:absolute;inset:0;width:100%;height:100%;pointer-events:none
 
 /* ---------- 데이터 ---------- */
 const PRANKS = {
-  scare:{name:'깜짝 놀래키기',e:'👻',d:'집중할 때 괴물+비명',snd:'scream'},
-  crack:{name:'금 간 화면',e:'💥',d:'누르면 화면이 쩍',snd:'glass'},
-  hack:{name:'가짜 해킹',e:'💻',d:'폰 털리는 척',snd:'alarm'},
-  run:{name:'도망가는 버튼',e:'🏃',d:'절대 못 누르는 버튼',snd:'airhorn'},
-  fart:{name:'방귀 지문인식',e:'💨',d:'손가락 대면 뿌웅',snd:'fart'},
-  lie:{name:'거짓말 탐지기',e:'🕵️',d:'결과 몰래 조작',snd:'siren'},
-  ugly:{name:'못생김 측정기',e:'🤳',d:'AI가 외모 판정',snd:'airhorn',cam:1},
-  mirror:{name:'귀신 거울',e:'🪞',d:'셀카 뒤에 귀신이...',snd:'scream',cam:1},
-  quiet:{name:'조용히 챌린지',e:'🤫',d:'버티면 괴물 등장',snd:'scream',mic:1},
-  copy:{name:'따라쟁이',e:'🦜',d:'말하면 이상한 목소리로',snd:'none',mic:1},
-  kb:{name:'고장난 키보드',e:'⌨️',d:'뭘 쳐도 "나는 바보"',snd:'airhorn'},
-  lock:{name:'영원한 잠금',e:'🔒',d:'잠금 시간 무한 증가',snd:'alarm'},
-  gacha:{name:'절대 안 되는 뽑기',e:'🎰',d:'계속 꽝만 나옴',snd:'fart'},
+  scare:{name:'깜짝 놀래키기',e:'',d:'집중할 때 괴물+비명',snd:'scream'},
+  crack:{name:'금 간 화면',e:'',d:'누르면 화면이 쩍',snd:'glass'},
+  hack:{name:'가짜 해킹',e:'',d:'폰 털리는 척',snd:'alarm'},
+  run:{name:'도망가는 버튼',e:'',d:'절대 못 누르는 버튼',snd:'airhorn'},
+  fart:{name:'방귀 지문인식',e:'',d:'손가락 대면 뿌웅',snd:'fart'},
+  lie:{name:'거짓말 탐지기',e:'',d:'결과 몰래 조작',snd:'siren'},
+  ugly:{name:'못생김 측정기',e:'',d:'AI가 외모 판정',snd:'airhorn',cam:1},
+  mirror:{name:'귀신 거울',e:'',d:'셀카 뒤에 귀신이...',snd:'scream',cam:1},
+  quiet:{name:'조용히 챌린지',e:'',d:'버티면 괴물 등장',snd:'scream',mic:1},
+  copy:{name:'따라쟁이',e:'',d:'말하면 이상한 목소리로',snd:'none',mic:1},
+  kb:{name:'고장난 키보드',e:'',d:'뭘 쳐도 "나는 바보"',snd:'airhorn'},
+  lock:{name:'영원한 잠금',e:'',d:'잠금 시간 무한 증가',snd:'alarm'},
+  gacha:{name:'절대 안 되는 뽑기',e:'',d:'계속 꽝만 나옴',snd:'fart'},
+  buf:{name:'버퍼링 공포',e:'',d:'영상 보다가 괴물',snd:'scream'},
+  rev:{name:'거꾸로 화면',e:'',d:'누른 곳 반대가 눌림',snd:'airhorn'},
 };
-const SOUNDS = [['scream','😱 비명'],['glass','💥 유리 깨짐'],['fart','💨 방귀'],['boom','💣 폭발'],['siren','🚨 사이렌'],['airhorn','📯 에어혼'],['alarm','⏰ 경보음'],['none','🔇 없음'],['custom','🎤 내 소리 (파일·녹음)']];
+const SOUNDS = [['scream','비명'],['glass','유리 깨짐'],['fart','방귀'],['boom','폭발'],['siren','사이렌'],['airhorn','에어혼'],['alarm','경보음'],['none','없음'],['custom','내 소리 (파일·녹음)']];
 const HACK_LINES = `> {이름}의 휴대폰에 연결 중...
 > 보안 패턴 우회 성공
-> 카메라 권한 획득 📷
+> 카메라 권한 획득
 > 사진첩 스캔: 3,482장 발견
 > 카톡 대화 백업 중...
 > 검색 기록 복사 중... (헉)
-> 비밀 폴더 발견 🔓
+> 비밀 폴더 발견
 > 서버로 업로드 시작`;
 
 const PF = {
   scare:[
-    {k:'b',l:'함정 화면',t:'sel',o:[['cat','🔍 숨은 고양이 찾기'],['blur','📷 흐린 사진 선명하게'],['dot','👁 점 보고 집중하기'],['text','✏️ 직접 쓴 글']],d:'cat'},
+    {k:'b',l:'함정 화면',t:'sel',o:[['cat','숨은 고양이 찾기'],['blur','흐린 사진 선명하게'],['dot','점 보고 집중하기'],['text','직접 쓴 글']],d:'cat'},
     {k:'bt',l:'함정 제목 (비우면 기본 문구)',t:'text',d:''},
     {k:'bb',l:'함정 설명 (비우면 기본 문구)',t:'area',d:''},
     {k:'dl',l:'첫 터치 후 몇 초 뒤에 터질까',t:'num',min:-1,max:15,d:4},
-    {k:'mc',l:'괴물 색',t:'sel',o:[['gray','💀 시체색'],['red','🩸 피빨강'],['green','🧟 좀비초록'],['pale','👻 창백한 흰색']],d:'gray'},
+    {k:'mc',l:'괴물 색',t:'sel',o:[['gray','시체색'],['red','피빨강'],['green','좀비초록'],['pale','창백한 흰색']],d:'gray'},
     {k:'mt',l:'괴물 나올 때 큰 글자',t:'text',d:'으아아아악'},
   ],
   crack:[
-    {k:'bt',l:'미끼 제목',t:'text',d:'이 사진 진짜임? 🤯'},
+    {k:'bt',l:'미끼 제목',t:'text',d:'이 사진 진짜임?'},
     {k:'bb',l:'미끼 설명',t:'area',d:'화면을 눌러서 확대해보세요'},
     {k:'n',l:'몇 번 누르면 깨질까',t:'num',min:1,max:6,d:1},
-    {k:'ct',l:'깨진 뒤 뜨는 경고',t:'text',d:'⚠ 디스플레이 손상 감지'},
+    {k:'ct',l:'깨진 뒤 뜨는 경고 (비우면 안 뜸 · 비우는 게 더 진짜 같음)',t:'text',d:''},
   ],
   hack:[
     {k:'nm',l:'친구 이름',t:'text',d:'너'},
     {k:'ln',l:'해킹 문구 (한 줄에 하나, {이름}은 친구 이름으로 바뀜)',t:'area',d:HACK_LINES},
     {k:'du',l:'걸리는 시간 (초)',t:'num',min:5,max:40,d:14},
-    {k:'fx',l:'마지막 문구',t:'text',d:'업로드 완료 ✅'},
+    {k:'fx',l:'마지막 문구',t:'text',d:'업로드 완료'},
   ],
   run:[
-    {k:'bt',l:'제목',t:'text',d:'🎁 이벤트 당첨!'},
-    {k:'bb',l:'설명',t:'area',d:'아래 버튼을 눌러 문화상품권 5만원을 받으세요'},
+    {k:'bt',l:'제목',t:'text',d:'축하합니다! 당첨되셨어요'},
+    {k:'bb',l:'설명',t:'area',d:'아래 버튼을 눌러 상품을 받아가세요'},
     {k:'bn',l:'버튼 글자',t:'text',d:'지금 받기'},
+    {k:'sn',l:'상단 가게/사이트 이름',t:'text',d:'해피포인트몰'},
+    {k:'tg',l:'작은 태그',t:'text',d:'오늘 단 하루'},
+    {k:'pn',l:'상품 이름',t:'text',d:'문화상품권'},
+    {k:'pv',l:'상품 금액',t:'text',d:'50,000'},
     {k:'n',l:'몇 번 도망치고 잡힐까 (0 = 절대 안 잡힘)',t:'num',min:0,max:50,d:12},
     {k:'ct',l:'잡혔을 때 글자',t:'text',d:'축하합니다! 상품은... 없습니다 ㅋ'},
   ],
   fart:[
-    {k:'bt',l:'제목',t:'text',d:'🔒 지문 인증 필요'},
-    {k:'bb',l:'설명',t:'area',d:'본인 확인을 위해 아래에 손가락을 올려주세요'},
+    {k:'an',l:'뒤에 보이는 앱 이름',t:'text',d:'내 지갑'},
+    {k:'bt',l:'인증창 제목',t:'text',d:'생체 인증'},
+    {k:'bb',l:'설명',t:'area',d:'본인 확인을 위해 지문을 인식해 주세요'},
     {k:'n',l:'방귀 몇 번 뒤에 공개할까',t:'num',min:1,max:10,d:3},
-    {k:'ct',l:'방귀 나올 때 글자',t:'text',d:'💨 뿌우우웅 감지됨'},
+    {k:'ct',l:'방귀 나올 때 글자',t:'text',d:'뿌우우웅 감지됨'},
   ],
   lie:[
     {k:'bt',l:'제목',t:'text',d:'AI 거짓말 탐지기'},
     {k:'q',l:'질문 (비우면 안 보임)',t:'text',d:''},
-    {k:'md',l:'결과 정하기',t:'sel',o:[['secret','🤫 몰래 조작 (화면 왼쪽 위=진실, 오른쪽 위=거짓)'],['lie','항상 거짓'],['truth','항상 진실'],['rnd','랜덤']],d:'secret'},
-    {k:'tt',l:'진실일 때 글자',t:'text',d:'✅ 진실입니다'},
-    {k:'lt',l:'거짓일 때 글자',t:'text',d:'🚨 거짓말 감지!!'},
+    {k:'md',l:'결과 정하기',t:'sel',o:[['secret','몰래 조작 (화면 왼쪽 위=진실, 오른쪽 위=거짓)'],['lie','항상 거짓'],['truth','항상 진실'],['rnd','랜덤']],d:'secret'},
+    {k:'tt',l:'진실일 때 글자',t:'text',d:'진실입니다'},
+    {k:'lt',l:'거짓일 때 글자',t:'text',d:'거짓말 감지!!'},
   ],
   ugly:[
-    {k:'bt',l:'제목',t:'text',d:'AI 외모 분석기 📸'},
+    {k:'bt',l:'제목',t:'text',d:'AI 외모 분석기'},
     {k:'bb',l:'설명',t:'area',d:'얼굴을 화면에 맞추고 측정 버튼을 눌러주세요'},
     {k:'cam',l:'카메라로 진짜 얼굴 찍기 (끄면 사진/이모지로 대신)',t:'chk',d:1},
     {k:'du',l:'측정 시간 (초)',t:'num',min:3,max:15,d:6},
     {k:'pc',l:'결과 퍼센트',t:'text',d:'99.8'},
     {k:'rs',l:'결과 제목',t:'text',d:'못생김 지수'},
-    {k:'rd',l:'결과 설명',t:'text',d:'상위 0.1% · 국가 지정 문화재급 😱'},
+    {k:'rd',l:'결과 설명',t:'text',d:'상위 0.1% · 국가 지정 문화재급'},
   ],
   mirror:[
-    {k:'bt',l:'제목',t:'text',d:'✨ 뷰티 셀카 필터'},
+    {k:'bt',l:'제목',t:'text',d:'뷰티 셀카 필터'},
     {k:'bb',l:'설명',t:'area',d:'얼굴을 화면 가운데에 맞추고 가만히 있어주세요'},
     {k:'cam',l:'카메라로 친구 얼굴 비추기',t:'chk',d:1},
     {k:'sl',l:'귀신이 다 나타나고 덮칠 때까지 (초)',t:'num',min:5,max:40,d:12},
@@ -245,27 +322,29 @@ const PF = {
     {k:'mt',l:'덮칠 때 큰 글자',t:'text',d:'뒤 돌아보지 마'},
   ],
   quiet:[
-    {k:'bt',l:'제목',t:'text',d:'🤫 조용히 챌린지'},
+    {k:'bt',l:'제목',t:'text',d:'조용히 챌린지'},
     {k:'bb',l:'설명 ({초}는 시간으로 바뀜)',t:'area',d:'{초}초 동안 아무 소리도 안 내면 상품 증정!\n숨소리도 조심하세요'},
-    {k:'pz',l:'상품',t:'text',d:'🎁 치킨 기프티콘'},
+    {k:'pz',l:'상품',t:'text',d:'치킨 기프티콘'},
     {k:'sec',l:'버텨야 하는 시간 (초)',t:'num',min:5,max:30,d:10},
     {k:'at',l:'몇 초 남았을 때 괴물 등장',t:'num',min:0,max:10,d:2},
     {k:'sn',l:'소리 감도 (높을수록 작은 소리에도 실패)',t:'num',min:1,max:10,d:6},
-    {k:'mc',l:'괴물 색',t:'sel',o:[['gray','💀 시체색'],['red','🩸 피빨강'],['green','🧟 좀비초록'],['pale','👻 창백한 흰색']],d:'gray'},
+    {k:'mc',l:'괴물 색',t:'sel',o:[['gray','시체색'],['red','피빨강'],['green','좀비초록'],['pale','창백한 흰색']],d:'gray'},
     {k:'mt',l:'괴물 나올 때 큰 글자',t:'text',d:'으아아아악'},
   ],
   copy:[
-    {k:'bt',l:'제목',t:'text',d:'🦜 따라쟁이 앵무새'},
+    {k:'bt',l:'제목',t:'text',d:'따라쟁이 앵무새'},
     {k:'bb',l:'설명',t:'area',d:'앵무새한테 말을 걸어보세요. 똑같이 따라 해요!'},
-    {k:'voc',l:'따라 하는 목소리',t:'sel',o:[['chip','🐿 다람쥐'],['monster','👹 괴물'],['robot','🤖 로봇'],['baby','👶 아기'],['slow','🐢 느릿느릿']],d:'chip'},
+    {k:'voc',l:'따라 하는 목소리',t:'sel',o:[['chip','다람쥐'],['monster','괴물'],['robot','로봇'],['baby','아기'],['slow','느릿느릿']],d:'chip'},
     {k:'n',l:'몇 번 따라 하고 끝낼까 (0 = 계속)',t:'num',min:0,max:20,d:0},
   ],
   kb:[
-    {k:'bt',l:'제목',t:'text',d:'🎉 치킨 이벤트 응모'},
+    {k:'bt',l:'제목',t:'text',d:'치킨 이벤트 응모'},
     {k:'bb',l:'설명',t:'area',d:'이름을 입력하면 추첨을 통해 치킨을 드려요!'},
+    {k:'bh',l:'배너 큰 글자',t:'text',d:'치킨 1,000마리 쏜다'},
+    {k:'bd',l:'배너 작은 글자',t:'text',d:'응모 기간 · 오늘 자정까지'},
     {k:'q',l:'입력칸 질문',t:'text',d:'이름을 입력하세요'},
     {k:'rp',l:'뭘 쳐도 대신 써질 문장',t:'text',d:'나는 바보입니다'},
-    {k:'dn',l:'응모 후 문구',t:'text',d:'응모 완료! 전체 공개 게시판에 등록되었습니다 📢'},
+    {k:'dn',l:'응모 후 문구',t:'text',d:'응모 완료! 전체 공개 게시판에 등록되었습니다'},
   ],
   lock:[
     {k:'lt',l:'잠금 화면 제목',t:'text',d:'잠금 해제'},
@@ -274,25 +353,63 @@ const PF = {
     {k:'ft',l:'마지막 문구',t:'text',d:'기기가 영구 잠금되었습니다'},
   ],
   gacha:[
-    {k:'bt',l:'제목',t:'text',d:'🎰 행운의 뽑기'},
+    {k:'bt',l:'제목',t:'text',d:'행운의 뽑기'},
     {k:'bb',l:'설명',t:'area',d:'꽝 없는 뽑기! (아마도)'},
-    {k:'pr',l:'상품 목록 (한 줄에 하나)',t:'area',d:'🍗 치킨\n📱 아이폰\n💵 10만원\n🎮 닌텐도\n🍕 피자'},
+    {k:'pr',l:'상품 목록 (한 줄에 하나)',t:'area',d:'치킨\n아이폰\n10만원\n닌텐도\n피자'},
     {k:'ls',l:'꽝 글자',t:'text',d:'꽝'},
     {k:'n',l:'뽑기 기회 (다 쓰면 공개)',t:'num',min:1,max:15,d:5},
-    {k:'ft',l:'마지막 문구',t:'text',d:'🎉 축하합니다! [꽝]에 당첨되셨습니다!'},
+    {k:'ft',l:'마지막 문구',t:'text',d:'축하합니다! [꽝]에 당첨되셨습니다!'},
+  ],
+  buf:[
+    {k:'vt',l:'영상 제목',t:'text',d:'지금 난리난 폐가 영상 (실제상황)'},
+    {k:'ch',l:'채널 이름',t:'text',d:'이슈탐험대'},
+    {k:'vw',l:'조회수 줄',t:'text',d:'조회수 238만회 · 3시간 전'},
+    {k:'vl',l:'영상 길이 표시',t:'text',d:'8:42'},
+    {k:'cm',l:'베스트 댓글',t:'text',d:'1:24 이거 진짜임?? 소름 돋았다'},
+    {k:'ps',l:'재생되는 척하는 시간',t:'num',min:0,max:10,d:2},
+    {k:'bu',l:'버퍼링 시간',t:'num',min:2,max:30,d:7},
+    {k:'hq',l:'"화질 자동 조정 중" 알림',t:'chk',d:1},
+    {k:'gl',l:'지지직 노이즈 시간',t:'num',min:0,max:5,d:1.5,step:.5},
+    {k:'mc',l:'괴물 색',t:'sel',o:[['gray','시체색'],['red','피빨강'],['green','좀비초록'],['pale','창백한 흰색']],d:'gray'},
+    {k:'mt',l:'괴물 나올 때 큰 글자',t:'text',d:'보지 말랬지'},
+  ],
+  rev:[
+    {k:'bt',l:'제목',t:'text',d:'출석체크 보상'},
+    {k:'bb',l:'설명',t:'area',d:'파란 버튼을 눌러 보상을 받으세요!'},
+    {k:'bn',l:'진짜 버튼 글자',t:'text',d:'보상 받기'},
+    {k:'nb',l:'버튼 개수',t:'num',min:1,max:8,d:4},
+    {k:'dc',l:'가짜 버튼 글자 (한 줄에 하나)',t:'area',d:'취소\n나중에\n닫기\n광고 보기\n신고하기\n로그아웃\n삭제'},
+    {k:'md',l:'반전 방식',t:'sel',o:[['step','점점 심해짐 (좌우→상하→랜덤)'],['lr','↔ 좌우 반전'],['ud','↕ 상하 반전'],['all','상하좌우 반전'],['rnd','완전 랜덤']],d:'step'},
+    {k:'s1',l:'점점 심해짐: 몇 번마다 단계 올라갈까',t:'num',min:1,max:10,d:3},
+    {k:'fg',l:'실제로 눌린 위치 표시',t:'chk',d:1},
+    {k:'sc',l:'시도 횟수 표시',t:'chk',d:1},
+    {k:'tm',l:'빈 곳 눌렀을 때 놀리는 말 (한 줄에 하나)',t:'area',d:'어디 누르는 거야 ㅋ\n손가락 고장남?\n한 번 더!\n거의 다 왔어'},
+    {k:'n',l:'몇 번 누르면 공개할까 (0 = 끝없이)',t:'num',min:0,max:40,d:12},
+    {k:'ft',l:'마지막 문구',t:'text',d:'손가락이 말을 안 듣죠?'},
   ],
 };
-const PHOTO_USE = {scare:'괴물 대신 내 사진이 튀어나옴',crack:'미끼 사진으로 씀',hack:'마지막에 "유출된 사진"으로 뜸',run:'상품 사진처럼 버튼 위에 뜸',fart:'방귀 뀔 때 같이 뜸',lie:'거짓말 판정 때 같이 뜸',ugly:'카메라 끄면 이 사진으로 분석하는 척',mirror:'귀신 얼굴로 씀',quiet:'괴물 대신 튀어나옴',copy:'앵무새 대신 이 사진이 말함',kb:'이벤트 배너 사진',lock:'잠금화면 배경',gacha:'꽝 당첨 화면에 뜸'};
+const PHOTO_USE = {scare:'괴물 대신 내 사진이 튀어나옴',crack:'미끼 사진으로 씀',hack:'마지막에 "유출된 사진"으로 뜸',run:'상품 사진처럼 버튼 위에 뜸',fart:'방귀 뀔 때 같이 뜸',lie:'거짓말 판정 때 같이 뜸',ugly:'카메라 끄면 이 사진으로 분석하는 척',mirror:'귀신 얼굴로 씀',quiet:'괴물 대신 튀어나옴',copy:'앵무새 대신 이 사진이 말함',kb:'이벤트 배너 사진',lock:'잠금화면 배경',gacha:'꽝 당첨 화면에 뜸',buf:'영상 썸네일 / 괴물 대신 튀어나옴',rev:'버튼 위에 배너로 뜸'};
 const COMMON = [
   {k:'up',l:'내 사진 쓰기',t:'chk',d:0},
   {k:'s',l:'터질 때 소리',t:'sel',o:SOUNDS,d:null},
   {k:'sp',l:'터질 때 폰이 말할 문장 (비우면 안 함)',t:'text',d:''},
-  {k:'vo',l:'말하는 목소리',t:'sel',o:[['monster','👹 괴물 (낮고 느리게)'],['normal','🙂 보통'],['chip','🐿 다람쥐 (높고 빠르게)'],['robot','🤖 로봇']],d:'monster'},
+  {k:'vo',l:'말하는 목소리',t:'sel',o:[['monster','괴물 (낮고 느리게)'],['normal','보통'],['chip','다람쥐 (높고 빠르게)'],['robot','로봇']],d:'monster'},
   {k:'v',l:'볼륨',t:'num',min:1,max:10,d:10},
   {k:'vb',l:'진동',t:'chk',d:1},
   {k:'r',l:'마지막에 "속았지" 공개 화면',t:'chk',d:null},
   {k:'rt',l:'공개 문구',t:'text',d:'속았지? ㅋㅋㅋㅋ'},
   {k:'ti',l:'브라우저 탭 제목 (비우면 그대로)',t:'text',d:''},
+  {k:'exb',l:'나가기(X) 버튼',t:'sel',o:[['always','항상 보이기'],['local','내 폰에서 실행할 때만'],['none','숨기기 (왼쪽 아래 1초 꾹)']],d:'always'},
+  {k:'rvs',l:'공개 화면 작은 글자',t:'text',d:'장난이었어'},
+  {k:'rvd',l:'공개 화면 뜨는 시간 (0 = 장난마다 기본값)',t:'num',min:0,max:10,d:0,step:.5},
+  {k:'rvb',l:'공개 화면에 "한 번 더" 버튼',t:'chk',d:1},
+  {k:'srp',l:'소리 반복 횟수',t:'num',min:1,max:5,d:1},
+  {k:'spd',l:'말하기 시작 딜레이',t:'num',min:0,max:3,d:0.5,step:.5},
+  {k:'vst',l:'진동 세기',t:'sel',o:[['weak','약하게'],['mid','보통'],['strong','세게']],d:'mid'},
+  {k:'msz',l:'괴물 크기',t:'num',min:50,max:150,d:100,step:10},
+  {k:'shk',l:'괴물 흔들림',t:'sel',o:[['strong','세게'],['weak','약하게'],['none','없음']],d:'strong'},
+  {k:'fla',l:'괴물 나올 때 화면 번쩍임',t:'chk',d:1},
+  {k:'fxs',l:'괴물 큰 글자 크기',t:'num',min:50,max:200,d:100,step:10},
 ];
 const fieldsOf = p => PF[p].concat(COMMON);
 function defOf(p,k){
@@ -302,6 +419,154 @@ function defOf(p,k){
 }
 function defaults(p){ const o={k:p}; fieldsOf(p).forEach(f=>o[f.k]=defOf(p,f.k)); return o; }
 
+/* ---------- 그림 (이모지 대신 직접 그림) ---------- */
+function rng(seed){ let a=seed>>>0; return ()=>{ a|=0; a=a+0x6D2B79F5|0; let t=Math.imul(a^a>>>15,1|a); t=t+Math.imul(t^t>>>7,61|t)^t; return ((t^t>>>14)>>>0)/4294967296; }; }
+function grain(x,w,h,amt){ const im=x.getImageData(0,0,w,h), d=im.data; for(let i=0;i<d.length;i+=4){ const n=(Math.random()-.5)*amt; d[i]+=n; d[i+1]+=n; d[i+2]+=n; } x.putImageData(im,0,0); }
+function vignette(x,w,h,a){ const g=x.createRadialGradient(w/2,h/2,Math.min(w,h)*.3,w/2,h/2,Math.max(w,h)*.75); g.addColorStop(0,'rgba(0,0,0,0)'); g.addColorStop(1,`rgba(0,0,0,${a})`); x.fillStyle=g; x.fillRect(0,0,w,h); }
+function ridge(x,w,h,base,amp,freq,R,col){ x.fillStyle=col; x.beginPath(); x.moveTo(0,h); let ph=R()*10; for(let i=0;i<=w;i+=4){ const y=base+Math.sin(i*freq+ph)*amp+Math.sin(i*freq*2.7+ph*2)*amp*.35; x.lineTo(i,y); } x.lineTo(w,h); x.fill(); }
+function pine(x,cx,by,hgt,col,shade){ const w=hgt*.42; x.fillStyle='#4a3424'; x.fillRect(cx-hgt*.03,by-hgt*.12,hgt*.06,hgt*.12);
+  for(let k=0;k<3;k++){ const top=by-hgt+k*hgt*.22, bot=by-hgt*.1-(2-k)*hgt*.12, ww=w*(.55+k*.25);
+    x.fillStyle=col; x.beginPath(); x.moveTo(cx,top); x.lineTo(cx-ww,bot); x.lineTo(cx+ww,bot); x.fill();
+    x.fillStyle=shade; x.beginPath(); x.moveTo(cx,top); x.lineTo(cx+ww,bot); x.lineTo(cx+ww*.2,bot); x.fill(); } }
+function roundTree(x,cx,by,s,R,c1,c2){ x.fillStyle='#5a3d28'; x.fillRect(cx-s*.06,by-s*.5,s*.12,s*.5);
+  for(let i=0;i<6;i++){ x.fillStyle=i<3?c2:c1; x.beginPath(); x.arc(cx+(R()-.5)*s*.6,by-s*.75+(R()-.5)*s*.4,s*(.25+R()*.15),0,7); x.fill(); } }
+function drawScene(cv,kind,seed=7){
+  const W=cv.width=kind==='forest'?900:960, H=cv.height=kind==='forest'?1100:540, x=cv.getContext('2d'), R=rng(seed);
+  if(kind==='forest'){
+    let g=x.createLinearGradient(0,0,0,H*.4); g.addColorStop(0,'#8fd3ff'); g.addColorStop(1,'#e6f6ff'); x.fillStyle=g; x.fillRect(0,0,W,H);
+    x.fillStyle='#fff6c9'; x.beginPath(); x.arc(W*.8,H*.09,60,0,7); x.fill();
+    ridge(x,W,H,H*.28,30,.006,R,'#a6d49a'); ridge(x,W,H,H*.36,24,.009,R,'#7fbf6e'); ridge(x,W,H,H*.44,18,.012,R,'#5fa856');
+    const items=[]; for(let i=0;i<170;i++) items.push([R()*W, H*.36+Math.pow(R(),.8)*H*.66, R()]);
+    items.sort((a,b)=>a[1]-b[1]);
+    items.forEach(([cx,by,t])=>{ const s=18+(by/H)*90;
+      if(t<.38) pine(x,cx,by,s*1.5,['#2f7a3b','#3c8f45','#276b33'][(t*30|0)%3],'rgba(0,0,0,.18)');
+      else if(t<.62) roundTree(x,cx,by,s*1.2,R,'#4f9e48','#3d863a');
+      else if(t<.76){ x.fillStyle='#8d949a'; x.beginPath(); x.ellipse(cx,by,s*.5,s*.32,0,0,7); x.fill(); x.fillStyle='#b6bcc1'; x.beginPath(); x.ellipse(cx-s*.12,by-s*.1,s*.25,s*.13,0,0,7); x.fill(); }
+      else if(t<.9){ x.fillStyle='#3f8f3a'; for(let k=0;k<4;k++){ x.beginPath(); x.arc(cx+(k-1.5)*s*.22,by-s*.15,s*.22,0,7); x.fill(); } }
+      else { const cs=['#ff6b8b','#ffd23f','#ffffff','#b07cff']; x.fillStyle=cs[(t*100|0)%4]; for(let k=0;k<5;k++){ x.beginPath(); x.arc(cx+Math.cos(k*1.26)*s*.08,by-s*.1+Math.sin(k*1.26)*s*.08,s*.06,0,7); x.fill(); } x.fillStyle='#f9a826'; x.beginPath(); x.arc(cx,by-s*.1,s*.05,0,7); x.fill(); }
+    });
+    vignette(x,W,H,.15);
+  } else if(kind==='lake'){
+    let g=x.createLinearGradient(0,0,0,H*.55); g.addColorStop(0,'#2b2e6b'); g.addColorStop(.5,'#c2577a'); g.addColorStop(1,'#ffb36b'); x.fillStyle=g; x.fillRect(0,0,W,H*.55);
+    x.fillStyle='#ffe7b0'; x.beginPath(); x.arc(W*.5,H*.5,46,0,7); x.fill();
+    const mtn=(col,base,amp,sh)=>{ x.fillStyle=col; x.beginPath(); x.moveTo(0,H*.55); let px=0; while(px<W){ const pk=px+60+R()*140; x.lineTo((px+pk)/2,base-amp*(.5+R()*.5)); x.lineTo(pk,base); px=pk; } x.lineTo(W,H*.55); x.fill(); };
+    mtn('#5b4a7a',H*.5,H*.32); mtn('#3b3157',H*.55,H*.22);
+    x.save(); x.translate(0,H*1.1); x.scale(1,-1); x.globalAlpha=.45; x.drawImage(cv,0,H*.0,W,H*.55,0,H*.0,W,H*.55); x.restore();
+    g=x.createLinearGradient(0,H*.55,0,H); g.addColorStop(0,'rgba(40,40,90,.35)'); g.addColorStop(1,'rgba(10,10,30,.85)'); x.fillStyle=g; x.fillRect(0,H*.55,W,H*.45);
+    x.strokeStyle='rgba(255,220,170,.5)'; for(let i=0;i<14;i++){ const y=H*.58+i*12, w=80-i*4; x.lineWidth=2; x.beginPath(); x.moveTo(W*.5-w,y); x.lineTo(W*.5+w,y); x.stroke(); }
+    for(let i=0;i<30;i++) pine(x,R()*W,H*.6+R()*H*.05,40+R()*50,'#141225','#0d0b1a');
+  } else if(kind==='night'){
+    let g=x.createLinearGradient(0,0,0,H); g.addColorStop(0,'#04060f'); g.addColorStop(.7,'#13203a'); g.addColorStop(1,'#2a2333'); x.fillStyle=g; x.fillRect(0,0,W,H);
+    for(let i=0;i<220;i++){ x.fillStyle=`rgba(255,255,255,${R()*.8})`; x.fillRect(R()*W,R()*H*.7,R()*1.8,R()*1.8); }
+    const ox=W*(.45+R()*.2), oy=H*.3;
+    let lg=x.createLinearGradient(0,oy,0,H); lg.addColorStop(0,'rgba(180,255,230,.35)'); lg.addColorStop(1,'rgba(180,255,230,0)'); x.fillStyle=lg; x.beginPath(); x.moveTo(ox-20,oy); x.lineTo(ox+20,oy); x.lineTo(ox+140,H); x.lineTo(ox-140,H); x.fill();
+    let og=x.createRadialGradient(ox,oy,0,ox,oy,120); og.addColorStop(0,'rgba(220,255,245,1)'); og.addColorStop(.12,'rgba(160,255,225,.9)'); og.addColorStop(1,'rgba(160,255,225,0)'); x.fillStyle=og; x.beginPath(); x.arc(ox,oy,120,0,7); x.fill();
+    x.fillStyle='#0b0f18'; x.beginPath(); x.ellipse(ox,oy+4,58,12,0,0,7); x.fill(); x.fillStyle='#d8fff3'; for(let i=-2;i<=2;i++){ x.beginPath(); x.arc(ox+i*20,oy+8,3,0,7); x.fill(); }
+    let px=0; while(px<W){ const bw=30+R()*70, bh=H*(.12+R()*.3); x.fillStyle='#07090e'; x.fillRect(px,H-bh,bw,bh); for(let wy=H-bh+8;wy<H-6;wy+=12) for(let wx=px+5;wx<px+bw-6;wx+=10) if(R()<.25){ x.fillStyle=`rgba(255,${200+R()*40|0},120,${.5+R()*.4})`; x.fillRect(wx,wy,4,6); } px+=bw+2; }
+    grain(x,W,H,28); vignette(x,W,H,.6);
+  } else if(kind==='house'){
+    let g=x.createLinearGradient(0,0,0,H); g.addColorStop(0,'#0b0f14'); g.addColorStop(.6,'#1c2520'); g.addColorStop(1,'#0a0c0a'); x.fillStyle=g; x.fillRect(0,0,W,H);
+    x.fillStyle='rgba(230,235,220,.9)'; x.beginPath(); x.arc(W*(.2+R()*.6),H*.18,34,0,7); x.fill();
+    for(let i=0;i<40;i++) pine(x,R()*W,H*.72+R()*H*.1,120+R()*160,'#0a0f0c','#060806');
+    const hx=W*(.35+R()*.3), hy=H*.78, hw=230, hh=150;
+    x.fillStyle='#050605'; x.fillRect(hx-hw/2,hy-hh,hw,hh); x.beginPath(); x.moveTo(hx-hw/2-20,hy-hh); x.lineTo(hx-30,hy-hh-100); x.lineTo(hx+hw/2+20,hy-hh); x.fill(); x.fillRect(hx+50,hy-hh-80,22,60);
+    const wg=x.createRadialGradient(hx-50,hy-90,0,hx-50,hy-90,60); wg.addColorStop(0,'rgba(255,170,80,.9)'); wg.addColorStop(1,'rgba(255,170,80,0)'); x.fillStyle=wg; x.fillRect(hx-110,hy-150,120,120);
+    x.fillStyle='#ffb35a'; x.fillRect(hx-62,hy-104,24,30); x.fillStyle='#050605'; x.fillRect(hx-51,hy-104,2,30); x.fillRect(hx-62,hy-90,24,2);
+    x.fillStyle='#1a0d06'; x.fillRect(hx+20,hy-70,34,70);
+    for(let i=0;i<5;i++){ const fg=x.createLinearGradient(0,H*.65+i*20,0,H); fg.addColorStop(0,'rgba(170,190,180,0)'); fg.addColorStop(1,'rgba(170,190,180,.12)'); x.fillStyle=fg; x.fillRect(0,H*.6,W,H*.4); }
+    grain(x,W,H,30); vignette(x,W,H,.75);
+  }
+  return cv;
+}
+function sceneTag(kind,seed,cls,style=''){ return `<canvas class="${cls}" data-scene="${kind}" data-seed="${seed}" style="${style}"></canvas>`; }
+function paintScenes(root){ (root||document).querySelectorAll('canvas[data-scene]').forEach(c=>{ if(!c.dataset.done){ drawScene(c,c.dataset.scene,+c.dataset.seed); c.dataset.done=1; } }); }
+
+const PARROT_SVG=`<svg viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg">
+ <path d="M20 200 Q100 185 190 196" stroke="#6b4423" stroke-width="10" stroke-linecap="round" fill="none"/>
+ <path d="M96 150 L80 215 L96 205 L104 218 L112 150Z" fill="#1f7ae0"/><path d="M104 150 L118 214 L108 206Z" fill="#e8312f"/>
+ <ellipse cx="104" cy="118" rx="44" ry="56" fill="#2fbf4a"/>
+ <path d="M70 100 Q60 150 96 176 Q120 150 112 104Z" fill="#1d9a37"/><path d="M76 120 Q72 150 94 168" stroke="#167a2b" stroke-width="3" fill="none"/>
+ <circle cx="112" cy="62" r="36" fill="#34cc52"/>
+ <path d="M140 54 Q170 56 168 82 Q160 98 142 88 Q150 76 138 70Z" fill="#ffb020"/><path d="M142 86 Q156 92 162 84" stroke="#c97a00" stroke-width="3" fill="none"/>
+ <circle cx="126" cy="56" r="11" fill="#fff"/><circle cx="129" cy="57" r="6" fill="#111"/><circle cx="131" cy="54" r="2" fill="#fff"/>
+ <path d="M86 40 Q96 18 112 26" stroke="#2aa846" stroke-width="7" stroke-linecap="round" fill="none"/>
+ <path d="M90 196 l-6 10 M98 196 l0 12 M114 196 l6 10" stroke="#555" stroke-width="4" stroke-linecap="round"/></svg>`;
+const FACE_SVG=`<svg viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg" style="width:70%;opacity:.35"><ellipse cx="100" cy="100" rx="58" ry="72" fill="none" stroke="#fff" stroke-width="4" stroke-dasharray="10 8"/><path d="M20 258 Q30 190 100 186 Q170 190 180 258" fill="none" stroke="#fff" stroke-width="4" stroke-dasharray="10 8"/></svg>`;
+const FP_SVG=c=>`<svg width="84" height="84" viewBox="0 0 100 100" fill="none" stroke="${c}" stroke-width="4" stroke-linecap="round"><path d="M30 78 C26 60 28 40 50 36 C72 40 74 60 70 78"/><path d="M38 84 C34 64 36 48 50 46 C64 48 66 64 62 84"/><path d="M50 56 C50 68 50 80 48 90"/><path d="M22 66 C18 40 30 22 50 20 C70 22 82 40 78 66"/><path d="M16 50 C20 24 36 10 50 10 C64 10 80 24 84 50"/></svg>`;
+const I_SVG={
+ scare:'<path d="M6 21V10a6 6 0 0 1 12 0v11l-2-2-2 2-2-2-2 2-2-2z"/><circle cx="9.5" cy="11" r="1"/><circle cx="14.5" cy="11" r="1"/>',
+ crack:'<rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 9l-3 3 4 1-3 5M12 9l4-2M13 13l3 2"/>',
+ hack:'<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 10l3 2-3 2M12 15h5"/>',
+ run:'<rect x="9" y="14" width="12" height="6" rx="3"/><path d="M3 15h4M4 18h3M5 12h4"/>',
+ fart:'<path d="M3 8h10a3 3 0 1 0-3-3M3 12h15a3 3 0 1 1-3 3M3 16h7"/>',
+ lie:'<path d="M7 20c-1-4-1-9 5-10 6 1 6 6 5 10M10 21c-.5-3 0-7 2-7s2.5 4 2 7M4 15c-1-7 3-11 8-11s9 4 8 11"/>',
+ ugly:'<path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3"/><circle cx="12" cy="11" r="3.5"/><path d="M8 17c1-2 7-2 8 0"/>',
+ mirror:'<ellipse cx="12" cy="10" rx="6" ry="8"/><path d="M12 18v4M8 22h8M10 7l3 3"/>',
+ quiet:'<path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M17 9l4 6M21 9l-4 6"/>',
+ copy:'<path d="M4 5h11v8H8l-4 3z"/><path d="M15 9h5v8l-3-2h-6v-2"/>',
+ kb:'<rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M7 14h10"/>',
+ lock:'<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4M12 15v2"/>',
+ gacha:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M9 5v14M15 5v14"/><path d="M5.5 12h1M11.5 12h1M17.5 12h1"/>',
+ buf:'<circle cx="12" cy="12" r="9" stroke-dasharray="40 17"/><path d="M10 9l5 3-5 3z"/>',
+ rev:'<path d="M4 9a8 8 0 0 1 14-3l2 2M20 15a8 8 0 0 1-14 3l-2-2"/><path d="M20 4v4h-4M4 20v-4h4"/>',
+ photo:'<rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-8 8"/>',
+ mic:'<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/>',
+ music:'<path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/>',
+ back:'<path d="M15 6l-6 6 6 6"/>',
+};
+const icon=(k,s=24)=>`<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${I_SVG[k]||''}</svg>`;
+
+function monsterSVG(c){
+  const col={gray:'#6a7068',red:'#8f1c1c',green:'#4d7a35',pale:'#e3dfd3'}[c]||'#6a7068';
+  let top='',bot='',veins='';
+  for(let x=46;x<154;x+=12){ const l=22+Math.random()*14; top+=`${x},163 ${x+6},${163+l} `; bot+=`${x},226 ${x+6},${226-(16+Math.random()*12)} `; }
+  top+='154,163'; bot+='154,226';
+  [[62,118],[138,118]].forEach(([cx,cy])=>{ for(let i=0;i<9;i++){ const a=i/9*6.28+Math.random()*.4, r1=7, r2=17+Math.random()*6; const mx=cx+Math.cos(a+.3)*r2*.6, my=cy+Math.sin(a+.3)*r2*.6*.8; veins+=`<path d="M${cx+Math.cos(a)*r1} ${cy+Math.sin(a)*r1*.8} Q${mx} ${my} ${cx+Math.cos(a)*r2} ${cy+Math.sin(a)*r2*.8}" stroke="#c40000" stroke-width="${.6+Math.random()*.8}" fill="none" opacity=".85"/>`; } });
+  return `<svg viewBox="0 0 200 250" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+   <radialGradient id="mf" cx="50%" cy="36%" r="70%"><stop offset="0" stop-color="${col}"/><stop offset=".7" stop-color="#1b1c1a"/><stop offset="1" stop-color="#000"/></radialGradient>
+   <radialGradient id="ey" cx="50%" cy="50%" r="55%"><stop offset="0" stop-color="#fffef2"/><stop offset=".55" stop-color="#f3e9c8"/><stop offset=".85" stop-color="#d9a08a"/><stop offset="1" stop-color="#7a1010"/></radialGradient>
+   <radialGradient id="ir" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#000"/><stop offset=".35" stop-color="#1a0000"/><stop offset=".6" stop-color="#b80000"/><stop offset="1" stop-color="#3a0000"/></radialGradient>
+   <linearGradient id="mo" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a0505"/><stop offset="1" stop-color="#000"/></linearGradient>
+   <filter id="skin" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="3" seed="4" result="n"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.4 1.1" result="m"/><feComposite in="m" in2="SourceGraphic" operator="in" result="t"/><feBlend in="SourceGraphic" in2="t" mode="multiply"/></filter>
+   <filter id="warp"><feTurbulence type="fractalNoise" baseFrequency=".018" numOctaves="2" seed="9"/><feDisplacementMap in="SourceGraphic" scale="9"/></filter>
+   <filter id="glow"><feGaussianBlur stdDeviation="4"/></filter>
+  </defs>
+  <g filter="url(#warp)">
+  <path d="M100 4 C36 4 8 64 14 128 C20 192 54 244 100 246 C146 244 180 192 186 128 C192 64 164 4 100 4Z" fill="url(#mf)" filter="url(#skin)"/>
+  <path d="M44 46 Q70 36 100 40 Q130 36 156 46 M50 60 Q100 48 150 60 M60 30 Q100 22 140 30" stroke="#000" stroke-width="1.6" fill="none" opacity=".5"/>
+  <path d="M30 70 l14 12 l-3 14 l10 9 M170 70 l-14 12 l4 13 l-10 10 M100 14 l-5 20 l7 12 l-4 10" stroke="#1a0000" stroke-width="2" fill="none" opacity=".75"/>
+  <ellipse cx="62" cy="120" rx="34" ry="28" fill="#000" opacity=".75"/><ellipse cx="138" cy="120" rx="34" ry="28" fill="#000" opacity=".75"/>
+  <ellipse cx="62" cy="120" rx="28" ry="22" fill="#ff1a00" opacity=".55" filter="url(#glow)"/><ellipse cx="138" cy="120" rx="28" ry="22" fill="#ff1a00" opacity=".55" filter="url(#glow)"/>
+  <ellipse cx="62" cy="118" rx="24" ry="19" fill="url(#ey)"/><ellipse cx="138" cy="118" rx="24" ry="19" fill="url(#ey)"/>
+  ${veins}
+  <circle cx="65" cy="119" r="8" fill="url(#ir)"/><circle cx="135" cy="119" r="8" fill="url(#ir)"/>
+  <circle cx="65" cy="119" r="2.4" fill="#000"/><circle cx="135" cy="119" r="2.4" fill="#000"/>
+  <circle cx="61" cy="115" r="1.6" fill="#fff" opacity=".9"/><circle cx="131" cy="115" r="1.6" fill="#fff" opacity=".9"/>
+  <path d="M24 82 Q56 88 92 106 L88 116 Q58 100 28 96Z" fill="#0a0a0a"/><path d="M176 82 Q144 88 108 106 L112 116 Q142 100 172 96Z" fill="#0a0a0a"/>
+  <path d="M90 150 Q100 128 110 150 Q104 146 100 152 Q96 146 90 150Z" fill="#050505"/>
+  <path d="M38 158 Q100 142 162 158 Q160 238 100 242 Q40 238 38 158Z" fill="url(#mo)"/>
+  <path d="M40 160 Q100 150 160 160 L160 168 Q100 158 40 168Z" fill="#5a0c0c"/>
+  <polygon points="44,163 ${top}" fill="#e7dfc2" stroke="#6d5f3a" stroke-width=".6"/>
+  <polygon points="44,226 ${bot}" fill="#d4c9a4" stroke="#6d5f3a" stroke-width=".6"/>
+  <path d="M70 196 q2 26 -1 40" stroke="#c9d6c7" stroke-width="2.4" fill="none" opacity=".55"/><path d="M128 194 q-2 20 2 34" stroke="#c9d6c7" stroke-width="2" fill="none" opacity=".5"/>
+  </g></svg>`;
+}
+function ghostSVG(){
+  return `<svg viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg"><defs>
+   <radialGradient id="gf" cx="50%" cy="42%" r="58%"><stop offset="0" stop-color="#f1f2ec"/><stop offset=".7" stop-color="#b5bcb8"/><stop offset="1" stop-color="#6e7673"/></radialGradient>
+   <filter id="gn"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" result="n"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.2 1" result="m"/><feComposite in="m" in2="SourceGraphic" operator="in" result="t"/><feBlend in="SourceGraphic" in2="t" mode="multiply"/></filter>
+   <filter id="gw"><feTurbulence type="fractalNoise" baseFrequency=".03" numOctaves="2" seed="2"/><feDisplacementMap in="SourceGraphic" scale="7"/></filter>
+   <radialGradient id="eh" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#000"/><stop offset=".7" stop-color="#000"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient></defs>
+  <g filter="url(#gw)">
+  <path d="M14 258 C2 120 26 14 100 10 C174 14 198 120 186 258 L152 258 C162 150 152 84 100 80 C48 84 38 150 48 258Z" fill="#050505"/>
+  <ellipse cx="100" cy="140" rx="50" ry="68" fill="url(#gf)" filter="url(#gn)"/>
+  <path d="M58 84 C70 124 62 176 68 236 M76 80 C84 124 80 164 86 222 M126 82 C120 132 130 174 126 232 M108 80 C112 112 106 146 110 178 M142 90 C136 140 146 190 140 246" stroke="#050505" stroke-width="7" fill="none" stroke-linecap="round"/>
+  <ellipse cx="80" cy="132" rx="13" ry="17" fill="url(#eh)"/><ellipse cx="120" cy="132" rx="13" ry="17" fill="url(#eh)"/>
+  <circle cx="81" cy="134" r="1.8" fill="#fff"/><circle cx="119" cy="134" r="1.8" fill="#fff"/>
+  <path d="M80 150 q-2 30 2 60" stroke="#3a0000" stroke-width="1.5" fill="none" opacity=".6"/>
+  <ellipse cx="100" cy="186" rx="13" ry="22" fill="#000"/></g></svg>`;
+}
 /* ---------- 저장 ---------- */
 const LS = {
   get(k){ try{ return JSON.parse(localStorage.getItem(k)); }catch(e){ return null; } },
@@ -427,6 +692,9 @@ function playSound(name, vol){
   else if(name==='alarm'){
     for(let i=0;i<10;i++){ const o=AC.createOscillator(); o.type='square'; o.frequency.value=i%2?660:990; const g=G(); env(g,t+i*.16,.005,.11,.03,.35); o.connect(g); g.connect(M); o.start(t+i*.16); o.stop(t+i*.16+.2); }
   }
+  else if(name==='static'){
+    const n=noise(2), bp=AC.createBiquadFilter(); bp.type='bandpass'; bp.frequency.value=3000; bp.Q.value=.5; const g=G(); env(g,t,.01,1.6,.3,.5); n.connect(bp); bp.connect(g); g.connect(M); n.start(t);
+  }
   else if(name==='ding'){
     [880,1320].forEach((f,i)=>{ const o=AC.createOscillator(); o.type='sine'; o.frequency.value=f; const g=G(); env(g,t+i*.15,.005,.05,.6,.5); o.connect(g); g.connect(M); o.start(t+i*.15); o.stop(t+i*.15+.8); });
   }
@@ -446,9 +714,11 @@ function speak(cfg){
 }
 function vib(cfg,pat){ if(+cfg.vb && navigator.vibrate){ try{ navigator.vibrate(pat); }catch(e){} } }
 function fire(cfg){
-  if(cfg.s!=='none') playSound(cfg.s, cfg.v);
-  setTimeout(()=>speak(cfg), cfg.s==='none'?0:250);
-  vib(cfg,[300,80,500,80,300]);
+  const n=Math.max(1,+cfg.srp||1);
+  if(cfg.s!=='none') for(let i=0;i<n;i++) setTimeout(()=>{ if(STAGE) playSound(cfg.s, cfg.v); }, i*1100);
+  setTimeout(()=>{ if(STAGE) speak(cfg); }, (+cfg.spd||0)*1000);
+  const k={weak:.4,mid:1,strong:1.8}[cfg.vst]||1;
+  vib(cfg,[300,80,500,80,300].map(x=>Math.round(x*k)));
 }
 
 /* ---------- 저장소 media 폴더 ---------- */
@@ -474,8 +744,8 @@ function menu(){
   closeStage(); document.title='트롤킷';
   app.innerHTML=`<div class="wrap">
     <div class="logo">TROLL<span>KIT</span></div>
-    <div class="sub">친구 놀리기 도구모음 😈</div>
-    <div class="grid">${Object.entries(PRANKS).map(([k,p])=>`<div class="card" data-p="${k}"><div class="e">${p.e}</div><b>${p.name}</b><small>${p.d}</small></div>`).join('')}</div>
+    <div class="sub">친구 놀리기 도구모음</div>
+    <div class="grid">${Object.entries(PRANKS).map(([k,p])=>`<div class="card" data-p="${k}"><div class="e">${icon(k,24)}</div><b>${p.name}</b><small>${p.d}</small></div>`).join('')}</div>
     <p class="hint" style="margin-top:20px">장난 고르고 → 문구·소리 마음대로 설정 → 내 폰으로 바로 실행하거나 링크로 친구한테 보내기.<br>실행 중엔 화면 <b>왼쪽 아래 구석을 1초 꾹</b> 누르면 몰래 나올 수 있어.</p>
   </div>`;
   app.querySelectorAll('.card').forEach(c=>c.onclick=()=>settings(c.dataset.p));
@@ -488,13 +758,13 @@ function fieldHTML(f,v){
   if(f.t==='text') return `<div class="fld"><label for="${id}">${f.l}</label><input type="text" id="${id}" data-k="${f.k}" value="${esc(v)}"></div>`;
   if(f.t==='area') return `<div class="fld"><label for="${id}">${f.l}</label><textarea id="${id}" data-k="${f.k}">${esc(v)}</textarea></div>`;
   if(f.t==='sel') return `<div class="fld"><label for="${id}">${f.l}</label><select id="${id}" data-k="${f.k}">${f.o.map(([a,b])=>`<option value="${a}"${a===v?' selected':''}>${b}</option>`).join('')}</select></div>`;
-  if(f.t==='num') return `<div class="fld"><label for="${id}">${f.l}</label><div class="row"><input type="range" id="${id}" data-k="${f.k}" data-num="1" min="${f.min}" max="${f.max}" value="${v}"><b id="${id}_v">${numLabel(f.k,v)}</b></div></div>`;
+  if(f.t==='num') return `<div class="fld"><label for="${id}">${f.l}</label><div class="row"><input type="range" id="${id}" data-k="${f.k}" data-num="1" min="${f.min}" max="${f.max}" step="${f.step||1}" value="${v}"><b id="${id}_v">${numLabel(f.k,v)}</b></div></div>`;
   if(f.t==='chk') return `<div class="fld"><label class="chk"><input type="checkbox" id="${id}" data-k="${f.k}" ${+v?'checked':''}> ${f.l}</label></div>`;
 }
-function numLabel(k,v){ v=+v; if(k==='dl') return v<0?'랜덤':v===0?'바로':v+'초'; if(['du','sec','sl','at'].includes(k)) return v+'초'; if(k==='n'&&CFG&&CFG.k==='run'&&v===0) return '∞'; return v; }
+function numLabel(k,v){ v=+v; if(k==='dl') return v<0?'랜덤':v===0?'바로':v+'초'; if(['du','sec','sl','at','ps','bu','gl','spd'].includes(k)) return v+'초'; if(k==='rvd') return v===0?'기본':v+'초'; if(['msz','fxs'].includes(k)) return v+'%'; if(k==='n'&&CFG&&['rev','copy'].includes(CFG.k)&&v===0) return '∞'; if(k==='n'&&CFG&&CFG.k==='run'&&v===0) return '∞'; return v; }
 function settings(p){
   closeStage();
-  const saved=LS.get('tk_'+p);
+  const saved=LS.get('tk2_'+p);
   CFG=Object.assign(defaults(p), saved||{}, {k:p});
   if((CFG.pm||localPhoto().data) && (!saved || saved.up===undefined)) CFG.up=1;
   if(CUSTOM.data && !saved) CFG.s='custom';
@@ -502,30 +772,31 @@ function settings(p){
   app.innerHTML=`<div class="wrap">
     <button class="back" id="bk">← 목록</button>
     <div class="h1">${pr.e} ${pr.name}</div>
-    <div class="sec"><h3>✏️ 장난 설정</h3>${PF[p].map(f=>fieldHTML(f,CFG[f.k])).join('')}</div>
-    <div class="sec"><h3>📁 내 사진 · 내 소리</h3>
+    <div class="sec"><h3>장난 설정</h3>${PF[p].map(f=>fieldHTML(f,CFG[f.k])).join('')}</div>
+    <div class="sec"><h3>내 사진 · 내 소리</h3>
       <div id="mbox" style="margin-top:8px"></div>
       <div class="files">
         <div class="fbox" id="pbox"></div>
         <div class="fbox" id="sbox"></div>
       </div>
       ${fieldHTML(COMMON[0],CFG.up)}
-      <p class="hint" style="margin-top:-6px">사진은 이 장난에서 <b>${PHOTO_USE[p]}</b>. <b>링크로 친구한테 보내려면 📁 저장소 파일</b>을 골라야 해. 아래 '이 폰' 칸은 내 폰에서 바로 실행할 때만 돼.</p>
+      <p class="hint" style="margin-top:-6px">사진은 이 장난에서 <b>${PHOTO_USE[p]}</b>. <b>링크로 친구한테 보내려면 저장소 파일</b>을 골라야 해. 아래 '이 폰' 칸은 내 폰에서 바로 실행할 때만 돼.</p>
     </div>
-    <div class="sec"><h3>🔊 소리 · 말</h3>
-      ${COMMON.slice(1,3).map(f=>fieldHTML(f,CFG[f.k])).join('')}
-      ${COMMON.slice(3,6).map(f=>fieldHTML(f,CFG[f.k])).join('')}
-      <button class="btn b2" id="prev">🔊 소리 + 말 미리듣기</button>
+    <div class="sec"><h3>소리 · 말</h3>
+      ${COMMON.slice(1,6).map(f=>fieldHTML(f,CFG[f.k])).join('')}
+      <button class="btn b2" id="prev">소리 + 말 미리듣기</button>
     </div>
-    <div class="sec"><h3>🎭 마무리</h3>${COMMON.slice(6).map(f=>fieldHTML(f,CFG[f.k])).join('')}</div>
+    <div class="sec"><h3>마무리</h3>${COMMON.slice(6,9).map(f=>fieldHTML(f,CFG[f.k])).join('')}</div>
+    <div class="sec"><details class="adv"><summary>고급 설정</summary>${COMMON.slice(9).map(f=>fieldHTML(f,CFG[f.k])).join('')}
+      <button class="btn b2" id="rst">↺ 이 장난 설정 초기화</button></details></div>
     <button class="btn b1" id="go">▶ 이 폰에서 바로 실행</button>
-    <button class="btn b3" id="mk">🔗 친구한테 보낼 링크 만들기</button>
+    <button class="btn b3" id="mk">친구한테 보낼 링크 만들기</button>
     <div id="linkbox">
       <textarea id="lk" readonly></textarea>
-      <button class="btn b2" id="cp">📋 링크 복사</button>
+      <button class="btn b2" id="cp">링크 복사</button>
       <p class="hint" id="lkh"></p>
     </div>
-    ${PRANKS[p].cam||PRANKS[p].mic?`<p class="hint warn" style="margin-top:14px">${PRANKS[p].cam?'📷 카메라':'🎤 마이크'}를 써서 친구 폰에 '허용할까요?' 창이 한 번 떠. 거부하면 ${PRANKS[p].cam?'카메라 없이 진행돼':'소리 감지 없이 진행돼'}.</p>`:''}
+    ${PRANKS[p].cam||PRANKS[p].mic?`<p class="hint warn" style="margin-top:14px">${PRANKS[p].cam?'카메라':'마이크'}를 써서 친구 폰에 '허용할까요?' 창이 한 번 떠. 거부하면 ${PRANKS[p].cam?'카메라 없이 진행돼':'소리 감지 없이 진행돼'}.</p>`:''}
     <p class="hint" style="margin-top:14px">실행 중 <b>왼쪽 아래 구석을 1초 꾹</b> = 몰래 나가기${p==='lie'?'<br>몰래 조작: 탐지 시작 전에 화면 <b>왼쪽 위</b>를 톡 = 진실, <b>오른쪽 위</b>를 톡 = 거짓 (진동 짧게 오면 접수됨)':''}</p>
   </div>`;
   document.getElementById('bk').onclick=menu;
@@ -542,6 +813,7 @@ function settings(p){
   document.getElementById('prev').onclick=()=>{ unlock(); setTimeout(()=>{ if(CFG.s!=='none') playSound(CFG.s,CFG.v); setTimeout(()=>speak(CFG),CFG.s==='none'?0:250); },60); };
   document.getElementById('go').onclick=()=>{ unlock(); run(CFG,false); };
   document.getElementById('mk').onclick=makeLink;
+  document.getElementById('rst').onclick=()=>{ LS.set('tk2_'+p,null); try{localStorage.removeItem('tk2_'+p);}catch(e){} settings(p); toast('초기화 완료'); };
   useMediaSound(CFG.sm||'');
   document.getElementById('cp').onclick=async()=>{
     const ta=document.getElementById('lk'); let ok=false;
@@ -550,31 +822,31 @@ function settings(p){
   };
   syncCustom();
 }
-function persist(){ LS.set('tk_'+CFG.k,CFG); }
+function persist(){ LS.set('tk2_'+CFG.k,CFG); }
 function setField(k,v){ CFG[k]=v; const el=document.getElementById('f_'+k); if(el){ if(el.type==='checkbox') el.checked=!!+v; else el.value=v; } persist(); document.getElementById('linkbox').style.display='none'; }
 function localPhoto(){ const c=LS.get('tk_photo'); return c&&c.data?{data:c.data,id:null}:{data:null,id:null}; }
 const mediaURL=n=>'media/'+encodeURIComponent(n);
 function syncCustom(){
   const pb=document.getElementById('pbox'), sb=document.getElementById('sbox'), mb=document.getElementById('mbox'); if(!pb) return;
   PHOTO = CFG.pm ? {data:mediaURL(CFG.pm),id:null} : localPhoto();
-  const pName = CFG.pm ? '📁 '+CFG.pm : '이 폰 사진';
+  const pName = CFG.pm ? ''+CFG.pm : '이 폰 사진';
   pb.innerHTML = PHOTO.data
     ? `<img src="${esc(PHOTO.data)}" alt=""><span>${esc(pName.slice(0,20))}</span><button class="x" id="pdel">지우기</button><input type="file" id="pfile" accept="image/*" style="height:70%">`
-    : `<div class="ic">🖼️</div><span>사진 넣기<br><small>이 폰에서만</small></span><input type="file" id="pfile" accept="image/*">`;
-  const hasS = CFG.sm || CUSTOM.data, sName = CFG.sm ? '📁 '+CFG.sm : (CUSTOM.name||'내 소리');
+    : `<div class="ic">${icon('photo',30)}</div><span>사진 넣기<br><small>이 폰에서만</small></span><input type="file" id="pfile" accept="image/*">`;
+  const hasS = CFG.sm || CUSTOM.data, sName = CFG.sm ? ''+CFG.sm : (CUSTOM.name||'내 소리');
   sb.innerHTML = hasS
-    ? `<div class="ic">🎵</div><span>${esc(sName.slice(0,20))}</span><div class="row" style="gap:6px"><button class="x" id="splay">▶ 듣기</button><button class="x" id="sdel">지우기</button></div><input type="file" id="sfile" accept="audio/*" style="height:45%">`
-    : `<div class="ic">🎤</div><span>소리 넣기<br><small>이 폰에서만 · 700KB까지</small></span><input type="file" id="sfile" accept="audio/*">`;
+    ? `<div class="ic">${icon('music',30)}</div><span>${esc(sName.slice(0,20))}</span><div class="row" style="gap:6px"><button class="x" id="splay">▶ 듣기</button><button class="x" id="sdel">지우기</button></div><input type="file" id="sfile" accept="audio/*" style="height:45%">`
+    : `<div class="ic">${icon('mic',30)}</div><span>소리 넣기<br><small>이 폰에서만 · 700KB까지</small></span><input type="file" id="sfile" accept="audio/*">`;
   mb.innerHTML = MEDIA.ok
-    ? `<div class="fld"><label for="mpm">📁 저장소 사진 (링크로 보내도 친구한테 보임)</label><select id="mpm"><option value="">— 안 씀 —</option>${MEDIA.img.map(n=>`<option${n===CFG.pm?' selected':''}>${esc(n)}</option>`).join('')}</select></div>
-       <div class="fld"><label for="msm">📁 저장소 소리 (링크로 보내도 친구한테 들림)</label><select id="msm"><option value="">— 안 씀 —</option>${MEDIA.aud.map(n=>`<option${n===CFG.sm?' selected':''}>${esc(n)}</option>`).join('')}</select></div>
+    ? `<div class="fld"><label for="mpm">저장소 사진 (링크로 보내도 친구한테 보임)</label><select id="mpm"><option value="">— 안 씀 —</option>${MEDIA.img.map(n=>`<option${n===CFG.pm?' selected':''}>${esc(n)}</option>`).join('')}</select></div>
+       <div class="fld"><label for="msm">저장소 소리 (링크로 보내도 친구한테 들림)</label><select id="msm"><option value="">— 안 씀 —</option>${MEDIA.aud.map(n=>`<option${n===CFG.sm?' selected':''}>${esc(n)}</option>`).join('')}</select></div>
        ${!MEDIA.img.length&&!MEDIA.aud.length?'<p class="hint">media 폴더가 비어있어. 깃허브 저장소 media 폴더에 사진·소리를 올리면 여기 떠.</p>':''}`
     : `<p class="hint">${esc(MEDIA.err||'저장소 파일 불러오는 중...')}</p>`;
   const mpm=document.getElementById('mpm'); if(mpm) mpm.onchange=()=>{ setField('pm',mpm.value); if(mpm.value) setField('up',1); syncCustom(); };
   const msm=document.getElementById('msm'); if(msm) msm.onchange=()=>{ setField('sm',msm.value); if(msm.value) setField('s','custom'); useMediaSound(msm.value); syncCustom(); };
   document.getElementById('pfile').onchange=async e=>{
     const f=e.target.files[0]; if(!f) return;
-    try{ const d=await resizeImage(f); LS.set('tk_photo',{data:d}); setField('pm',''); setField('up',1); }catch(_){ toast('사진을 못 읽었어 😢'); }
+    try{ const d=await resizeImage(f); LS.set('tk_photo',{data:d}); setField('pm',''); setField('up',1); }catch(_){ toast('사진을 못 읽었어'); }
     syncCustom();
   };
   document.getElementById('sfile').onchange=e=>{
@@ -590,8 +862,8 @@ function makeLink(){
   const box=document.getElementById('linkbox'), ta=document.getElementById('lk'), h=document.getElementById('lkh');
   let note='';
   const c=Object.assign({},CFG);
-  if(c.s==='custom' && !c.sm) note+='⚠ 이 폰에서 넣은 소리는 링크로 안 가서 친구한텐 비명 소리로 나와. 저장소 media 폴더에 올리고 📁 저장소 소리에서 골라줘.<br>';
-  if(usePhoto(c) && !c.pm) note+='⚠ 이 폰에서 넣은 사진은 링크로 안 가. 저장소 media 폴더에 올리고 📁 저장소 사진에서 골라줘.<br>';
+  if(c.s==='custom' && !c.sm) note+='이 폰에서 넣은 소리는 링크로 안 가서 친구한텐 비명 소리로 나와. 저장소 media 폴더에 올리고 저장소 소리에서 골라줘.<br>';
+  if(usePhoto(c) && !c.pm) note+='이 폰에서 넣은 사진은 링크로 안 가. 저장소 media 폴더에 올리고 저장소 사진에서 골라줘.<br>';
   ta.value = location.href.split('#')[0]+'#'+encodeCfg(c);
   h.innerHTML = note + '친구가 링크를 열면 메뉴 없이 바로 함정 화면이 떠. 로그인 필요 없어!';
   box.style.display='block';
@@ -614,66 +886,55 @@ function run(cfg,linkMode){
   STAGE.addEventListener('pointerdown',()=>{ unlock(); if(!fs){ fs=true; try{ const r=document.documentElement.requestFullscreen&&document.documentElement.requestFullscreen(); if(r&&r.catch) r.catch(()=>{}); }catch(e){} } },true);
   if(cfg.s==='custom'){ if(cfg.sm) useMediaSound(cfg.sm); else if(linkMode) SNDURL={name:'',ab:null,buf:null}; else SNDURL=null; }
   PHOTO = cfg.pm ? {data:mediaURL(cfg.pm),id:null} : (linkMode ? {data:null,id:null} : localPhoto());
-  ({scare:runScare,crack:runCrack,hack:runHack,run:runRun,fart:runFart,lie:runLie,ugly:runUgly,mirror:runMirror,quiet:runQuiet,copy:runCopy,kb:runKb,lock:runLock,gacha:runGacha})[cfg.k](cfg);
+  setTimeout(()=>{ if(STAGE) paintScenes(STAGE); },0);
+  ({scare:runScare,crack:runCrack,hack:runHack,run:runRun,fart:runFart,lie:runLie,buf:runBuf,rev:runRev,ugly:runUgly,mirror:runMirror,quiet:runQuiet,copy:runCopy,kb:runKb,lock:runLock,gacha:runGacha})[cfg.k](cfg);
   addExit();
 }
+function doExit(){ if(LINKMODE){ history.replaceState(null,'',location.pathname+location.search); menu(); } else settings(CUR.k); }
 function addExit(){
+  if(!STAGE) return; STAGE.querySelectorAll('.exitz,.exb').forEach(n=>n.remove());
   const z=document.createElement('div'); z.className='exitz'; let t=null;
-  z.addEventListener('pointerdown',e=>{ e.stopPropagation(); t=setTimeout(()=>{ if(LINKMODE){ location.hash=''; menu(); } else settings(CUR.k); },1000); });
+  z.addEventListener('pointerdown',e=>{ e.stopPropagation(); t=setTimeout(doExit,1000); });
   ['pointerup','pointerleave','pointercancel'].forEach(ev=>z.addEventListener(ev,()=>clearTimeout(t)));
   STAGE.appendChild(z);
+  const m=CUR&&CUR.exb||'always';
+  if(m==='always'||(m==='local'&&!LINKMODE)){
+    const b=document.createElement('button'); b.className='exb'; b.setAttribute('aria-label','나가기');
+    b.innerHTML='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+    b.addEventListener('pointerdown',e=>{ e.stopPropagation(); e.preventDefault(); doExit(); });
+    STAGE.appendChild(b);
+  }
 }
 function reveal(cfg,after){
   if(!+cfg.r) return;
+  if(+cfg.rvd>0) after=+cfg.rvd*1000;
   T(()=>{
     const d=document.createElement('div'); d.className='rev';
-    d.innerHTML=`<div class="t">${esc(cfg.rt)}</div><div class="hint" style="font-size:15px;margin-bottom:24px">장난이었어 🤪</div>
-      <button class="btn b1" id="ag">🔁 한 번 더</button>
-      <button class="btn b2" id="me">${LINKMODE?'😈 나도 친구 놀리기':'⚙️ 설정으로'}</button>`;
-    STAGE.appendChild(d);
-    d.querySelector('#ag').onclick=()=>run(cfg,LINKMODE);
+    d.innerHTML=`<div class="t">${esc(cfg.rt)}</div><div class="hint" style="font-size:15px;margin-bottom:24px">${esc(cfg.rvs)}</div>
+      ${+cfg.rvb?'<button class="btn b1" id="ag">한 번 더</button>':''}
+      <button class="btn b2" id="me">${LINKMODE?'나도 친구 놀리기':'설정으로'}</button>`;
+    STAGE.appendChild(d); addExit();
+    const ag=d.querySelector('#ag'); if(ag) ag.onclick=()=>run(cfg,LINKMODE);
     d.querySelector('#me').onclick=()=>{ if(LINKMODE){ history.replaceState(null,'',location.pathname+location.search); menu(); } else settings(cfg.k); };
   },after);
 }
 
 /* ---------- 괴물 ---------- */
-function monsterSVG(c){
-  const col={gray:'#5b6159',red:'#8a1414',green:'#3f6b2a',pale:'#e0ddd2'}[c]||'#5b6159';
-  let top='',bot='';
-  for(let x=48;x<152;x+=13){ top+=`${x},161 ${x+6.5},${186+Math.random()*8} `; bot+=`${x},224 ${x+6.5},${200-Math.random()*8} `; }
-  top+='152,161'; bot+='152,224';
-  return `<svg viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg">
-  <defs><radialGradient id="mf" cx="50%" cy="38%" r="65%"><stop offset="0" stop-color="${col}"/><stop offset="1" stop-color="#000"/></radialGradient>
-  <radialGradient id="ey"><stop offset="0" stop-color="#fff"/><stop offset=".55" stop-color="#ffe"/><stop offset="1" stop-color="#b00"/></radialGradient>
-  <filter id="gl"><feGaussianBlur stdDeviation="3"/></filter></defs>
-  <path d="M100 4 C38 4 10 62 16 124 C22 186 52 236 100 238 C148 236 178 186 184 124 C190 62 162 4 100 4Z" fill="url(#mf)"/>
-  <path d="M36 60 l18 14 l-5 16 l12 8 M164 60 l-18 14 l6 14 l-12 10 M100 20 l-6 22 l8 10" stroke="#1a0000" stroke-width="2" fill="none" opacity=".7"/>
-  <path d="M26 76 L92 100 L88 112 L30 92Z" fill="#0a0a0a"/><path d="M174 76 L108 100 L112 112 L170 92Z" fill="#0a0a0a"/>
-  <ellipse cx="62" cy="120" rx="27" ry="21" fill="#f00" opacity=".5" filter="url(#gl)"/><ellipse cx="138" cy="120" rx="27" ry="21" fill="#f00" opacity=".5" filter="url(#gl)"/>
-  <ellipse cx="62" cy="118" rx="24" ry="19" fill="url(#ey)"/><circle cx="65" cy="120" r="4.5" fill="#000"/>
-  <ellipse cx="138" cy="118" rx="24" ry="19" fill="url(#ey)"/><circle cx="135" cy="120" r="4.5" fill="#000"/>
-  <path d="M93 146 l7 -14 l7 14z" fill="#0a0a0a"/>
-  <path d="M42 158 Q100 146 158 158 Q154 232 100 234 Q46 232 42 158Z" fill="#160000"/>
-  <polygon points="48,161 ${top}" fill="#e8e2c8"/><polygon points="48,224 ${bot}" fill="#d8d0b0"/>
-  </svg>`;
-}
 
 /* ---------- 1. 놀래키기 ---------- */
-const CAT_EMO=['🌳','🌲','🌸','🍄','🐶','🐰','🌼','🐸','🦊','🐻','🌷','🪨','🐿️','🦔','🐦','🌿','🍀','🐭','🐼','🦝'];
 function runScare(cfg){
   let html='', started=false;
   const dflt={
-    cat:['🔍 숨은 그림 찾기','이 그림 어딘가에 고양이 한 마리가 숨어 있어요.\n찾아서 터치하세요! (상위 3%만 찾음)'],
-    blur:['📷 사진이 흐려요','화면을 여러 번 눌러서 선명하게 만들어 보세요.\n뭐가 보이나요?'],
-    dot:['👁 집중력 테스트','가운데 점을 누른 채로 끝까지 눈을 떼지 마세요.\n눈 깜빡이면 실패!'],
+    cat:['숨은 그림 찾기','이 그림 어딘가에 고양이 한 마리가 숨어 있어요.\n찾아서 터치하세요! (상위 3%만 찾음)'],
+    blur:['사진이 흐려요','화면을 여러 번 눌러서 선명하게 만들어 보세요.\n뭐가 보이나요?'],
+    dot:['집중력 테스트','가운데 점을 누른 채로 끝까지 눈을 떼지 마세요.\n눈 깜빡이면 실패!'],
     text:['잠깐! 이거 봐봐','화면을 눌러봐'],
   }[cfg.b]||['',''];
   const tt=esc(cfg.bt||dflt[0]), bb=esc(cfg.bb||dflt[1]);
   if(cfg.b==='cat'){
-    let sp=''; for(let i=0;i<140;i++){ sp+=`<span style="left:${rnd(-3,95)}%;top:${rnd(-3,95)}%;font-size:${rnd(18,38)}px;transform:rotate(${rnd(-40,40)}deg)">${CAT_EMO[i%CAT_EMO.length]}</span>`; }
-    html=`<div class="bait"><div class="bh">${tt}</div><div class="bp">${bb}</div><div class="emo">${sp}</div></div>`;
+    html=`<div class="bait"><div class="bh">${tt}</div><div class="bp">${bb}</div><div class="emo">${sceneTag('forest',(Math.random()*1e6)|0,'ufill')}</div></div>`;
   } else if(cfg.b==='blur'){
-    html=`<div class="bait"><div class="bh">${tt}</div><div class="bp">${bb}</div><div class="blurimg" id="bi" style="filter:blur(18px)"></div></div>`;
+    html=`<div class="bait"><div class="bh">${tt}</div><div class="bp">${bb}</div><div class="blurimg" id="bi" style="filter:blur(18px)">${sceneTag('lake',(Math.random()*1e6)|0,'ufill')}</div></div>`;
   } else if(cfg.b==='dot'){
     html=`<div class="dotbg"><div class="bh" style="color:#fff">${tt}</div><div class="bp" style="color:#aaa;text-align:center">${bb}</div><div class="dot"></div><div class="cnt" id="cn"></div></div>`;
   } else {
@@ -681,7 +942,7 @@ function runScare(cfg){
   }
   STAGE.innerHTML=html;
   let blur=18;
-  const wrong=['❌ 아니에요! 다시 찾아보세요','🤔 거기 아닌데...','😏 거의 다 왔어요','👀 더 자세히 봐봐요'];
+  const wrong=['아니에요! 다시 찾아보세요','거기 아닌데...','거의 다 왔어요','더 자세히 봐봐요'];
   STAGE.addEventListener('pointerdown',function h(e){
     if(STAGE.dataset.done) return;
     if(cfg.b==='cat') toast(wrong[Math.floor(Math.random()*wrong.length)]);
@@ -694,17 +955,18 @@ function runScare(cfg){
 }
 function scareNow(cfg){
   STAGE.dataset.done=1; clearTimers();
-  STAGE.innerHTML=`<div class="scare"><div class="mwrap">${usePhoto(cfg)&&PHOTO.data?`<img class="mimg" alt="" src="${PHOTO.data}">`:monsterSVG(cfg.mc)}</div>${cfg.mt?`<h1>${esc(cfg.mt)}</h1>`:''}</div>`;
+  const sz=(+cfg.msz||100)/100, fz=(+cfg.fxs||100)/100;
+  STAGE.innerHTML=`<div class="scare shk-${cfg.shk||'strong'} ${+cfg.fla===0?'nofl':''}"><div class="mwrap" style="transform:scale(${sz})">${usePhoto(cfg)&&PHOTO.data?`<img class="mimg" alt="" src="${PHOTO.data}">`:monsterSVG(cfg.mc)}</div>${cfg.mt?`<h1 style="font-size:${14*fz}vmin">${esc(cfg.mt)}</h1>`:''}</div>`;
   addExit(); fire(cfg); reveal(cfg,3200);
 }
 
 /* ---------- 2. 금 간 화면 ---------- */
 function runCrack(cfg){
-  STAGE.innerHTML=`<div class="news"><div class="bh">${esc(cfg.bt)}</div><div class="bp">${esc(cfg.bb)}</div><div class="ph${usePhoto(cfg)?' has':''}">${usePhoto(cfg)?photoTag('phimg'):'🛸'}</div><div class="meta">조회수 128만 · 1시간 전</div></div><canvas class="full" id="cv"></canvas>`;
+  STAGE.innerHTML=`<div class="news"><div class="bh">${esc(cfg.bt)}</div><div class="bp">${esc(cfg.bb)}</div><div class="ph${usePhoto(cfg)?' has':''}">${usePhoto(cfg)?photoTag('phimg'):sceneTag('night',(Math.random()*1e6)|0,'phimg')}</div><div class="meta">조회수 128만 · 1시간 전</div></div><canvas class="full" id="cv"></canvas>`;
   let taps=0, done=false;
   STAGE.addEventListener('pointerdown',e=>{
     if(done) return; taps++;
-    if(taps<+cfg.n){ toast('🔍 확대 중...'); return; }
+    if(taps<+cfg.n){ toast('확대 중...'); return; }
     done=true; drawCrack(document.getElementById('cv'),e.clientX,e.clientY);
     const w=document.createElement('div'); w.className='dmg'; w.textContent=cfg.ct; if(cfg.ct) STAGE.appendChild(w);
     fire(cfg); reveal(cfg,3800);
@@ -729,7 +991,12 @@ function drawCrack(cv,x,y){
   });
   const g=c.createRadialGradient(x,y,0,x,y,40); g.addColorStop(0,'rgba(255,255,255,.9)'); g.addColorStop(1,'rgba(255,255,255,0)'); c.fillStyle=g; c.beginPath(); c.arc(x,y,40,0,7); c.fill();
   ['#ff00ff','#00ff66','#00e5ff'].forEach(col=>{ c.fillStyle=col; c.globalAlpha=.75; c.fillRect(rnd(0,W),0,rnd(1,4),H); });
-  c.globalAlpha=1; c.fillStyle='#000'; c.fillRect(x+rnd(10,40),y-rnd(30,60),rnd(30,70),rnd(20,50));
+  c.globalAlpha=1;
+  const bx=x+rnd(-30,30), by=y+rnd(-30,30); let r=8, k=0;
+  const iv=setInterval(()=>{ if(!cv.isConnected||k++>40){ clearInterval(iv); return; } r+=rnd(2,6);
+    for(let i=0;i<6;i++){ const a=rnd(0,6.28), d=rnd(0,r); const g=c.createRadialGradient(bx+Math.cos(a)*d,by+Math.sin(a)*d,0,bx+Math.cos(a)*d,by+Math.sin(a)*d,rnd(10,28)); g.addColorStop(0,'rgba(0,0,0,.95)'); g.addColorStop(.6,'rgba(10,0,30,.7)'); g.addColorStop(1,'rgba(0,0,0,0)'); c.fillStyle=g; c.beginPath(); c.arc(bx+Math.cos(a)*d,by+Math.sin(a)*d,28,0,7); c.fill(); }
+    if(k%8===0){ c.fillStyle=['#ff00aa','#00ff88','#00ccff','#ffffff'][k/8%4|0]; c.globalAlpha=.6; c.fillRect(bx+rnd(-60,60),0,rnd(1,3),H); c.globalAlpha=1; }
+  },70);
 }
 
 /* ---------- 3. 가짜 해킹 ---------- */
@@ -743,20 +1010,28 @@ function runHack(cfg){
   lines.forEach((ln,i)=>T(()=>{ lg.textContent+=ln+'\n'; lg.scrollTop=lg.scrollHeight; playSound('beep',cfg.v*.6); vib(cfg,30); }, (i+1)*du*.55/Math.max(1,lines.length)));
   const st=du*.45, br=document.getElementById('br'), pl=document.getElementById('pl');
   T(()=>{ const t0=Date.now(); const iv=I(()=>{ const p=Math.min(100,(Date.now()-t0)/(du-st)*100); br.style.width=p+'%'; pl.textContent=`업로드 중... ${p.toFixed(0)}%  (${(p*0.43).toFixed(1)}MB / 43.0MB)`; },80); },st);
-  T(()=>{ clearTimers(); br.style.width='100%'; const f=document.createElement('div'); f.className='fx'; f.innerHTML=(usePhoto(cfg)&&PHOTO.data?`<div style="font-size:16px;margin-bottom:8px">📂 유출된 사진</div><img class="bimg" alt="" src="${PHOTO.data}">`:'')+esc(cfg.fx); STAGE.querySelector('.term').appendChild(f); fire(cfg); reveal(cfg,3500); },du);
-  STAGE.addEventListener('pointerdown',()=>toast('⛔ 입력 차단됨 — 원격 제어 중'));
+  T(()=>{ clearTimers(); br.style.width='100%'; const f=document.createElement('div'); f.className='fx'; f.innerHTML=(usePhoto(cfg)&&PHOTO.data?`<div style="font-size:16px;margin-bottom:8px">유출된 사진</div><img class="bimg" alt="" src="${PHOTO.data}">`:'')+esc(cfg.fx); STAGE.querySelector('.term').appendChild(f); fire(cfg); reveal(cfg,3500); },du);
+  STAGE.addEventListener('pointerdown',()=>toast('입력 차단됨 — 원격 제어 중'));
 }
 
 /* ---------- 4. 도망가는 버튼 ---------- */
 function runRun(cfg){
-  STAGE.innerHTML=`<div class="run"><div class="bh">${esc(cfg.bt)}</div><div class="bp">${esc(cfg.bb)}</div>${usePhoto(cfg)?photoTag('rimg'):''}<button class="rbtn" id="rb">${esc(cfg.bn)}</button></div>`;
+  const left=4*60+59; 
+  STAGE.innerHTML=`<div class="evp"><div class="evtop"><b>${esc(cfg.sn||'이벤트')}</b><span>공유</span></div>
+    <div class="evhero"><div class="evtag">${esc(cfg.tg||'오늘 단 하루')}</div><div class="evh1">${esc(cfg.bt)}</div><div class="evh2">${esc(cfg.bb)}</div>
+      ${usePhoto(cfg)?photoTag('rimg'):`<div class="gcard"><div class="gcl">GIFT CARD</div><div class="gca">${esc(cfg.pv||'50,000')}<small>원</small></div><div class="gcn">${esc(cfg.pn||'문화상품권')}</div><div class="gcc"></div></div>`}
+    </div>
+    <div class="evinfo"><div><span>이벤트 종료까지</span><b id="evt">00:04:59</b></div><div><span>참여자</span><b id="evp">${(12000+Math.random()*9000|0).toLocaleString()}명</b></div><div><span>남은 수량</span><b>${(Math.random()*9+3|0)}개</b></div></div>
+    <div class="evnote">· 1인 1회 참여 가능 · 당첨 즉시 지급<br>· 본 이벤트는 예고 없이 종료될 수 있습니다</div>
+    <button class="rbtn" id="rb">${esc(cfg.bn)}</button></div>`;
+  let tl=left; I(()=>{ tl=Math.max(0,tl-1); const e=document.getElementById('evt'); if(e) e.textContent='00:0'+Math.floor(tl/60)+':'+String(tl%60).padStart(2,'0'); },1000);
   const b=document.getElementById('rb'); let tries=0, caught=false;
   const place=(cx,cy)=>{ b.style.left=(cx-b.offsetWidth/2)+'px'; b.style.top=(cy-b.offsetHeight/2)+'px'; };
-  place(innerWidth/2, innerHeight*.62);
-  const taunt=['어딜! 😜','놓쳤다 ㅋ','너무 느려 🐢','한 번 더?','거의 잡을 뻔','🤭','포기해~','손가락 운동 중'];
+  place(innerWidth/2, innerHeight-60);
+  const taunt=['어딜!','놓쳤다 ㅋ','너무 느려','한 번 더?','거의 잡을 뻔','','포기해~','손가락 운동 중'];
   const flee=()=>{
     let nx,ny,k=0; const r=b.getBoundingClientRect(), ox=r.left+r.width/2, oy=r.top+r.height/2;
-    do{ nx=rnd(r.width/2+10,innerWidth-r.width/2-10); ny=rnd(innerHeight*.35,innerHeight-r.height/2-30); k++; }while(Math.hypot(nx-ox,ny-oy)<150&&k<20);
+    do{ nx=rnd(r.width/2+10,innerWidth-r.width/2-10); ny=rnd(70,innerHeight-r.height/2-20); k++; }while(Math.hypot(nx-ox,ny-oy)<150&&k<20);
     place(nx,ny); tries++; if(tries%3===0) toast(taunt[Math.floor(Math.random()*taunt.length)]);
   };
   b.addEventListener('pointerdown',e=>{
@@ -769,14 +1044,19 @@ function runRun(cfg){
 
 /* ---------- 5. 방귀 지문인식 ---------- */
 function runFart(cfg){
-  const fpSVG=`<svg width="90" height="90" viewBox="0 0 100 100" fill="none" stroke="#2b7bff" stroke-width="4" stroke-linecap="round">${[12,20,28,36,44].map(r=>`<path d="M${50-r} ${60} A${r} ${r+6} 0 0 1 ${50+r} ${60-r*.2}"/>`).join('')}<path d="M50 54 L50 80"/></svg>`;
-  STAGE.innerHTML=`<div class="fp"><div class="bh">${esc(cfg.bt)}</div><div class="bp">${esc(cfg.bb)}</div><div class="fpad" id="pd">${fpSVG}</div><div class="fptx" id="ft"></div>${usePhoto(cfg)?photoTag('fimg'):''}</div>`;
-  const fim=STAGE.querySelector('.fimg'); if(fim) fim.style.visibility='hidden';
+  STAGE.innerHTML=`<div class="bankbg"><div class="bkh"><b>${esc(cfg.an||'내 지갑')}</b></div>
+    <div class="bkcard"><span>총 자산</span><b>●●●,●●●원</b><small>잔액 보기는 본인 인증이 필요해요</small></div>
+    <div class="bkrow"></div><div class="bkrow"></div><div class="bkrow short"></div></div>
+    <div class="sheetdim"></div>
+    <div class="sheet"><div class="shg"></div><div class="sht">${esc(cfg.bt)}</div><div class="shs">${esc(cfg.bb)}</div>
+      <div class="fpad" id="pd">${FP_SVG('#2b7bff')}</div><div class="fptx" id="ft">지문 센서를 터치하세요</div>${usePhoto(cfg)?photoTag('fimg'):''}
+      <div class="shc">취소</div></div>`;
+  const fim=STAGE.querySelector('.fimg'); if(fim) fim.style.display='none';
   const pd=document.getElementById('pd'), ft=document.getElementById('ft'); let cnt=0, busy=false;
   pd.addEventListener('pointerdown',e=>{
     e.stopPropagation(); unlock(); if(busy) return; busy=true; pd.classList.add('scan'); ft.style.color='#2b7bff'; ft.textContent='인식 중...';
-    T(()=>{ pd.classList.remove('scan'); cnt++; ft.style.color='#a0522d'; ft.textContent=cfg.ct; ft.style.animation='none'; void ft.offsetWidth; ft.style.animation='pop .35s ease-out'; if(fim){ fim.style.visibility='visible'; fim.style.animation='none'; void fim.offsetWidth; fim.style.animation='pop .35s ease-out'; } fire(cfg);
-      if(cnt>=+cfg.n) reveal(cfg,1800); else T(()=>{ ft.textContent='❌ 인식 실패. 다시 시도하세요'; ft.style.color='#888'; busy=false; },1600);
+    T(()=>{ pd.classList.remove('scan'); cnt++; ft.style.color='#a0522d'; ft.textContent=cfg.ct; ft.style.animation='none'; void ft.offsetWidth; ft.style.animation='pop .35s ease-out'; if(fim){ fim.style.display=''; fim.style.animation='none'; void fim.offsetWidth; fim.style.animation='pop .35s ease-out'; } fire(cfg);
+      if(cnt>=+cfg.n) reveal(cfg,1800); else T(()=>{ ft.textContent='인식 실패. 다시 시도하세요'; ft.style.color='#888'; busy=false; },1600);
     },650);
   });
 }
@@ -785,7 +1065,7 @@ function runFart(cfg){
 function runLie(cfg){
   let forced=null, state='idle', prog=0, holdIv=null, wave=[];
   const draw=()=>{
-    STAGE.innerHTML=`<div class="lie"><div class="bh">🧠 ${esc(cfg.bt)}</div>${cfg.q?`<div class="q">Q. ${esc(cfg.q)}</div>`:''}<canvas id="hv"></canvas><div class="lpad" id="lp">👆</div><div class="lst" id="ls">손가락을 올리고 3초간 떼지 마세요</div></div>
+    STAGE.innerHTML=`<div class="lie"><div class="bh">${esc(cfg.bt)}</div>${cfg.q?`<div class="q">Q. ${esc(cfg.q)}</div>`:''}<canvas id="hv"></canvas><div class="lpad" id="lp">${FP_SVG('#6aa2ff')}</div><div class="lst" id="ls">손가락을 올리고 3초간 떼지 마세요</div></div>
       <div class="zone" id="zl" style="left:0"></div><div class="zone" id="zr" style="right:0"></div>`;
     addExit();
     const zl=document.getElementById('zl'), zr=document.getElementById('zr');
@@ -799,7 +1079,7 @@ function runLie(cfg){
       try{ lp.setPointerCapture(e.pointerId); }catch(_){}
       holdIv=setInterval(()=>{ prog+=100/45; ls.textContent=`분석 중... ${Math.min(100,prog).toFixed(0)}%  · 심박수 ${(rnd(88,132)|0)}bpm`; if(prog>=100){ clearInterval(holdIv); result(); } },66);
     });
-    const cancel=()=>{ if(state==='scan'){ clearInterval(holdIv); state='idle'; ls.textContent='⚠ 손가락을 떼면 안 돼요! 다시 해주세요'; } };
+    const cancel=()=>{ if(state==='scan'){ clearInterval(holdIv); state='idle'; ls.textContent='손가락을 떼면 안 돼요! 다시 해주세요'; } };
     lp.addEventListener('pointerup',cancel); lp.addEventListener('pointercancel',cancel);
   };
   const result=()=>{
@@ -826,8 +1106,8 @@ function rms(an,buf){ an.getFloatTimeDomainData(buf); let s=0; for(let i=0;i<buf
 /* ---------- 7. 못생김 측정기 ---------- */
 function runUgly(cfg){
   STAGE.innerHTML=`<div class="dk"><div class="bh">${esc(cfg.bt)}</div><div class="bp">${esc(cfg.bb)}</div>
-    <div class="ucam" id="uc"><div class="uph">🙂</div><div class="ubox"></div></div>
-    <div class="umet" id="um"></div><button class="btn b1" id="g2" style="max-width:300px">📸 측정 시작</button></div>`;
+    <div class="ucam" id="uc"><div class="uph">${FACE_SVG}</div><div class="ubox"></div></div>
+    <div class="umet" id="um"></div><button class="btn b1" id="g2" style="max-width:300px">측정 시작</button></div>`;
   const uc=document.getElementById('uc'), um=document.getElementById('um'), g2=document.getElementById('g2');
   if(usePhoto(cfg)&&PHOTO.data) uc.querySelector('.uph').outerHTML=`<img class="ufill" alt="" src="${esc(PHOTO.data)}">`;
   let vid=null, busy=false;
@@ -837,7 +1117,7 @@ function runUgly(cfg){
     uc.insertAdjacentHTML('beforeend','<div class="uscan"></div>');
     const items=['얼굴 윤곽 분석','눈 크기 측정','콧구멍 지름 계산','피부 상태 스캔','턱선 각도 측정','표정 자연스러움','종합 판정 중'];
     const du=+cfg.du*1000;
-    items.forEach((t,i)=>T(()=>{ const v=(Math.random()*40+5)|0; um.insertAdjacentHTML('beforeend',`<div class="mrow"><span>${t}</span><span class="mbar"><i style="width:${v}%"></i></span><b>${i==items.length-1?'⚠':v+'점'}</b></div>`); playSound('beep',cfg.v*.5); },i*du/items.length));
+    items.forEach((t,i)=>T(()=>{ const v=(Math.random()*40+5)|0; um.insertAdjacentHTML('beforeend',`<div class="mrow"><span>${t}</span><span class="mbar"><i style="width:${v}%"></i></span><b>${i==items.length-1?'':v+'점'}</b></div>`); playSound('beep',cfg.v*.5); },i*du/items.length));
     T(()=>{
       if(vid&&vid.videoWidth){ const c=document.createElement('canvas'); c.width=vid.videoWidth; c.height=vid.videoHeight; const x=c.getContext('2d'); x.translate(c.width,0); x.scale(-1,1); x.drawImage(vid,0,0); c.className='ufill'; vid.replaceWith(c); }
       stopMedia(); const sc=uc.querySelector('.uscan'); if(sc) sc.remove();
@@ -849,20 +1129,11 @@ function runUgly(cfg){
 }
 
 /* ---------- 8. 귀신 거울 ---------- */
-function ghostSVG(){
-  return `<svg viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="gf" cx="50%" cy="45%" r="55%"><stop offset="0" stop-color="#f4f4ef"/><stop offset="1" stop-color="#8e9696"/></radialGradient></defs>
-  <path d="M18 258 C6 120 30 16 100 12 C170 16 194 120 182 258 L150 258 C160 150 150 82 100 78 C50 82 40 150 50 258Z" fill="#070707"/>
-  <ellipse cx="100" cy="138" rx="50" ry="66" fill="url(#gf)"/>
-  <path d="M62 80 C72 120 66 170 70 226 M82 76 C88 120 84 160 90 214 M128 78 C124 130 132 170 128 226 M110 76 C114 110 108 140 112 170" stroke="#070707" stroke-width="7" fill="none"/>
-  <ellipse cx="80" cy="130" rx="11" ry="15" fill="#000"/><ellipse cx="120" cy="130" rx="11" ry="15" fill="#000"/>
-  <circle cx="80" cy="132" r="2" fill="#fff"/><circle cx="120" cy="132" r="2" fill="#fff"/>
-  <ellipse cx="100" cy="182" rx="12" ry="20" fill="#000"/></svg>`;
-}
 function runMirror(cfg){
   STAGE.innerHTML=`<div class="mir" id="mr"><div class="mirbg"></div>
     <div class="ghost ${cfg.gp==='left'?'gl':'gr'}" id="gh">${usePhoto(cfg)&&PHOTO.data?`<img alt="" src="${esc(PHOTO.data)}" style="width:100%;filter:grayscale(1) contrast(1.6) brightness(1.3)">`:ghostSVG()}</div>
     <div class="mtop">${esc(cfg.bt)}</div><div class="mst" id="ms">${esc(cfg.bb)}</div>
-    <button class="btn b1 mgo" id="g2">✨ 필터 켜기</button></div>`;
+    <button class="btn b1 mgo" id="g2">필터 켜기</button></div>`;
   const mr=document.getElementById('mr'), gh=document.getElementById('gh'), ms=document.getElementById('ms'), g2=document.getElementById('g2');
   let on=false;
   g2.addEventListener('pointerdown',async e=>{
@@ -870,7 +1141,7 @@ function runMirror(cfg){
     if(+cfg.cam){ const s=await getMedia({video:{facingMode:'user'},audio:false}); if(s){ const v=videoEl(s); v.className='mirv'; mr.prepend(v); } }
     const sl=+cfg.sl*1000, t0=Date.now();
     gh.style.transition=`opacity ${sl/1000}s linear`; requestAnimationFrame(()=>requestAnimationFrame(()=>gh.style.opacity='.42'));
-    I(()=>{ const p=Math.min(99,(Date.now()-t0)/sl*100); ms.textContent=`✨ 뷰티 필터 적용 중... ${p.toFixed(0)}%  움직이지 마세요`; },200);
+    I(()=>{ const p=Math.min(99,(Date.now()-t0)/sl*100); ms.textContent=`뷰티 필터 적용 중... ${p.toFixed(0)}%  움직이지 마세요`; },200);
     T(()=>{
       clearTimers(); gh.style.transition='all .18s ease-in'; gh.classList.add('gjump'); gh.style.opacity='1';
       mr.classList.add('flashing'); ms.textContent=''; if(cfg.mt) mr.insertAdjacentHTML('beforeend',`<div class="mbig">${esc(cfg.mt)}</div>`);
@@ -884,19 +1155,19 @@ function runQuiet(cfg){
   const sec=+cfg.sec;
   STAGE.innerHTML=`<div class="dk"><div class="bh">${esc(cfg.bt)}</div><div class="bp">${esc(String(cfg.bb).split('{초}').join(sec))}</div>
     <div class="qpz">${esc(cfg.pz)}</div>
-    <div class="qcd" id="qc">${sec}</div><div class="qmeter"><i id="qm"></i></div><div class="qst" id="qs">🎤 마이크를 허용하면 시작돼요</div>
+    <div class="qcd" id="qc">${sec}</div><div class="qmeter"><i id="qm"></i></div><div class="qst" id="qs">마이크를 허용하면 시작돼요</div>
     <button class="btn b1" id="g2" style="max-width:300px">도전 시작</button></div>`;
   const qc=document.getElementById('qc'), qm=document.getElementById('qm'), qs=document.getElementById('qs'), g2=document.getElementById('g2');
   let an=null, buf=null, left=sec, fail=false;
   const thr=0.012+(10-+cfg.sn)*0.012;
   const loop=()=>{
-    left=sec; fail=false; qc.textContent=left; qs.textContent='🤫 쉿... 조용히!'; qc.style.color='#fff';
+    left=sec; fail=false; qc.textContent=left; qs.textContent='쉿... 조용히!'; qc.style.color='#fff';
     const t0=Date.now();
     const iv=I(()=>{
       const lv = an ? rms(an,buf) : Math.random()*thr*.4;
       qm.style.width=Math.min(100,lv/thr*70)+'%'; qm.style.background=lv>thr?'#ff3d5a':'#c6ff3d';
       left=sec-(Date.now()-t0)/1000; qc.textContent=Math.max(0,Math.ceil(left));
-      if(lv>thr && left>+cfg.at){ clearInterval(iv); qs.textContent='❌ 소리 감지! 실패 😡'; qc.style.color='#ff3d5a'; vib(cfg,200); setTimeout(()=>{ if(STAGE) loop(); },1600); return; }
+      if(lv>thr && left>+cfg.at){ clearInterval(iv); qs.textContent='소리 감지! 실패'; qc.style.color='#ff3d5a'; vib(cfg,200); setTimeout(()=>{ if(STAGE) loop(); },1600); return; }
       if(left<=+cfg.at){ clearInterval(iv); stopMedia(); scareNow(cfg); }
     },60);
   };
@@ -912,16 +1183,16 @@ function runQuiet(cfg){
 const VOC={chip:1.75,monster:.6,robot:1,baby:1.35,slow:.72};
 function runCopy(cfg){
   STAGE.innerHTML=`<div class="dk" style="background:linear-gradient(160deg,#1b5e20,#0d2b10)"><div class="bh">${esc(cfg.bt)}</div><div class="bp">${esc(cfg.bb)}</div>
-    <div class="parrot" id="pr">${usePhoto(cfg)&&PHOTO.data?`<img alt="" src="${esc(PHOTO.data)}">`:'🦜'}</div>
-    <div class="qst" id="cs">🎤 마이크를 허용하면 시작돼요</div><div class="qmeter" style="max-width:240px"><i id="cm"></i></div>
-    <button class="btn b1" id="g2" style="max-width:300px">🦜 말 걸기 시작</button></div>`;
+    <div class="parrot" id="pr">${usePhoto(cfg)&&PHOTO.data?`<img alt="" src="${esc(PHOTO.data)}">`:PARROT_SVG}</div>
+    <div class="qst" id="cs">마이크를 허용하면 시작돼요</div><div class="qmeter" style="max-width:240px"><i id="cm"></i></div>
+    <button class="btn b1" id="g2" style="max-width:300px">말 걸기 시작</button></div>`;
   const pr=document.getElementById('pr'), cs=document.getElementById('cs'), cm=document.getElementById('cm'), g2=document.getElementById('g2');
   let count=0;
   g2.addEventListener('pointerdown',async e=>{
     e.stopPropagation(); unlock(); g2.remove();
     const s=await getMedia({audio:{echoCancellation:true,noiseSuppression:true}});
-    if(!s||!AC){ cs.textContent='😢 마이크를 못 켰어요'; return; }
-    cs.textContent='👂 듣는 중... 아무 말이나 해보세요';
+    if(!s||!AC){ cs.textContent='마이크를 못 켰어요'; return; }
+    cs.textContent='듣는 중... 아무 말이나 해보세요';
     const src=AC.createMediaStreamSource(s), proc=AC.createScriptProcessor(4096,1,1); MICPROC=proc;
     const mute=AC.createGain(); mute.gain.value=0; src.connect(proc); proc.connect(mute); mute.connect(AC.destination);
     let chunks=[], speaking=false, silence=0, busyUntil=0; const thr=0.025, sr=AC.sampleRate;
@@ -942,8 +1213,8 @@ function runCopy(cfg){
         else sN.connect(g);
         g.connect(AC.destination); sN.start();
         const dur=len/sr/rate; busyUntil=AC.currentTime+dur+.35;
-        pr.classList.add('talk'); cs.textContent='🦜 따라 하는 중...';
-        setTimeout(()=>{ if(!STAGE) return; pr.classList.remove('talk'); cs.textContent='👂 듣는 중... 또 말해보세요'; count++; if(+cfg.n>0&&count>=+cfg.n){ stopMedia(); +cfg.r ? reveal(cfg,200) : null; } },dur*1000+100);
+        pr.classList.add('talk'); cs.textContent='따라 하는 중...';
+        setTimeout(()=>{ if(!STAGE) return; pr.classList.remove('talk'); cs.textContent='듣는 중... 또 말해보세요'; count++; if(+cfg.n>0&&count>=+cfg.n){ stopMedia(); +cfg.r ? reveal(cfg,200) : null; } },dur*1000+100);
       }
     };
   });
@@ -951,7 +1222,7 @@ function runCopy(cfg){
 
 /* ---------- 11. 고장난 키보드 ---------- */
 function runKb(cfg){
-  STAGE.innerHTML=`<div class="kbw">${usePhoto(cfg)&&PHOTO.data?`<img class="kbimg" alt="" src="${esc(PHOTO.data)}">`:''}
+  STAGE.innerHTML=`<div class="kbw">${usePhoto(cfg)&&PHOTO.data?`<img class="kbimg" alt="" src="${esc(PHOTO.data)}">`:`<div class="kbban"><small>${esc(cfg.bs||'EVENT')}</small><b>${esc(cfg.bh||'치킨 1,000마리 쏜다')}</b><span>${esc(cfg.bd||'응모 기간 · 오늘 자정까지')}</span></div>`}
     <div class="kbc"><div class="bh">${esc(cfg.bt)}</div><div class="bp">${esc(cfg.bb)}</div>
     <label style="color:#555;margin:4px 16px 6px">${esc(cfg.q)}</label>
     <div class="kbbox"><span id="kt"></span><i class="caret"></i><input id="ki" type="text" autocomplete="off" autocorrect="off" spellcheck="false"></div>
@@ -976,16 +1247,16 @@ function runLock(cfg){
   const now=new Date(), hh=String(now.getHours()).padStart(2,'0'), mm=String(now.getMinutes()).padStart(2,'0');
   STAGE.innerHTML=`<div class="lock" ${usePhoto(cfg)&&PHOTO.data?`style="background-image:linear-gradient(#0008,#000c),url('${esc(PHOTO.data)}')"`:''}>
     <div class="lclock">${hh}:${mm}</div><div class="ldate">${now.getMonth()+1}월 ${now.getDate()}일 ${'일월화수목금토'[now.getDay()]}요일</div>
-    <div class="ltit">🔒 ${esc(cfg.lt)}</div><div class="lsub" id="lsb">${esc(cfg.bt)}</div>
+    <div class="ltit">${esc(cfg.lt)}</div><div class="lsub" id="lsb">${esc(cfg.bt)}</div>
     <div class="ldots" id="ld">${'<i></i>'.repeat(4)}</div>
-    <div class="lpad2" id="lkp">${[1,2,3,4,5,6,7,8,9,'',0,'⌫'].map(k=>`<button data-k="${k}"${k===''?' style="visibility:hidden"':''}>${k}</button>`).join('')}</div>
+    <div class="lpad2" id="lkp">${[1,2,3,4,5,6,7,8,9,'',0,'del'].map(k=>`<button data-k="${k}"${k===''?' style="visibility:hidden"':''}>${k==='del'?'<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 5H9l-6 7 6 7h12z"/><path d="M16 9l-5 6M11 9l5 6"/></svg>':k}</button>`).join('')}</div>
     <div class="lover" id="lo"></div></div>`;
   const ld=document.getElementById('ld'), lo=document.getElementById('lo'), lsb=document.getElementById('lsb');
   let pin='', att=0, locked=false;
   const dots=()=>ld.querySelectorAll('i').forEach((d,i)=>d.classList.toggle('on',i<pin.length));
   document.getElementById('lkp').addEventListener('pointerdown',e=>{
     const b=e.target.closest('button'); if(!b||locked) return; e.stopPropagation(); unlock();
-    const k=b.dataset.k; if(k==='⌫'){ pin=pin.slice(0,-1); dots(); return; } if(k==='') return;
+    const k=b.dataset.k; if(k==='del'){ pin=pin.slice(0,-1); dots(); return; } if(k==='') return;
     pin+=k; dots(); playSound('beep',cfg.v*.3);
     if(pin.length===4){ setTimeout(wrong,200); }
   });
@@ -1002,7 +1273,7 @@ function runLock(cfg){
     locked=true; lo.style.display='flex'; let i=1;
     const show=()=>{
       const last=i>=steps.length-1;
-      lo.innerHTML=`<div>${i>1?'⚠ 보안 위반 감지 · 잠금 시간 증가':'잘못된 시도 횟수 초과'}</div><div class="lbig">${esc(steps[Math.min(i,steps.length-1)])}</div><div>후에 다시 시도하세요</div>${last?`<div style="margin-top:24px;color:#ff5a6e;font-weight:800">${esc(cfg.ft)}</div>`:''}`;
+      lo.innerHTML=`<div>${i>1?'보안 위반 감지 · 잠금 시간 증가':'잘못된 시도 횟수 초과'}</div><div class="lbig">${esc(steps[Math.min(i,steps.length-1)])}</div><div>후에 다시 시도하세요</div>${last?`<div style="margin-top:24px;color:#ff5a6e;font-weight:800">${esc(cfg.ft)}</div>`:''}`;
       lo.firstElementChild.style.color=i>1?'#ff5a6e':'';
       vib(cfg,120); playSound('beep',cfg.v);
       if(last){ fire(cfg); reveal(cfg,4000); return; }
@@ -1014,14 +1285,14 @@ function runLock(cfg){
 
 /* ---------- 13. 절대 안 되는 뽑기 ---------- */
 function runGacha(cfg){
-  const prizes=String(cfg.pr).split('\n').map(s=>s.trim()).filter(Boolean); if(!prizes.length) prizes.push('🍗 치킨');
+  const prizes=String(cfg.pr).split('\n').map(s=>s.trim()).filter(Boolean); if(!prizes.length) prizes.push('치킨');
   const lose=cfg.ls||'꽝'; let left=+cfg.n, spinning=false;
   STAGE.innerHTML=`<div class="gacha"><div class="bh">${esc(cfg.bt)}</div><div class="bp">${esc(cfg.bb)}</div>
-    <div class="gm"><div class="gwin" id="gw">❔</div></div>
+    <div class="gm"><div class="gwin" id="gw">?</div></div>
     <div class="glist">${prizes.map(p=>`<span>${esc(p)}</span>`).join('')}</div>
-    <button class="btn" id="gs" style="background:#e8112d;color:#fff;max-width:300px;box-shadow:0 6px 0 #9a0a1d">🎰 뽑기 (남은 기회 ${left})</button></div>`;
+    <button class="btn" id="gs" style="background:#e8112d;color:#fff;max-width:300px;box-shadow:0 6px 0 #9a0a1d">뽑기 (남은 기회 ${left})</button></div>`;
   const gw=document.getElementById('gw'), gs=document.getElementById('gs');
-  const taunts=['아깝다!! 😭','한 칸 차이였는데...','다음엔 될 거야 (아님)','운이 없네요 ㅋ','거의 다 왔어요!'];
+  const taunts=['아깝다!!','한 칸 차이였는데...','다음엔 될 거야 (아님)','운이 없네요 ㅋ','거의 다 왔어요!'];
   gs.addEventListener('pointerdown',e=>{
     e.stopPropagation(); unlock(); if(spinning||left<=0) return; spinning=true; left--;
     const pool=prizes.concat([lose]); let t=0, delay=50;
@@ -1030,7 +1301,7 @@ function runGacha(cfg){
       if(t<2300){ T(tick,delay); return; }
       gw.textContent=prizes[Math.floor(Math.random()*prizes.length)]; gw.classList.add('near');
       T(()=>{ gw.classList.remove('near'); gw.textContent=lose; spinning=false;
-        if(left>0){ toast(taunts[Math.floor(Math.random()*taunts.length)]); gs.textContent=`🎰 뽑기 (남은 기회 ${left})`; vib(cfg,60); }
+        if(left>0){ toast(taunts[Math.floor(Math.random()*taunts.length)]); gs.textContent=`뽑기 (남은 기회 ${left})`; vib(cfg,60); }
         else{
           const d=document.createElement('div'); d.className='big'; d.style.background='#fff1f1'; d.style.color='#222'; d.style.flexDirection='column';
           d.innerHTML=(usePhoto(cfg)&&PHOTO.data?`<img class="bimg" alt="" src="${esc(PHOTO.data)}">`:'')+esc(cfg.ft);
@@ -1039,6 +1310,65 @@ function runGacha(cfg){
       },650);
     };
     tick();
+  });
+}
+
+/* ---------- 14. 버퍼링 공포 ---------- */
+function runBuf(cfg){
+  const thumb = usePhoto(cfg)&&PHOTO.data ? `<img class="ufill" alt="" src="${esc(PHOTO.data)}">` : sceneTag('house',(Math.random()*1e6)|0,'ufill');
+  STAGE.innerHTML=`<div class="vp"><div class="vbox" id="vb">${thumb}<div class="vplay" id="vpl">▶</div><div class="vbar"><i id="vpr"></i></div><div class="vtime" id="vtm">0:00 / ${esc(cfg.vl)}</div></div>
+    <div class="vinfo"><div class="vtitle">${esc(cfg.vt)}</div><div class="vmeta">${esc(cfg.vw)}</div>
+    <div class="vch"><span class="vav">${esc((cfg.ch||'?').slice(0,1))}</span><b>${esc(cfg.ch)}</b><span class="vsub">구독</span></div>
+    <div class="vcm">댓글 ${(Math.random()*900+100)|0}개<br><span>${esc(cfg.cm)}</span></div>
+    ${[['house','폐가에서 들린 소리의 정체','공포탐정 · 조회수 91만회'],['night','새벽 3시에 절대 하면 안 되는 것','미스터리랩 · 조회수 412만회'],['house','CCTV에 찍힌 이상한 장면 TOP5','이슈탐험대 · 조회수 77만회']].map(r=>`<div class="vrel"><div class="vrt">${sceneTag(r[0],(Math.random()*1e6)|0,'ufill')}</div><div><b>${r[1]}</b><br><small>${r[2]}</small></div></div>`).join('')}</div></div>`;
+  const vb=document.getElementById('vb'), vpl=document.getElementById('vpl'), vpr=document.getElementById('vpr'), vtm=document.getElementById('vtm');
+  let on=false;
+  vb.addEventListener('pointerdown',e=>{
+    e.stopPropagation(); unlock(); if(on) return; on=true; vpl.remove();
+    const ps=+cfg.ps*1000, bu=+cfg.bu*1000, gl=+cfg.gl*1000, t0=Date.now();
+    vb.classList.add('playing');
+    const iv=I(()=>{ const s=(Date.now()-t0)/1000; vpr.style.width=Math.min(4,s*.8)+'%'; vtm.textContent=`0:${String(Math.floor(s)).padStart(2,'0')} / ${cfg.vl}`; },200);
+    T(()=>{ clearInterval(iv); vb.classList.remove('playing'); vb.insertAdjacentHTML('beforeend','<div class="vspin"></div>'); },ps);
+    if(+cfg.hq) T(()=>toast('화질 자동 조정 중...'),ps+bu*.5);
+    T(()=>{
+      const sp=vb.querySelector('.vspin'); if(sp) sp.remove();
+      if(gl>0){ const c=document.createElement('canvas'); c.className='full'; c.style.zIndex=3; vb.appendChild(c); c.width=160; c.height=90; const x=c.getContext('2d');
+        I(()=>{ const im=x.createImageData(160,90); for(let i=0;i<im.data.length;i+=4){ const v=Math.random()*255; im.data[i]=im.data[i+1]=im.data[i+2]=v; im.data[i+3]=255; } x.putImageData(im,0,0); },50);
+        playSound('static',cfg.v*.6); vib(cfg,[40,40,40,40,40]); }
+      T(()=>scareNow(cfg),gl);
+    },ps+bu);
+  });
+}
+
+/* ---------- 15. 거꾸로 화면 ---------- */
+function runRev(cfg){
+  const decoys=String(cfg.dc).split('\n').map(s=>s.trim()).filter(Boolean); if(!decoys.length) decoys.push('취소');
+  const nb=Math.max(1,+cfg.nb);
+  let labels=[cfg.bn]; for(let i=1;i<nb;i++) labels.push(decoys[(i-1)%decoys.length]);
+  labels.sort(()=>Math.random()-.5);
+  STAGE.innerHTML=`<div class="revw"><div class="bh">${esc(cfg.bt)}</div><div class="bp">${esc(cfg.bb)}</div>${usePhoto(cfg)?photoTag('rimg'):''}
+    <div class="rgrid" id="rg">${labels.map(l=>`<button class="rb ${l===cfg.bn?'win':''}">${esc(l)}</button>`).join('')}</div>
+    <div class="rcnt" id="rc"></div></div><div class="finger" id="fg"></div>`;
+  const fg=document.getElementById('fg'), rc=document.getElementById('rc'), rg=document.getElementById('rg');
+  const taunts=String(cfg.tm).split('\n').map(s=>s.trim()).filter(Boolean);
+  let tries=0, done=false;
+  const modeAt=t=>{ if(cfg.md!=='step') return cfg.md; return t<+cfg.s1?'lr':t<+cfg.s1*2?'ud':'rnd'; };
+  STAGE.addEventListener('pointerdown',e=>{
+    if(done||e.target.closest('.exitz')) return; e.preventDefault();
+    const W=innerWidth,H=innerHeight; let x=e.clientX,y=e.clientY; const m=modeAt(tries);
+    if(m==='lr') x=W-x; else if(m==='ud') y=H-y; else if(m==='all'){ x=W-x; y=H-y; } else if(m==='rnd'){ x=rnd(20,W-20); y=rnd(20,H-20); }
+    tries++;
+    if(+cfg.fg){ fg.style.left=x+'px'; fg.style.top=y+'px'; fg.classList.remove('tap'); void fg.offsetWidth; fg.classList.add('tap'); }
+    fg.style.display='none'; const el=document.elementFromPoint(x,y); fg.style.display='';
+    const b=el&&el.closest&&el.closest('.rb');
+    if(b){
+      b.classList.add('prs'); setTimeout(()=>b.classList.remove('prs'),200);
+      if(b.classList.contains('win')){ const others=[...rg.children].filter(c=>c!==b); if(others.length){ const o=others[Math.floor(Math.random()*others.length)]; const t=b.textContent; b.textContent=o.textContent; o.textContent=t; b.classList.remove('win'); o.classList.add('win'); } toast('앗! 위치가 바뀌었어요'); }
+      else toast(`${b.textContent} 되었습니다`);
+    } else if(taunts.length && Math.random()<.5) toast(taunts[Math.floor(Math.random()*taunts.length)]);
+    playSound('beep',cfg.v*.4);
+    if(+cfg.sc) rc.textContent=`시도 ${tries}회`;
+    if(+cfg.n>0 && tries>=+cfg.n){ done=true; const d=document.createElement('div'); d.className='big'; d.style.background='#eef6ff'; d.style.color='#222'; d.textContent=cfg.ft; STAGE.appendChild(d); fire(cfg); reveal(cfg,2800); }
   });
 }
 
